@@ -9,6 +9,8 @@ TIMEOUT_HOURS=${NUM_HOURS:-10}
 CODEX_MODEL="${AGENT_CONFIG:-}"
 CODEX_REASONING_EFFORT=""
 case "${CODEX_MODEL}" in
+  *-max) CODEX_REASONING_EFFORT="max"; CODEX_MODEL="${CODEX_MODEL%-max}" ;;
+  *-xhigh) CODEX_REASONING_EFFORT="xhigh"; CODEX_MODEL="${CODEX_MODEL%-xhigh}" ;;
   *-high) CODEX_REASONING_EFFORT="high"; CODEX_MODEL="${CODEX_MODEL%-high}" ;;
   *-med)  CODEX_REASONING_EFFORT="medium"; CODEX_MODEL="${CODEX_MODEL%-med}" ;;
   *-low)  CODEX_REASONING_EFFORT="low"; CODEX_MODEL="${CODEX_MODEL%-low}" ;;
@@ -16,6 +18,21 @@ esac
 if [ -n "${CODEX_REASONING_EFFORT}" ]; then
   mkdir -p ~/.codex
   printf 'model_reasoning_effort = "%s"\n' "${CODEX_REASONING_EFFORT}" > ~/.codex/config.toml
+fi
+
+# Provider configuration is container-local; credentials remain in the process environment.
+if [[ -n "${INFERENCE_BENCH_CODEX_BASE_URL:-}" ]]; then
+  mkdir -p ~/.codex
+  python3 - <<'PY'
+import json, os
+from pathlib import Path
+path = Path.home() / ".codex/config.toml"
+with path.open("a") as out:
+    out.write('\nmodel_provider = "inferencebench"\n')
+    out.write('[model_providers.inferencebench]\nname = "InferenceBench provider"\n')
+    out.write('base_url = ' + json.dumps(os.environ['INFERENCE_BENCH_CODEX_BASE_URL']) + '\n')
+    out.write('env_key = "CODEX_API_KEY"\nwire_api = "responses"\n')
+PY
 fi
 
 echo "[agent] $(date --iso-8601=seconds) starting codex agent"
