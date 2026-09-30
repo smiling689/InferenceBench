@@ -304,6 +304,8 @@ def integrity_flags(metrics: dict[str, Any]) -> list[str]:
 
 
 def primary_metric(metrics: dict[str, Any], scenario: str) -> tuple[float, str | None]:
+    if metrics.get("performance_check", {}).get("pass") is False:
+        return FAILURE_SCORE, "incomplete_requests"
     profiles = metrics.get("profiles") or {}
     burst = profiles.get("burst")
     if not isinstance(burst, dict):
@@ -543,7 +545,7 @@ def build_engine_cmd(
 def build_trial_env(engine: str, config: dict[str, Any], base_env: dict[str, str], skip_quality: bool) -> dict[str, str]:
     env = dict(base_env)
     env["INFERENCE_BENCH_ACTIVE_BACKEND"] = engine
-    if skip_quality:
+    if skip_quality or env.get("INFERENCE_BENCH_PERFORMANCE_ONLY") == "1":
         env["INFERENCE_BENCH_SKIP_QUALITY"] = "1"
     else:
         env.pop("INFERENCE_BENCH_SKIP_QUALITY", None)
@@ -699,6 +701,8 @@ def run_scenario_eval(
     ]
     if quick:
         cmd.append("--quick")
+    if env.get("INFERENCE_BENCH_PERFORMANCE_ONLY") == "1":
+        env = dict(env, INFERENCE_BENCH_DATASET_SEED=str(seed))
     start = time.time()
     try:
         proc = subprocess.run(
@@ -1066,6 +1070,8 @@ class HpoRunner:
             "final_primary_metric": metric,
             "final_primary_metric_source": source,
             "gate_passed": gate_passed(metrics),
+            "quality_evaluated": metrics.get("quality_evaluated", True),
+            "performance_passed": metrics.get("performance_check", {}).get("pass"),
             "integrity_passed": not flags,
             "integrity_flags": flags,
             "final_cmd": cmd,

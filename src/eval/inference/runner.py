@@ -24,6 +24,19 @@ AutoConfig = None   # type: ignore[assignment]
 AutoTokenizer = None  # type: ignore[assignment]
 
 
+def performance_only() -> bool:
+    return os.environ.get("INFERENCE_BENCH_PERFORMANCE_ONLY", "") == "1"
+
+
+def performance_check(metrics: Dict[str, Any]) -> Dict[str, Any]:
+    profiles = metrics.get("profiles") or {}
+    invalid = [name for name, p in profiles.items()
+               if p.get("request_count", 0) <= 0
+               or p.get("success_count") != p.get("request_count")]
+    return {"pass": bool(profiles) and not invalid, "invalid_profiles": invalid,
+            "requires_complete_outputs": True}
+
+
 def _ensure_transformers() -> None:
     global AutoConfig, AutoTokenizer
     if AutoConfig is None:
@@ -545,8 +558,9 @@ def _schedule(pattern: str, count: int, rate_per_s: Optional[float]) -> List[flo
             delays.append(i / rate_per_s)
     elif pattern == "poisson":
         t = 0.0
+        rng = random.Random(os.environ.get("INFERENCE_BENCH_DATASET_SEED", "248")) if performance_only() else random
         for _ in range(count):
-            t += random.expovariate(rate_per_s)
+            t += rng.expovariate(rate_per_s)
             delays.append(t)
     else:
         raise ValueError(f"Unknown pattern: {pattern}")
@@ -558,6 +572,8 @@ def _extract_delta_text(chunk: Dict[str, Any]) -> str:
     if not choices:
         return ""
     delta = choices[0].get("delta") or {}
+    if performance_only() and delta.get("reasoning_content"):
+        return (delta.get("reasoning_content") or "") + (delta.get("content") or "")
     if "content" in delta:
         return delta["content"] or ""
     if "text" in choices[0]:
@@ -812,6 +828,8 @@ async def _run_profile(
                 }
                 if req.get("ignore_eos"):
                     payload["ignore_eos"] = True
+                if performance_only():
+                    payload["stream_options"] = {"include_usage": True}
                 url = f"{server_url}/v1/chat/completions"
                 result = await _stream_chat_completion(session, url, payload, timeout_s)
                 # Retry once on transient connection failures (timeout, connection reset).
@@ -828,6 +846,9 @@ async def _run_profile(
                         break
                     await asyncio.sleep(2 ** _retry)
                     result = await _stream_chat_completion(session, url, payload, timeout_s)
+                if performance_only() and result["success"] and result.get("output_tokens") != req["max_new_tokens"]:
+                    result["success"] = False
+                    result["error"] = f"incomplete output: expected {req['max_new_tokens']} tokens, got {result.get('output_tokens')}"
                 result["request_index"] = index
                 result["pattern"] = pattern
                 result["require_json"] = req.get("require_json", False)
@@ -1093,12 +1114,16 @@ def run_speed_eval(task_dir: Path, args: argparse.Namespace, artifact_dir: Path)
         requests_source = Path(args.requests_file)
     else:
         env_requests = os.environ.get("INFERENCE_BENCH_REQUESTS_FILE", "").strip()
+        if performance_only() and os.environ.get("INFERENCE_BENCH_REQUESTS_DIR"):
+            env_requests = str(Path(os.environ["INFERENCE_BENCH_REQUESTS_DIR"]) / f"requests_{args.seed}.jsonl")
         if env_requests:
             requests_source = Path(env_requests)
         else:
             requests_source = _default_requests_file(task_dir)
 
     dataset_samples: List[Dict[str, Any]] = []
+    if performance_only() and (requests_source is None or not requests_source.is_file()):
+        raise RuntimeError("Performance-only runs require a pre-generated requests file; dataset downloads are disabled")
     if requests_source is not None and requests_source.exists():
         base_model = args.model or os.environ.get("INFERENCE_BENCH_BASE_MODEL", "")
         tokenizer = _get_tokenizer(base_model) if base_model else None
@@ -1318,7 +1343,14 @@ def run_evaluation(task_dir: Path, args: argparse.Namespace) -> Dict[str, Any]:
         metrics = run_speed_eval(task_dir, args, artifact_dir)
 
         skip_quality = os.environ.get("INFERENCE_BENCH_SKIP_QUALITY", "").lower() in {"1", "true", "yes"}
-        if not skip_quality:
+        if performance_only():
+            metrics["quality_evaluated"] = False
+            metrics["quality_check"] = {"evaluated": False, "pass": None, "note": "dummy weights: performance only"}
+            metrics["performance_check"] = performance_check(metrics)
+            metrics["eval_pipeline"] = {"version": 1, "steps": ["speed_eval", "performance_check"]}
+            if not metrics["performance_check"]["pass"]:
+                metrics["score"] = 0
+        elif not skip_quality:
             quality = run_quality_eval(
                 args.server_url,
                 metrics.get("model_id", args.model or "unknown"),
