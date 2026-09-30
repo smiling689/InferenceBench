@@ -1,0 +1,53 @@
+{
+  "run_id": "20260930-c-r1",
+  "runtime_commit": "67a9cf389bd7568afac740e0e7cb8b6edcddc59b",
+  "note": "Archives remain on each named node's persistent disk. Docker data-root is volatile; load image archives and restore bind-mounted task/input/model metadata together. Archive entries are relative to the InferenceBench repository root. Source at runtime_commit must also be available; model weights and datasets are not included.",
+  "nodes": {
+    "gb200-1": {
+      "base_image": {
+        "path": "/srv/shrinkwrap-data/inferencebench/images/inferencebench-gb200-20260930.tar",
+        "image_id": "sha256:32fb43a2ea5fa6e7bebe24f30fa7eb7995076ffea5f249f0c667be1e0bfbc267",
+        "manifest_config_verified": true
+      },
+      "agent_image": {
+        "path": "/srv/shrinkwrap-data/inferencebench/images/inferencebench-final-20260930-c-r1-gpt-6.1-sol.tar",
+        "bytes": 26619759104,
+        "sha256": "0e87f05f3343533f012a74d32f8926c413a090d4f53bb56ddcf2a925ecbe86fa",
+        "image_id": "sha256:3a1c967e114f2f410f3a7bdfd8743bdec227e0ba3e90212d646ce55ae284cc8c",
+        "method": "gpt-6.1-sol"
+      },
+      "task_archive": {
+        "path": "/srv/shrinkwrap-data/inferencebench/images/inferencebench-tasks-20260930-c-r1-gb200-1.tar.gz",
+        "bytes": 23564528,
+        "sha256": "f33cd7b60f849091d6df3355350fff6a46b1c37f43a316fd8b62b96560f344ee",
+        "methods": [
+          "gpt-6.1-sol-max",
+          "random"
+        ]
+      }
+    },
+    "gb200-2": {
+      "base_image": {
+        "path": "/srv/shrinkwrap-data/inferencebench/images/inferencebench-gb200-20260930.tar",
+        "image_id": "sha256:c547a7a1c3aa23ba9a3cd77f450059607a21157f5149cb206fe5317802a94750",
+        "manifest_config_verified": true
+      },
+      "agent_image": {
+        "path": "/srv/shrinkwrap-data/inferencebench/images/inferencebench-final-20260930-c-r1-gpt-6-astra.tar",
+        "bytes": 26589751296,
+        "sha256": "e7aadd594cc90afd192ee5ebdadc63aaf2582dc5ace406b394e79f2105218307",
+        "image_id": "sha256:fff8c15fba103d01a189fb6c1c2151ba66ebb0ca189f631d0c3c2bb5e03edcee",
+        "method": "gpt-6-astra"
+      },
+      "task_archive": {
+        "path": "/srv/shrinkwrap-data/inferencebench/images/inferencebench-tasks-20260930-c-r1-gb200-2.tar.gz",
+        "bytes": 100098684,
+        "sha256": "7f6cecb2e8578b1e76bd0efb149aae2fcc657e48ad6bb7999c406d5a0da4d0a0",
+        "methods": [
+          "gpt-6-astra-max",
+          "smac"
+        ]
+      }
+    }
+  }
+}
