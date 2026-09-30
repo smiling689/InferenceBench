@@ -51,3 +51,19 @@ def test_reasoning_tokens_are_visible_in_dummy_r1_stream(monkeypatch):
     monkeypatch.setenv("INFERENCE_BENCH_PERFORMANCE_ONLY", "1")
     chunk = {"choices": [{"delta": {"content": None, "reasoning_content": "thinking"}}]}
     assert runner._extract_delta_text(chunk) == "thinking"
+
+
+def test_performance_profile_rejects_server_input_length_mismatch(monkeypatch):
+    import asyncio
+    monkeypatch.setenv("INFERENCE_BENCH_PERFORMANCE_ONLY", "1")
+    async def stream(*args):
+        return {"success": True, "start": 1, "end": 2, "text": "output",
+                "output_tokens": 8, "input_tokens": 900}
+    monkeypatch.setattr(runner, "_stream_chat_completion", stream)
+    requests = [{"messages": [{"role": "user", "content": "input"}],
+                 "max_new_tokens": 8, "temperature": 0.3, "input_token_count": 901}]
+    results, _, _ = asyncio.run(runner._run_profile(
+        {"pattern": "burst", "concurrency": 1, "num_requests": 1},
+        requests, "http://localhost", "dummy", 30, None))
+    assert results[0]["success"] is False
+    assert results[0]["error"] == "input length mismatch: expected 901 tokens, got 900"

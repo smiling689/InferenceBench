@@ -176,6 +176,11 @@ def _get_model_max_len(model_id: str) -> Optional[int]:
 
 
 def _get_tokenizer(model_id: str):
+    if os.environ.get("INFERENCE_BENCH_TOKENIZER_BACKEND") == "sglang":
+        # Use the serving stack's Transformers compatibility fixes as well.
+        # Fail explicitly rather than silently measuring a different tokenization.
+        from sglang.srt.utils.hf_transformers.tokenizer import get_tokenizer
+        return get_tokenizer(model_id, local_files_only=True)
     _ensure_transformers()
     cache_dir = os.environ.get("HF_HUB_CACHE") or os.environ.get("HF_HOME") or None
     try:
@@ -597,6 +602,7 @@ async def _stream_chat_completion(
     text_parts: List[str] = []
     chunk_itls: List[float] = []  # per-chunk inter-token latencies
     output_tokens: Optional[int] = None  # server-reported completion tokens
+    input_tokens: Optional[int] = None  # server-reported prompt tokens
     error: Optional[str] = None
 
     raw_chunks: List[str] = []
@@ -638,6 +644,8 @@ async def _stream_chat_completion(
                     # Extract server-reported usage (vLLM/SGLang include this
                     # in the final chunk or in stream_options.include_usage).
                     usage = parsed.get("usage") or {}
+                    if usage.get("prompt_tokens") is not None:
+                        input_tokens = int(usage["prompt_tokens"])
                     if usage.get("completion_tokens"):
                         output_tokens = int(usage["completion_tokens"])
                     delta_text = _extract_delta_text(parsed)
@@ -671,6 +679,8 @@ async def _stream_chat_completion(
                     if isinstance(content, str) and content:
                         text = content
                 usage = parsed.get("usage") or {}
+                if usage.get("prompt_tokens") is not None:
+                    input_tokens = int(usage["prompt_tokens"])
                 if usage.get("completion_tokens"):
                     output_tokens = int(usage["completion_tokens"])
             except Exception:
@@ -693,6 +703,7 @@ async def _stream_chat_completion(
         "error": error,
         "chunk_itls": chunk_itls,
         "output_tokens": output_tokens,
+        "input_tokens": input_tokens,
     }
 
 
@@ -853,6 +864,10 @@ async def _run_profile(
                 if performance_only() and result["success"] and result.get("output_tokens") != req["max_new_tokens"]:
                     result["success"] = False
                     result["error"] = f"incomplete output: expected {req['max_new_tokens']} tokens, got {result.get('output_tokens')}"
+                expected_input = req.get("input_token_count")
+                if performance_only() and result["success"] and expected_input is not None and result.get("input_tokens") != expected_input:
+                    result["success"] = False
+                    result["error"] = f"input length mismatch: expected {expected_input} tokens, got {result.get('input_tokens')}"
                 result["request_index"] = index
                 result["pattern"] = pattern
                 result["require_json"] = req.get("require_json", False)
@@ -912,6 +927,7 @@ async def _run_profile(
                     "error": r.get("error"),
                     "tokens": r.get("tokens"),
                     "output_tokens": r.get("output_tokens"),
+                    "input_tokens": r.get("input_tokens"),
                 }
                 handle.write(json.dumps(record, ensure_ascii=False) + "\n")
 
