@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "same_output_ids": true,
+      "completion_tokens": 16,
+      "finite_reference_logprobs": true,
+      "output_ids": [
+        26131,
+        8720,
+        26131,
+        8720,
+        26131,
+        8720,
+        26131,
+        8720,
+        26131,
+        8720,
+        26131,
+        8720,
+        26131,
+        8720,
+        26131,
+        8720
+      ]
+    },
+    {
+      "same_output_ids": true,
+      "completion_tokens": 16,
+      "finite_reference_logprobs": true,
+      "output_ids": [
+        22919,
+        10860,
+        22919,
+        10860,
+        22919,
+        10860,
+        22919,
+        10860,
+        22919,
+        10860,
+        22919,
+        10860,
+        22919,
+        10860,
+        22919,
+        10860
+      ]
+    }
+  ]
+}

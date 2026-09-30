@@ -1,0 +1,53 @@
+--- /sgl-workspace/sglang/python/sglang/srt/model_executor/model_runner.py
++++ /home/agent/task/graph_overlay/modules/model_runner.py
+@@ -2778,7 +2778,7 @@
+                 elif hasattr(layer.self_attn, "attn_mqa"):
+                     # For DeepSeek model
+                     attn_layer = layer.self_attn.attn_mqa
+-                    if _is_hip and hasattr(layer.self_attn, "attn_mha"):
++                    if hasattr(layer.self_attn, "attn_mha"):
+                         attn_layer._pcg_mha_companion = layer.self_attn.attn_mha
+             # For hybrid model
+             elif hasattr(layer, "attn"):
+--- /sgl-workspace/sglang/python/sglang/srt/layers/radix_attention.py
++++ /home/agent/task/graph_overlay/modules/radix_attention.py
+@@ -189,7 +189,7 @@
+     # attn_mha) that share the same layer_id. The attention_layers list only
+     # stores attn_mqa. When the MHA path is active (save_kv_cache=False), use
+     # the companion attn_mha so the backend sees correct head/dim metadata.
+-    if _is_hip and not save_kv_cache and hasattr(attention_layer, "_pcg_mha_companion"):
++    if not save_kv_cache and hasattr(attention_layer, "_pcg_mha_companion"):
+         attention_layer = attention_layer._pcg_mha_companion
+ 
+     kwargs = {}
+--- /sgl-workspace/sglang/python/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py
++++ /home/agent/task/graph_overlay/modules/prefill_cuda_graph_runner.py
+@@ -553,6 +553,13 @@
+         )
+ 
+     def can_run_graph(self, forward_batch: ForwardBatch) -> bool:
++        # FA4 MHA captures only the no-prefix chunk path. Prefix hits need
++        # the ordinary prefill path to compute every cached-prefix chunk.
++        if (
++            self.model_runner.server_args.prefill_attention_backend == "fa4"
++            and any(forward_batch.extend_prefix_lens_cpu or ())
++        ):
++            return False
+         if self._is_full_backend and forward_batch.batch_size > self._capture_req_slots:
+             return False
+         if forward_batch.input_embeds is not None:
+@@ -967,6 +974,14 @@
+                 forward_batch.spec_info.hidden_states
+             )
+ 
++        # Captured MHA kernels do not replay Python field assignments.
++        # can_run_graph excludes prefix hits for this FA4 path.
++        if self.model_runner.server_args.prefill_attention_backend == "fa4":
++            for batch in (forward_batch, static_forward_batch):
++                batch.attn_attend_prefix_cache = False
++                batch.mha_return_lse = False
++                batch.mha_one_shot = False
++
+         self._prepare_forward_metadata_for_replay(
+             forward_batch, static_forward_batch, static_num_tokens
+         )

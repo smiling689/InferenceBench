@@ -7,10 +7,13 @@
 | 方法 | 节点 | burst req/s | Poisson req/s | constant req/s | 几何平均 req/s | 完整请求 |
 | --- | --- | ---: | ---: | ---: | ---: | --- |
 | gpt-6.1-sol / max | gb200-1 | 6.546796 | 7.127967 | 5.761992 | **6.454397** | 768/768 |
+| gpt-6-astra / max | gb200-2 | 5.208178 | 4.627873 | 3.544380 | **4.404222** | 768/768 |
 
-Astra、Random Search 和 SMAC 的最终结果仍待完成。上表只采用 seed=1337 的 held-out 评测；Agent 自行保存的开发集“final”文件不作为正式成绩。
+Random Search 和 SMAC 的最终结果仍待完成。上表只采用 seed=1337 的 held-out 评测；Agent 自行保存的开发集“final”文件不作为正式成绩。
 
 Sol 的 Codex exec 用满 7200 秒并以预算超时码 124 结束，随后完成上游预览评测。独立最终容器以 0 退出，`performance_passed=true`。时间戳保留节点原值；完成时间为节点 UTC 11:18:15。准备、预览、最终评测和服务重启的额外时间不计入 7200 秒搜索预算。
+
+Astra 同样用满 7200 秒：首轮 exec 提前结束后，上游 resume 使用剩余 34 秒，最终返回 124。独立最终容器以 0 退出，`performance_passed=true`，节点 UTC 11:31:31 完成。两种 Agent 均沿用原 `agents/codex/solve.sh`，由真实 Codex CLI 调用 Responses API 和 shell 工具。
 
 ## Sol 选定的配置
 
@@ -22,6 +25,17 @@ Sol 的 Codex exec 用满 7200 秒并以预算超时码 124 结束，随后完�
 - `diagnostics_plugin/r1_runtime.py` 在未启用 top-k/top-p 时跳过对应的无效过滤；启用时仍调用原过滤函数。完整 target 模型前向和拒绝采样保留。附带的 GPU 验证覆盖接受、拒绝、top-k 和 top-p 分支；诊断记录插件未在最终服务中启用。
 
 准确启动命令、插件源码、验证输出及原始评测 JSON 均保存在方法子目录。指标中的 `generation_throughput_tokens_per_s` 是上游评测器定义的按请求 decode 时间聚合值，不能作为整节点总输出 tokens/s 使用；本实验的目标始终是三个 profile 的请求吞吐几何平均。
+
+## Astra 选定的配置
+
+- TP4，TRT-LLM MLA；prefill 使用 FA4，FP8 GEMM / MoE 使用 FlashInfer TRT-LLM。
+- EAGLE：11 draft steps / 12 verification tokens，使用真实 target verification 和 rejection sampling；服务 seed=1，保留模型默认采样参数。
+- KV 上限 131072 tokens，请求上限 128，prefill chunk 2048，单次 prefill 请求上限 2，调度接收间隔 4，stream interval=8。
+- decode CUDA Graph batch sizes 为 1/2/4/8/12/16/24/32/40/48/56/64；breakable prefill graph buckets 为 64/1024/2048。
+- `prepare_graph_overlay.py` 在任务目录生成三个 SGLang 模块的覆盖文件，由 `sitecustomize.py` 定向加载。修改允许 CUDA 选择既有 MHA companion metadata；FA4 遇到 prefix cache 命中时退回普通 prefill；无前缀图重放前恢复三个 attention metadata 标记。保留完整模型计算。
+- Agent 的图路径检查在两个独立输入上各生成 16 个 greedy tokens，与 eager 路径结果一致，参考 logprobs 有限。验证脚本与输出已归档；这不构成对所有采样、前缀和长度组合的数值正确性证明。
+
+Sol 设置 `sampling-defaults=openai`（默认 top_p=1），Astra 保留模型默认值（top_p=0.95）；两者服务随机种子也不同。请求中的 temperature=0.3 与输出长度固定，以上服务选择作为各 Agent 的优化结果记录。
 
 ## 复现与解释范围
 

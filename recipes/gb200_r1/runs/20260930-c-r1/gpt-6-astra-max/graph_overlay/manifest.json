@@ -1,0 +1,20 @@
+[
+  {
+    "source": "/sgl-workspace/sglang/python/sglang/srt/model_executor/model_runner.py",
+    "overlay": "/home/agent/task/graph_overlay/modules/model_runner.py",
+    "original_sha256": "91fcb5873f26679498eec052c68e1d91102af79cdf7d0486dd5aa9f68e839171",
+    "modified_sha256": "8befd2912f30af09e92a93b5f2f751bbbdfc9c4e9d4ffe6294e27fe1b06c352b"
+  },
+  {
+    "source": "/sgl-workspace/sglang/python/sglang/srt/layers/radix_attention.py",
+    "overlay": "/home/agent/task/graph_overlay/modules/radix_attention.py",
+    "original_sha256": "15529683355513768815d53e7cef239d46d3448adbbd522c807492815d912c4b",
+    "modified_sha256": "451c3a0ef5a5db135f4086304a32d35b6fa6dac6e5c1da4e0494f04ff6116163"
+  },
+  {
+    "source": "/sgl-workspace/sglang/python/sglang/srt/model_executor/runner/prefill_cuda_graph_runner.py",
+    "overlay": "/home/agent/task/graph_overlay/modules/prefill_cuda_graph_runner.py",
+    "original_sha256": "d7ed18ef9a10768da3620ebee8d9a4e94f494734c78609bae95bd6156857e7f5",
+    "modified_sha256": "b4602ace4abd3fee732c48076256c00d6264e23a333acc31387b2a4765cd2bb5"
+  }
+]

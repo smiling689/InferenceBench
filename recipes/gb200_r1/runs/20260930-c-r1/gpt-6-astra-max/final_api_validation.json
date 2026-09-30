@@ -1,0 +1,27 @@
+{
+  "models": {
+    "object": "list",
+    "data": [
+      {
+        "id": "deepseek-ai/DeepSeek-R1",
+        "object": "model",
+        "created": 1790766896,
+        "owned_by": "sglang",
+        "root": "deepseek-ai/DeepSeek-R1",
+        "parent": null,
+        "max_model_len": 16384
+      }
+    ]
+  },
+  "stream_status": 200,
+  "stream_done": true,
+  "stream_chunks": 8,
+  "usage": {
+    "prompt_tokens": 14,
+    "total_tokens": 46,
+    "completion_tokens": 32,
+    "prompt_tokens_details": null,
+    "reasoning_tokens": 0
+  },
+  "launcher_sha256": "7ef8a7df6f555a5ca6330ec4baef1eceae3f712ec5887fa26d57ff6e7b6dbdd3"
+}
