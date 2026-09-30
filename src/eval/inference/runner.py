@@ -10,6 +10,7 @@ import re
 import subprocess
 import threading
 import time
+from collections.abc import Mapping
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -75,6 +76,9 @@ def _count_chat_tokens(messages: List[Dict[str, str]], tokenizer: AutoTokenizer)
                 add_generation_prompt=True,
                 tokenize=True,
             )
+            # Transformers 5 returns BatchEncoding by default; older releases return token IDs.
+            if isinstance(tokens, Mapping):
+                tokens = tokens["input_ids"]
             return len(tokens)
         except Exception:
             pass

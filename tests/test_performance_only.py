@@ -2,6 +2,14 @@ from src.eval.inference import hpo_search_baselines as hpo
 from src.eval.inference import runner
 
 
+def test_chat_template_mapping_counts_ids_not_fields():
+    from collections import UserDict
+    class Tokenizer:
+        def apply_chat_template(self, *args, **kwargs):
+            return UserDict(input_ids=[1, 2, 3, 4, 5], attention_mask=[1] * 5)
+    assert runner._count_chat_tokens([{"role": "user", "content": "hi"}], Tokenizer()) == 5
+
+
 def test_failed_requests_cannot_win_dummy_performance_search():
     metrics = {"profiles": {"burst": {"request_count": 4, "success_count": 0,
                "request_throughput_req_per_s": 1000000}}}
