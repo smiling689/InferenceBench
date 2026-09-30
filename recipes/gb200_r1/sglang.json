@@ -1,0 +1,27 @@
+{
+  "engine": "sglang",
+  "description": "Upstream SGLang discrete HPO knobs adapted to full FP8 dummy R1 on 4 GB200 GPUs; search algorithms and quick/full evaluation protocol unchanged.",
+  "parameters": [
+    {"name":"max_running_requests","flag":"--max-running-requests","type":"choice","values":[16,32,64,128,256]},
+    {"name":"chunked_prefill_size","flag":"--chunked-prefill-size","type":"choice","values":[2048,4096,8192]},
+    {"name":"max_prefill_tokens","flag":"--max-prefill-tokens","type":"choice","values":[32768]},
+    {"name":"mem_fraction_static","flag":"--mem-fraction-static","type":"choice","values":[0.90,0.92,0.94]},
+    {"name":"attention_backend","flag":"--attention-backend","type":"choice","values":["trtllm_mla"]},
+    {"name":"quantization","flag":"--quantization","type":"choice","values":["fp8"]},
+    {"name":"enable_torch_compile","flag":"--enable-torch-compile","type":"bool","values":[false]},
+    {"name":"schedule_policy","flag":"--schedule-policy","type":"choice","values":["fcfs","lpm"]},
+    {"name":"cuda_graph_max_bs","flag":"--cuda-graph-max-bs","type":"choice","values":[0]},
+    {"name":"speculative_num_steps","flag":"--speculative-num-steps","type":"choice","values":[0]},
+    {"name":"load_format","flag":"--load-format","type":"choice","values":["dummy"]},
+    {"name":"tp_size","flag":"--tp-size","type":"choice","values":[4]},
+    {"name":"ep_size","flag":"--ep-size","type":"choice","values":[1]},
+    {"name":"dtype","flag":"--dtype","type":"choice","values":["bfloat16"]},
+    {"name":"kv_cache_dtype","flag":"--kv-cache-dtype","type":"choice","values":["bf16"]},
+    {"name":"moe_runner_backend","flag":"--moe-runner-backend","type":"choice","values":["flashinfer_trtllm"]},
+    {"name":"page_size","flag":"--page-size","type":"choice","values":[64]},
+    {"name":"max_total_tokens","flag":"--max-total-tokens","type":"choice","values":[65536]},
+    {"name":"disable_radix_cache","flag":"--disable-radix-cache","type":"bool","values":[true]},
+    {"name":"disable_overlap_schedule","flag":"--disable-overlap-schedule","type":"bool","values":[true]},
+    {"name":"random_seed","flag":"--random-seed","type":"choice","values":[42]}
+  ]
+}

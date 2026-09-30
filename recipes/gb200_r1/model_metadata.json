@@ -1,0 +1,24 @@
+{
+  "repository": "deepseek-ai/DeepSeek-R1",
+  "revision": "56d4cbbb4d29f4355bab4b9a39ccb717a14ad5ad",
+  "files": {
+    "config.json": {
+      "sha256": "79ddea672a62e95d3f0be27be434375538e1988975971cffcf87c96c1de84a65",
+      "bytes": 1660
+    },
+    "generation_config.json": {
+      "sha256": "3f21d5d199c7ea6b0f807e3d9865a8a9957b76a604c946bce6e73fd0629f8ca3",
+      "bytes": 171
+    },
+    "tokenizer.json": {
+      "sha256": "ecb6f9fc369894346f0511f4074ca75cee5cd5f3b06d02f1ba35fcd39f8e121d",
+      "bytes": 7847602
+    },
+    "tokenizer_config.json": {
+      "sha256": "99e80c96269ca4430f1e67f67b5766cb096cbac96fed7a7c611c6ee088b3a039",
+      "bytes": 3594
+    }
+  },
+  "weights_downloaded": false,
+  "datasets_downloaded": false
+}
