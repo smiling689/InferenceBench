@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "r1-sampling-diagnostics"
+version = "0.1.0"
+
+[project.entry-points."sglang.srt.plugins"]
+r1_sampling_diagnostics = "r1_diagnostics:register"
+r1_sampling_fastpaths = "r1_runtime:register"
+
+[tool.setuptools]
+py-modules = ["r1_diagnostics", "r1_runtime"]

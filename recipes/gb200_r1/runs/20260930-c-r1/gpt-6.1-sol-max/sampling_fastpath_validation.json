@@ -1,0 +1,140 @@
+[
+  {
+    "batch_size": 1,
+    "slots": 8,
+    "mode": "equal",
+    "accepted_tokens": [
+      8
+    ],
+    "filter_calls": {
+      "top_k": 0,
+      "top_p": 0
+    }
+  },
+  {
+    "batch_size": 4,
+    "slots": 16,
+    "mode": "equal",
+    "accepted_tokens": [
+      16,
+      16,
+      16,
+      16
+    ],
+    "filter_calls": {
+      "top_k": 0,
+      "top_p": 0
+    }
+  },
+  {
+    "batch_size": 16,
+    "slots": 4,
+    "mode": "equal",
+    "accepted_tokens": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "filter_calls": {
+      "top_k": 0,
+      "top_p": 0
+    }
+  },
+  {
+    "batch_size": 16,
+    "slots": 12,
+    "mode": "equal",
+    "accepted_tokens": [
+      12,
+      12,
+      12,
+      12,
+      12,
+      12,
+      12,
+      12,
+      12,
+      12,
+      12,
+      12,
+      12,
+      12,
+      12,
+      12
+    ],
+    "filter_calls": {
+      "top_k": 0,
+      "top_p": 0
+    }
+  },
+  {
+    "batch_size": 16,
+    "slots": 4,
+    "mode": "reject",
+    "accepted_tokens": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "filter_calls": {
+      "top_k": 0,
+      "top_p": 0
+    }
+  },
+  {
+    "batch_size": 4,
+    "slots": 4,
+    "mode": "top_p",
+    "accepted_tokens": [
+      2,
+      4,
+      3,
+      3
+    ],
+    "filter_calls": {
+      "top_k": 0,
+      "top_p": 1
+    }
+  },
+  {
+    "batch_size": 4,
+    "slots": 4,
+    "mode": "top_k",
+    "accepted_tokens": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "filter_calls": {
+      "top_k": 1,
+      "top_p": 0
+    }
+  }
+]

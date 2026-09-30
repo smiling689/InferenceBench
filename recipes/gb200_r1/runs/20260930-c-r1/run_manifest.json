@@ -1,0 +1,30 @@
+{
+  "created_at": "2026-09-30T03:01:40.637472+00:00",
+  "upstream_commit": "24cdf88f6a4e14ed85d665aa132cecccb3ee95ef",
+  "scenario": "C",
+  "model": "deepseek-ai/DeepSeek-R1",
+  "load_format": "dummy",
+  "quality_evaluated": false,
+  "datasets_downloaded": false,
+  "files": {
+    "requests_21.jsonl": {
+      "sha256": "e3329da09722133ae0d3fd368b3438b2c8f230815ab32ee32cb77773e71f3ba5",
+      "count": 256,
+      "seed": 21
+    },
+    "requests_1337.jsonl": {
+      "sha256": "08fb8644ae4fee2939187086103a9a310866be4b9bd5f50b9c2aef2a343d6cae",
+      "count": 256,
+      "seed": 1337
+    }
+  },
+  "tokenizer_backend": "sglang",
+  "tokenizer_class": "LlamaTokenizer",
+  "scenario_sha256": "86e03c8b28b0bc9652fc5dc96201af5c300f578a6dcfd8e990d1283a75a26fdc",
+  "search_space_sha256": "6ddb0980986013080abd6a844c49651d1662068e2e1c4eba684dee754a83a1b2",
+  "budget_seconds_per_method": 7200,
+  "hpo_quick_request_limit": 4,
+  "preparation_search_space_sha256": "f0de0155452c217a0cad533237cde412e38df6575533c9152af7acf4aedd2c61",
+  "search_space_updated_at": "2026-09-30T08:19:10.076929+00:00",
+  "search_space_update_note": "Restore upstream KV capacity, radix cache, and overlap defaults before formal optimization."
+}
