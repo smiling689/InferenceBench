@@ -83,6 +83,8 @@ bash recipes/gb200_r1/experiment.sh pipeline gpt-6.1-sol random
 
 机械搜索沿用上游 Random / SMAC 和 quick/full 协议。`sglang.json` 保留四个可变维度：请求上限、prefill chunk、显存比例、调度策略（90 种组合）；固定 TP4 / EP1、FP8 dummy、GB200 attention/MoE 后端等运行条件。上游 HPO 的 quick 阶段仍为每种负载 4 个请求，因此其搜索反馈不能完整代表高负载表现；最终比较统一采用全部 256 个请求和三种负载。
 
+准备阶段 launcher 的 65536-token KV 上限、关闭 radix cache 和关闭 overlap schedule 仅用于故障隔离，不进入机械搜索配置。机械搜索沿用 SGLang 在这些项上的默认行为，由 `mem_fraction_static` 决定可分配的 KV 容量；CUDA Graph 关闭仍是上游搜索空间的固定设置。
+
 ## 复现边界
 
 - 这是 GB200 + R1 + dummy weights 的性能实验环境，不能直接视作论文 H100 + Mistral + 真实权重的榜单复现。

@@ -19,9 +19,6 @@
     {"name":"kv_cache_dtype","flag":"--kv-cache-dtype","type":"choice","values":["bf16"]},
     {"name":"moe_runner_backend","flag":"--moe-runner-backend","type":"choice","values":["flashinfer_trtllm"]},
     {"name":"page_size","flag":"--page-size","type":"choice","values":[64]},
-    {"name":"max_total_tokens","flag":"--max-total-tokens","type":"choice","values":[65536]},
-    {"name":"disable_radix_cache","flag":"--disable-radix-cache","type":"bool","values":[true]},
-    {"name":"disable_overlap_schedule","flag":"--disable-overlap-schedule","type":"bool","values":[true]},
     {"name":"enforce_disable_flashinfer_allreduce_fusion","flag":"--enforce-disable-flashinfer-allreduce-fusion","type":"bool","values":[true]},
     {"name":"disable_custom_all_reduce","flag":"--disable-custom-all-reduce","type":"bool","values":[true]},
     {"name":"random_seed","flag":"--random-seed","type":"choice","values":[42]}
