@@ -1,0 +1,40 @@
+{
+  "run_id": "20260930-c-r1",
+  "node": "gb200-2",
+  "method": "smac",
+  "runtime_commit": "67a9cf389bd7568afac740e0e7cb8b6edcddc59b",
+  "optimization_budget_s": 7200,
+  "search_started_at": "2026-09-30T11:32:25.410354+00:00",
+  "last_trial_teardown_at": "2026-09-30T13:32:26.274431+00:00",
+  "trial_count": 12,
+  "valid_trial_count": 8,
+  "unique_valid_configurations": 4,
+  "selected_trial_idx": 4,
+  "selected_quick_metric": 0.023239947019048,
+  "quick_requests_per_profile": 4,
+  "quick_metrics_are_final_results": false,
+  "quality_evaluated": false,
+  "failures": [
+    {
+      "trial_idx": 0,
+      "recorded_reason": "server_start_failed",
+      "cause": "Derived SGLANG_GRPC_PORT=67885 exceeds 65535 (HTTP 57885)."
+    },
+    {
+      "trial_idx": 3,
+      "recorded_reason": "server_start_failed",
+      "cause": "Derived SGLANG_GRPC_PORT=66593 exceeds 65535 (HTTP 56593)."
+    },
+    {
+      "trial_idx": 8,
+      "recorded_reason": "server_start_failed",
+      "cause": "Derived SGLANG_GRPC_PORT=70815 exceeds 65535 (HTTP 60815)."
+    },
+    {
+      "trial_idx": 11,
+      "recorded_reason": "server_start_failed",
+      "cause": "The remaining optimization budget expired during server startup; the trial never reached quick evaluation."
+    }
+  ],
+  "clock_note": "Node timestamps are preserved; gb200-2 was approximately 77 seconds behind the devbox."
+}
