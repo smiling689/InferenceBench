@@ -1,0 +1,31 @@
+{
+  "run_id": "20260930-c-r1",
+  "node": "gb200-1",
+  "method": "random",
+  "runtime_commit": "67a9cf389bd7568afac740e0e7cb8b6edcddc59b",
+  "optimization_budget_s": 7200,
+  "search_started_at": "2026-09-30T11:19:08.247670+00:00",
+  "last_trial_teardown_at": "2026-09-30T13:19:14.797002+00:00",
+  "trial_count": 9,
+  "valid_trial_count": 7,
+  "unique_valid_configurations": 7,
+  "selected_trial_idx": 6,
+  "selected_quick_metric": 0.018642976014870367,
+  "quick_requests_per_profile": 4,
+  "quick_metrics_are_final_results": false,
+  "quality_evaluated": false,
+  "failures": [
+    {
+      "trial_idx": 2,
+      "recorded_reason": "server_start_failed",
+      "cause": "Derived SGLANG_GRPC_PORT=69533 exceeds 65535 (HTTP 59533).",
+      "observed_trial_duration_s": 60.001543
+    },
+    {
+      "trial_idx": 8,
+      "recorded_reason": "quick_eval_failed",
+      "cause": "The remaining optimization budget expired during the quick evaluation; the trial was not eligible for selection."
+    }
+  ],
+  "clock_note": "Node timestamps are preserved; gb200-1 was approximately 113 seconds behind the devbox."
+}
