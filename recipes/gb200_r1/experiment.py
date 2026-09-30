@@ -50,6 +50,7 @@ def environment(seed: int = 21) -> None:
         "INFERENCE_BENCH_QUICK_REQUEST_LIMIT": "4",
         "HF_HUB_OFFLINE": "1", "TRANSFORMERS_OFFLINE": "1",
         "HF_DATASETS_OFFLINE": "1", "SGLANG_SHARED_EXPERT_TP1": "0",
+        "NCCL_NVLS_ENABLE": "0",
         "HOST": "127.0.0.1", "PORT": "30080",
         "PYTHONDONTWRITEBYTECODE": "1", "PYTHONPATH": str(ROOT),
         "NO_PROXY": "localhost,127.0.0.1,::1", "no_proxy": "localhost,127.0.0.1,::1",
@@ -141,6 +142,10 @@ Do not skip model computation, replace the model with a smaller model, return ca
 or fabricate server-reported token counts. Each request must compute every requested token.
 SGLang 0.5.15.post1, CUDA 13, and PyTorch are preinstalled; inspect their installed CLI/docs.
 All four GPUs are exclusively available. This is an isolated Docker container.
+The rack's multicast path failed preparation: NCCL NVLS hangs in cuMulticastBindMem,
+and FlashInfer MNNVL allreduce fusion failed under sustained R1 load. Keep
+NCCL_NVLS_ENABLE=0 and use SGLang --enforce-disable-flashinfer-allreduce-fusion
+--disable-custom-all-reduce so all four methods use the ordinary NCCL path.
 The original evaluate.py protocol is available here, with the same scenario C input/output
 length distribution, traffic profiles, and request-throughput objective. Request contents
 are fixed synthetic text, since datasets are excluded from this experiment. The development

@@ -7,6 +7,7 @@ export HF_HUB_OFFLINE=1
 export TRANSFORMERS_OFFLINE=1
 export SGLANG_SHARED_EXPERT_TP1=0
 export PYTHONDONTWRITEBYTECODE=1
+export NCCL_NVLS_ENABLE=0
 
 exec python3 -m sglang.launch_server \
     --model-path /models/deepseek-r1 \
@@ -28,6 +29,8 @@ exec python3 -m sglang.launch_server \
     --disable-cuda-graph \
     --disable-radix-cache \
     --disable-overlap-schedule \
+    --enforce-disable-flashinfer-allreduce-fusion \
+    --disable-custom-all-reduce \
     --random-seed 42 \
     --host 127.0.0.1 \
     --port "${BENCH_PORT:-30080}"

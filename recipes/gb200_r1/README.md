@@ -14,6 +14,7 @@
 | 权重 | `--load-format dummy --quantization fp8`；BF16 激活和 KV |
 | 服务 | `http://127.0.0.1:30080/v1`，标准模型查询和流式 chat completions |
 | GPU 容器设备 | 显式暴露 `/dev/nvidia-caps-imex-channels/channel0`，供 NVLink Fabric 内存分配使用 |
+| 通信约束 | `NCCL_NVLS_ENABLE=0`，关闭 FlashInfer allreduce fusion 和 custom allreduce，统一使用普通 NCCL |
 | 初始运行参数 | context=16384；chunked prefill=4096；KV pool 上限 65536 tokens；max running=64 |
 | 准备阶段开关 | CUDA Graph、radix cache、overlap schedule 关闭；这是启动检查配置，不是最佳配置结论 |
 
@@ -90,3 +91,4 @@ bash recipes/gb200_r1/experiment.sh pipeline gpt-6.1-sol random
 - 两个模型已通过容器内真实 Codex CLI shell-tool 调用测试。`gpt-6.1-sol` 在 CLI 0.156.1 中使用 fallback model metadata；接口实际接受 max。
 - 首次准备时，两台节点曾遭遇 NVLink Xid 149 / cudaErrorNvlinkUncorrectable；完整权重和 KV 分配已成功。GPU reset、恢复监控服务和 IMEX 重启后，Fabric 经过重新注册恢复为 Completed / Success。应保留诊断记录，并在任何类似故障后重新通过完整基线验证。
 - 容器缺少 IMEX channel 时，Fabric `cuMemCreate` 返回 `CUDA_ERROR_NOT_PERMITTED`，SGLang 会禁用 FlashInfer 通信融合。设备映射已通过实际 CUDA 分配验证，所有正式 GPU 容器使用相同映射。
+- 映射 IMEX 后，MNNVL fusion 初始化成功，但持续 R1 负载触发 Xid 145 / NVLINK_UNCORRECTABLE；独立 NCCL 测试还发现 NVLS 初始化卡在 `cuMulticastBindMem`。因此本次四组实验统一禁用 NVLS、FlashInfer allreduce fusion 和 custom allreduce；这属于当前机架的运行限制，不改变 exec/resume、Random 或 SMAC 算法。
