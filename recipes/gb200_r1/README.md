@@ -64,6 +64,8 @@ ssh gb200-1 'cd ~/ShrinkWrap-v2/InferenceBench && bash recipes/gb200_r1/docker.s
 
 共 8 节点小时 / 32 GPU 小时的优化预算。每轮结束后的服务器重启和最终评测另外计时；准备和故障恢复不计入优化预算。
 
+所有入口统一使用 600 秒的单请求超时。完整 R1 在普通 NCCL、关闭 CUDA Graph 的参考配置下生成较慢，因此机械搜索的 quick 评测进程最多等待 1800 秒，最终完整评测最多等待 10800 秒；quick 的实际可用时间仍受剩余 7200 秒优化预算限制。这些是失败保护上限，不改变请求数、到达模式或吞吐计算，也不表示评测一定会用满该时间。
+
 ```bash
 bash recipes/gb200_r1/experiment.sh build
 bash recipes/gb200_r1/experiment.sh tests

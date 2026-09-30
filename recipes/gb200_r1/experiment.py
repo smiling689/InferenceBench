@@ -44,6 +44,7 @@ def environment(seed: int = 21) -> None:
         "INFERENCE_BENCH_SERVER_PORT": "30080",
         "INFERENCE_BENCH_SERVER_URL": "http://127.0.0.1:30080",
         "INFERENCE_BENCH_SERVER_WAIT_S": "1200",
+        "INFERENCE_BENCH_REQUEST_TIMEOUT_S": "600",
         "INFERENCE_BENCH_METRICS_PATH": str(TASK / "preview_metrics.json"),
         "INFERENCE_BENCH_DISABLE_RUNTIME_SHIMS": "1",
         "INFERENCE_BENCH_RUNTIME_CACHE_DIR": str(TASK / "runtime_cache"),
@@ -240,8 +241,8 @@ def hpo(args) -> None:
                "--search-space", str(ROOT / "recipes/gb200_r1/sglang.json"),
                "--allow-unsafe-search-space", "--out-root", str(TASK / "hpo"),
                "--first-server-start-timeout-s", "1200", "--server-start-timeout-s", "1200",
-               "--final-server-start-timeout-s", "1200", "--quick-eval-timeout-s", "600",
-               "--final-eval-timeout-s", "3600"]
+               "--final-server-start-timeout-s", "1200", "--quick-eval-timeout-s", "1800",
+               "--final-eval-timeout-s", "10800"]
     if args.max_trials is not None:
         command += ["--max-trials", str(args.max_trials)]
     state = {"method": args.method, "started_at": now(), "budget_seconds": args.hours * 3600,
