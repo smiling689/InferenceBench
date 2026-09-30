@@ -12,6 +12,7 @@ RUN mkdir -p /home/agent/task /opt/inference_eval \
     && ln -s /opt/inferencebench/src/eval/inference/bin /opt/inference_eval/bin
 ENV PYTHONPATH=/opt/inferencebench PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 \
     HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 \
-    INFERENCE_BENCH_DISABLE_RUNTIME_SHIMS=1 SGLANG_SHARED_EXPERT_TP1=0 NCCL_NVLS_ENABLE=0
+    INFERENCE_BENCH_DISABLE_RUNTIME_SHIMS=1 SGLANG_SHARED_EXPERT_TP1=0 NCCL_NVLS_ENABLE=0 \
+    TORCH_SYMM_MEM_DISABLE_MULTICAST=1
 WORKDIR /opt/inferencebench
 ENTRYPOINT ["python3", "/opt/inferencebench/recipes/gb200_r1/experiment.py"]

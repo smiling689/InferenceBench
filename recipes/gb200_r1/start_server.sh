@@ -8,6 +8,7 @@ export TRANSFORMERS_OFFLINE=1
 export SGLANG_SHARED_EXPERT_TP1=0
 export PYTHONDONTWRITEBYTECODE=1
 export NCCL_NVLS_ENABLE=0
+export TORCH_SYMM_MEM_DISABLE_MULTICAST=1
 
 exec python3 -m sglang.launch_server \
     --model-path /models/deepseek-r1 \
