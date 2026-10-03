@@ -26,6 +26,8 @@
 - Sol 第 3 次容器 `ib-20261003-c-r3-gpt-6.1-sol` 正在运行，节点记录开始时间为 `2026-10-03T16:14:07.550398+00:00`。
 - 两次 `run_status.json` 均记录 `budget_seconds=7200`、`status=optimizing`；solve.sh 记录 `RUN_INDEX=1`，不是恢复首轮会话。
 
+16:26 UTC 的只读容器检查逐文件对照 `67a9cf3` 的 Git blob：两节点的 96 个已部署源码、配置和测试文件全部一致，没有内容差异。该版本中的 `recipes/gb200_r1/PREFLIGHT_20260930.md` 未部署；它是准备阶段记录，不参与运行。后续批准的种子修改应另记源码版本和哈希，不能继续把机械搜索标为未改动的首轮版本。
+
 节点时间原样保留，不能直接比较跨节点的时间戳。复用首轮通过的完整基线记录，标为历史 preflight，不作为本次的新测量。
 
 首次启动队列发生 systemd 对 `${gpu_args[@]}` / `${common[@]}` 的参数展开，Docker 拒绝启动；此时任务和 Codex 目录仍为空，尚未开始优化计时。修复为 `systemd-run --expand-environment=no` 后启动。节点 2 在启动前又发生一次 SSH 中断，经确认没有实验容器或 `run_status.json` 后才重试。失败日志保留在远端方法目录的 `bootstrap_failure.log`。

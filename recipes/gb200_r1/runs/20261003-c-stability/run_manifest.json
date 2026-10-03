@@ -17,6 +17,14 @@
     "requests_1337.jsonl": "08fb8644ae4fee2939187086103a9a310866be4b9bd5f50b9c2aef2a343d6cae"
   },
   "agent_runtime_commit": "67a9cf389bd7568afac740e0e7cb8b6edcddc59b",
+  "runtime_source_verification": {
+    "verified_at_devbox_utc": "2026-10-03T16:26:46+00:00",
+    "reference_commit": "67a9cf389bd7568afac740e0e7cb8b6edcddc59b",
+    "nodes": ["gb200-1", "gb200-2"],
+    "matched_deployed_files_per_node": 96,
+    "mismatched_files": [],
+    "undeployed_documentation": ["recipes/gb200_r1/PREFLIGHT_20260930.md"]
+  },
   "hpo_search_seed_sync_approved": false,
   "hpo_search_seed_planned": 22,
   "runs": [
