@@ -1,6 +1,6 @@
 {
   "status": "in_progress",
-  "last_verified_at_devbox_utc": "2026-10-03T16:16:37+00:00",
+  "last_verified_at_devbox_utc": "2026-10-03T16:46:42+00:00",
   "previous_run": "20260930-c-r1",
   "scenario": "C",
   "model": "deepseek-ai/DeepSeek-R1",
@@ -26,7 +26,14 @@
     "undeployed_documentation": ["recipes/gb200_r1/PREFLIGHT_20260930.md"]
   },
   "hpo_search_seed_sync_approved": false,
-  "hpo_search_seed_planned": 22,
+  "hpo_search_seed_sync_required": false,
+  "hpo_search_seed_policy": "original",
+  "hpo_optimizer_seeds": {
+    "random": 21,
+    "smac_configspace": 21,
+    "smac_scenario": 0
+  },
+  "optional_search_seed_change_synced": false,
   "runs": [
     {
       "run_id": "20261003-c-r2",
@@ -38,6 +45,8 @@
       "agent_started_at_node_utc": "2026-10-03T16:11:44.235688+00:00",
       "agent_container": "ib-20261003-c-r2-gpt-6.1-sol",
       "queue_service": "ib-repeat-20261003-c-r2-queue-v2.service",
+      "mechanical_controller_pid": 1157699,
+      "mechanical_controller": "node nohup; baseline_controller.pid",
       "base_image_id": "sha256:32fb43a2ea5fa6e7bebe24f30fa7eb7995076ffea5f249f0c667be1e0bfbc267",
       "mechanical_method": "random",
       "agent_status": "optimizing",
@@ -54,6 +63,8 @@
       "agent_started_at_node_utc": "2026-10-03T16:14:07.550398+00:00",
       "agent_container": "ib-20261003-c-r3-gpt-6.1-sol",
       "queue_service": "ib-repeat-20261003-c-r3-queue-v3.service",
+      "mechanical_controller_pid": 874247,
+      "mechanical_controller": "node nohup; baseline_controller.pid",
       "base_image_id": "sha256:c547a7a1c3aa23ba9a3cd77f450059607a21157f5149cb206fe5317802a94750",
       "mechanical_method": "smac",
       "agent_status": "optimizing",
