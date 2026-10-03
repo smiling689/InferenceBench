@@ -1,0 +1,35 @@
+{
+  "status": "search_complete_formal_server_configuration_verified",
+  "method": "smac",
+  "optimization_budget_s": 7200,
+  "hpo_budget_started_at_node_utc": "2026-10-03T18:33:29.948350+00:00",
+  "last_trial_teardown_at_node_utc": "2026-10-03T20:33:30.535864+00:00",
+  "collected_at_node_utc": "2026-10-03T20:42:07.601857+00:00",
+  "total_trials": 10,
+  "valid_quick_trials": 8,
+  "unique_valid_configurations": 4,
+  "failed_trials": [
+    {
+      "trial_idx": 1,
+      "reason": "server_start_failed"
+    },
+    {
+      "trial_idx": 9,
+      "reason": "server_start_failed"
+    }
+  ],
+  "best_trial_idx": 3,
+  "selected_quick_metric": 0.022674541560117854,
+  "selected_quick_metric_source": "geomean_request_throughput_req_per_s",
+  "quick_requests_per_profile": 4,
+  "development_seed": 21,
+  "evaluation_seed": 1337,
+  "optimizer_seeds": {
+    "configspace": 21,
+    "scenario": 0
+  },
+  "hpo_runtime_sha256": "be9b857c8b1ef0b036e12af406439d250ca8b6d3da01dc329ae62eb1875c75e8",
+  "actual_formal_server_configuration_matches_selected_trial": true,
+  "quality_evaluated": false,
+  "note": "Quick score is development feedback. Official score awaits the full held-out evaluation; budget_used_s will come from run_end."
+}

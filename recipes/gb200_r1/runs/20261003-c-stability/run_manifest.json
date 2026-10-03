@@ -1,6 +1,6 @@
 {
-  "status": "agent_repetitions_complete_baselines_in_progress",
-  "last_verified_at_devbox_utc": "2026-10-03T18:36:41+00:00",
+  "status": "agent_repetitions_complete_baselines_formal_evaluating",
+  "last_verified_at_devbox_utc": "2026-10-03T20:46:33+00:00",
   "previous_run": "20260930-c-r1",
   "scenario": "C",
   "model": "deepseek-ai/DeepSeek-R1",
@@ -60,7 +60,7 @@
       "base_image_id": "sha256:32fb43a2ea5fa6e7bebe24f30fa7eb7995076ffea5f249f0c667be1e0bfbc267",
       "mechanical_method": "random",
       "agent_status": "formal_evaluation_completed",
-      "mechanical_status": "optimizing",
+      "mechanical_status": "formal_evaluating",
       "historical_preflight_reused": true,
       "agent_solver_exit_code": 124,
       "agent_container_exit_code": 0,
@@ -70,7 +70,16 @@
       "agent_result_audit_passed": true,
       "local_record_directory": "20261003-c-r2/gpt-6.1-sol-max",
       "mechanical_started_at_node_utc": "2026-10-03T18:31:31.416200+00:00",
-      "mechanical_container": "ib-20261003-c-r2-random"
+      "mechanical_container": "ib-20261003-c-r2-random",
+      "hpo_budget_started_at_node_utc": "2026-10-03T18:32:06.722214+00:00",
+      "mechanical_search_trials": 9,
+      "mechanical_valid_quick_trials": 8,
+      "mechanical_unique_valid_configurations": 8,
+      "mechanical_failed_quick_trials": 1,
+      "mechanical_selected_trial_idx": 6,
+      "mechanical_formal_configuration_verified": true,
+      "mechanical_formal_server_port": 45817,
+      "mechanical_local_record_directory": "20261003-c-r2/random"
     },
     {
       "run_id": "20261003-c-r3",
@@ -92,7 +101,7 @@
       "base_image_id": "sha256:c547a7a1c3aa23ba9a3cd77f450059607a21157f5149cb206fe5317802a94750",
       "mechanical_method": "smac",
       "agent_status": "formal_evaluation_completed",
-      "mechanical_status": "optimizing",
+      "mechanical_status": "formal_evaluating",
       "historical_preflight_reused": true,
       "agent_solver_exit_code": 124,
       "agent_container_exit_code": 0,
@@ -102,7 +111,16 @@
       "agent_result_audit_passed": true,
       "local_record_directory": "20261003-c-r3/gpt-6.1-sol-max",
       "mechanical_started_at_node_utc": "2026-10-03T18:32:52.830818+00:00",
-      "mechanical_container": "ib-20261003-c-r3-smac"
+      "mechanical_container": "ib-20261003-c-r3-smac",
+      "hpo_budget_started_at_node_utc": "2026-10-03T18:33:29.948350+00:00",
+      "mechanical_search_trials": 10,
+      "mechanical_valid_quick_trials": 8,
+      "mechanical_unique_valid_configurations": 4,
+      "mechanical_failed_quick_trials": 2,
+      "mechanical_selected_trial_idx": 3,
+      "mechanical_formal_configuration_verified": true,
+      "mechanical_formal_server_port": 36531,
+      "mechanical_local_record_directory": "20261003-c-r3/smac"
     }
   ],
   "owned_api_tunnels_status": "stopped after optimization budgets expired"

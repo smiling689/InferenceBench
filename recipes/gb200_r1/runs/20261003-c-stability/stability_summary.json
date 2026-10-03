@@ -1,5 +1,5 @@
 {
-  "status": "agent_repetitions_complete_baselines_in_progress",
+  "status": "agent_repetitions_complete_baselines_formal_evaluating",
   "metric": "geomean_request_throughput_req_per_s",
   "sol": {
     "n": 3,
@@ -23,11 +23,13 @@
   "random": {
     "completed_runs": 1,
     "pending_runs": 1,
+    "pending_stage": "held_out_final_evaluation",
     "optimizer_seed": 21
   },
   "smac": {
     "completed_runs": 1,
     "pending_runs": 1,
+    "pending_stage": "held_out_final_evaluation",
     "configspace_seed": 21,
     "scenario_seed": 0
   },

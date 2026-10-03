@@ -1,0 +1,30 @@
+{
+  "status": "search_complete_formal_server_configuration_verified",
+  "method": "random",
+  "optimization_budget_s": 7200,
+  "hpo_budget_started_at_node_utc": "2026-10-03T18:32:06.722214+00:00",
+  "last_trial_teardown_at_node_utc": "2026-10-03T20:32:07.356746+00:00",
+  "collected_at_node_utc": "2026-10-03T20:41:30.986521+00:00",
+  "total_trials": 9,
+  "valid_quick_trials": 8,
+  "unique_valid_configurations": 8,
+  "failed_trials": [
+    {
+      "trial_idx": 8,
+      "reason": "server_start_failed"
+    }
+  ],
+  "best_trial_idx": 6,
+  "selected_quick_metric": 0.023842891703700155,
+  "selected_quick_metric_source": "geomean_request_throughput_req_per_s",
+  "quick_requests_per_profile": 4,
+  "development_seed": 21,
+  "evaluation_seed": 1337,
+  "optimizer_seeds": {
+    "random": 21
+  },
+  "hpo_runtime_sha256": "be9b857c8b1ef0b036e12af406439d250ca8b6d3da01dc329ae62eb1875c75e8",
+  "actual_formal_server_configuration_matches_selected_trial": true,
+  "quality_evaluated": false,
+  "note": "Quick score is development feedback. Official score awaits the full held-out evaluation; budget_used_s will come from run_end."
+}

@@ -1,0 +1,22 @@
+{
+  "max_prefill_tokens": 32768,
+  "attention_backend": "trtllm_mla",
+  "quantization": "fp8",
+  "enable_torch_compile": false,
+  "cuda_graph_max_bs": 0,
+  "speculative_num_steps": 0,
+  "load_format": "dummy",
+  "tp_size": 4,
+  "ep_size": 1,
+  "dtype": "bfloat16",
+  "kv_cache_dtype": "bf16",
+  "moe_runner_backend": "flashinfer_trtllm",
+  "page_size": 64,
+  "enforce_disable_flashinfer_allreduce_fusion": true,
+  "disable_custom_all_reduce": true,
+  "random_seed": 42,
+  "max_running_requests": 32,
+  "chunked_prefill_size": 8192,
+  "mem_fraction_static": 0.92,
+  "schedule_policy": "lpm"
+}
