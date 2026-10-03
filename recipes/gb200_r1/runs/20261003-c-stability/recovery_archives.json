@@ -1,0 +1,80 @@
+{
+  "status": "completed",
+  "runtime_commit": "67a9cf389bd7568afac740e0e7cb8b6edcddc59b",
+  "archive_directory_per_node": "/srv/shrinkwrap-data/inferencebench/images/",
+  "notes": [
+    "Both native Docker saves failed on an existing Ubuntu base-layer file. Exact image archives were reconstructed from archived base layers and committed tar-split deltas.",
+    "Both original image IDs and all 71 layer diff IDs are preserved; both archives were accepted by Docker load.",
+    "Restore task/input/model metadata alongside frozen source. No model weights, datasets or Codex homes are archived."
+  ],
+  "nodes": {
+    "gb200-1": {
+      "node": "gb200-1",
+      "run_id": "20261003-c-r2",
+      "verified_at_node_utc": "2026-10-03T22:13:18.886830+00:00",
+      "runtime_commit": "67a9cf389bd7568afac740e0e7cb8b6edcddc59b",
+      "base_image": {
+        "path": "/srv/shrinkwrap-data/inferencebench/images/inferencebench-gb200-20260930.tar",
+        "bytes": 26568328704,
+        "sha256": "5c0f00ce2ddfffd36a83599dee45bb337869a1d632829d1354b901621878138a",
+        "image_id": "sha256:32fb43a2ea5fa6e7bebe24f30fa7eb7995076ffea5f249f0c667be1e0bfbc267",
+        "manifest_config_verified": true
+      },
+      "agent_image": {
+        "path": "/srv/shrinkwrap-data/inferencebench/images/inferencebench-final-20261003-c-r2-gpt-6.1-sol.tar",
+        "bytes": 26589378560,
+        "sha256": "9c77b38ef0e5794772cf806204142e3b43e0be8721ef76b684d6be68763bb0bb",
+        "image_id": "sha256:2f1cdc5ba4316dc673b4319d9373e84ffef44775b4f6bf4c6bd300f0ff99ab88",
+        "manifest_config_verified": true
+      },
+      "task_archive": {
+        "path": "/srv/shrinkwrap-data/inferencebench/images/inferencebench-tasks-20261003-c-r2-gb200-1.tar.gz",
+        "bytes": 56635564,
+        "sha256": "bbf4619daf82720b58f4a90683fafb36808bf3df74da5cc1c6af469425e73553",
+        "methods": [
+          "gpt-6.1-sol-max",
+          "random"
+        ],
+        "verified_regular_files": 798,
+        "all_archived_regular_files_match_source": true,
+        "codex_home_excluded": true
+      },
+      "mechanical_runtime": "Use archived base image and task-local runtime_cache; ephemeral compiler caches can regenerate.",
+      "restore_note": "Restore archive paths relative to the repository root alongside frozen source. Archives contain dummy model metadata and tokenizer, no model weights or datasets."
+    },
+    "gb200-2": {
+      "node": "gb200-2",
+      "run_id": "20261003-c-r3",
+      "verified_at_node_utc": "2026-10-03T22:35:54.789049+00:00",
+      "runtime_commit": "67a9cf389bd7568afac740e0e7cb8b6edcddc59b",
+      "base_image": {
+        "path": "/srv/shrinkwrap-data/inferencebench/images/inferencebench-gb200-20260930.tar",
+        "bytes": 26568328704,
+        "sha256": "5584765a8f5788fb116d7c8b068fcff7f877be2089322b99e835c11816fb77c3",
+        "image_id": "sha256:c547a7a1c3aa23ba9a3cd77f450059607a21157f5149cb206fe5317802a94750",
+        "manifest_config_verified": true
+      },
+      "agent_image": {
+        "path": "/srv/shrinkwrap-data/inferencebench/images/inferencebench-final-20261003-c-r3-gpt-6.1-sol.tar",
+        "bytes": 26594222080,
+        "sha256": "6bfd0be962d05acc9b4032ff5da12bc53582d570b559f54002776d2cee587068",
+        "image_id": "sha256:7685829d1bc37cc7873b5665cdfd7ec0a9abe0138280562a5103169e21e99439",
+        "manifest_config_verified": true
+      },
+      "task_archive": {
+        "path": "/srv/shrinkwrap-data/inferencebench/images/inferencebench-tasks-20261003-c-r3-gb200-2.tar.gz",
+        "bytes": 21682058,
+        "sha256": "ca630555df6c1acaff12582f00929a854378c890ec54cef4868eff6c1b204897",
+        "methods": [
+          "gpt-6.1-sol-max",
+          "smac"
+        ],
+        "verified_regular_files": 807,
+        "all_archived_regular_files_match_source": true,
+        "codex_home_excluded": true
+      },
+      "mechanical_runtime": "Use archived base image and task-local runtime_cache; ephemeral compiler caches can regenerate.",
+      "restore_note": "Restore archive paths relative to the repository root alongside frozen source. Archives contain dummy model metadata and tokenizer, no model weights or datasets."
+    }
+  }
+}

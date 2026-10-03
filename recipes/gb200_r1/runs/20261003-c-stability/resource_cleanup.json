@@ -1,0 +1,122 @@
+{
+  "status": "completed",
+  "nodes": {
+    "gb200-1": {
+      "node": "gb200-1",
+      "run_id": "20261003-c-r2",
+      "verified_at_node_utc": "2026-10-03T22:46:49.734512+00:00",
+      "owned_running_containers": [],
+      "gpu_compute_apps": [],
+      "gpu_usage": [
+        "0, 0 %, 1 MiB",
+        "1, 0 %, 3 MiB",
+        "2, 0 %, 1 MiB",
+        "3, 0 %, 1 MiB"
+      ],
+      "terminal_container_states": {
+        "ib-20261003-c-r2-gpt-6.1-sol": {
+          "Status": "exited",
+          "Running": false,
+          "Paused": false,
+          "Restarting": false,
+          "OOMKilled": false,
+          "Dead": false,
+          "Pid": 0,
+          "ExitCode": 0,
+          "Error": "",
+          "StartedAt": "2026-10-03T16:11:43.987363177Z",
+          "FinishedAt": "2026-10-03T18:21:21.325323295Z"
+        },
+        "ib-20261003-c-r2-gpt-6.1-sol-final": {
+          "Status": "exited",
+          "Running": false,
+          "Paused": false,
+          "Restarting": false,
+          "OOMKilled": false,
+          "Dead": false,
+          "Pid": 0,
+          "ExitCode": 0,
+          "Error": "",
+          "StartedAt": "2026-10-03T18:21:30.473597695Z",
+          "FinishedAt": "2026-10-03T18:31:30.968408596Z"
+        },
+        "ib-20261003-c-r2-random": {
+          "Status": "exited",
+          "Running": false,
+          "Paused": false,
+          "Restarting": false,
+          "OOMKilled": false,
+          "Dead": false,
+          "Pid": 0,
+          "ExitCode": 0,
+          "Error": "",
+          "StartedAt": "2026-10-03T18:31:31.207653368Z",
+          "FinishedAt": "2026-10-03T22:04:31.130079912Z"
+        }
+      },
+      "pipeline_stage": "finished",
+      "owned_gpu_workloads_released": true,
+      "stopped_containers_and_images_preserved": true
+    },
+    "gb200-2": {
+      "node": "gb200-2",
+      "run_id": "20261003-c-r3",
+      "verified_at_node_utc": "2026-10-03T22:47:25.828009+00:00",
+      "owned_running_containers": [],
+      "gpu_compute_apps": [],
+      "gpu_usage": [
+        "0, 0 %, 1 MiB",
+        "1, 0 %, 2 MiB",
+        "2, 0 %, 5 MiB",
+        "3, 0 %, 1 MiB"
+      ],
+      "terminal_container_states": {
+        "ib-20261003-c-r3-gpt-6.1-sol": {
+          "Status": "exited",
+          "Running": false,
+          "Paused": false,
+          "Restarting": false,
+          "OOMKilled": false,
+          "Dead": false,
+          "Pid": 0,
+          "ExitCode": 0,
+          "Error": "",
+          "StartedAt": "2026-10-03T16:14:07.292972853Z",
+          "FinishedAt": "2026-10-03T18:20:47.664501504Z"
+        },
+        "ib-20261003-c-r3-gpt-6.1-sol-final": {
+          "Status": "exited",
+          "Running": false,
+          "Paused": false,
+          "Restarting": false,
+          "OOMKilled": false,
+          "Dead": false,
+          "Pid": 0,
+          "ExitCode": 0,
+          "Error": "",
+          "StartedAt": "2026-10-03T18:20:55.060312023Z",
+          "FinishedAt": "2026-10-03T18:32:52.43906399Z"
+        },
+        "ib-20261003-c-r3-smac": {
+          "Status": "exited",
+          "Running": false,
+          "Paused": false,
+          "Restarting": false,
+          "OOMKilled": false,
+          "Dead": false,
+          "Pid": 0,
+          "ExitCode": 0,
+          "Error": "",
+          "StartedAt": "2026-10-03T18:32:52.626199523Z",
+          "FinishedAt": "2026-10-03T22:30:49.665351932Z"
+        }
+      },
+      "pipeline_stage": "finished",
+      "owned_gpu_workloads_released": true,
+      "stopped_containers_and_images_preserved": true
+    }
+  },
+  "owned_status_ssh_control_masters": "stopped",
+  "owned_api_tunnels": "stopped after Agent optimization",
+  "experiment_artifacts_and_stopped_containers_preserved": true
+}

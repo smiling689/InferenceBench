@@ -54,7 +54,14 @@ for method, runs in records.items():
 output["random"]["optimizer_seed"] = 21
 output["random"]["same_selected_configuration"] = records["random"][1]["same_selected_configuration_as_first"]
 output["smac"].update(configspace_seed=21, scenario_seed=0)
+output["smac"]["same_selected_configuration"] = records["smac"][1]["same_selected_configuration_as_first"]
 output["astra"]["additional_runs"] = 0
+if len(sys.argv) == 3:
+    timings = json.loads(sys.argv[2])
+    assert len(timings) == 2 and {row["node"] for row in timings} == {"gb200-1", "gb200-2"}
+    output["additional_round_pipeline_timings"] = timings
+    output["additional_round_pipeline_node_hours"] = sum(row["agent_to_mechanical_final_elapsed_hours"] for row in timings)
+    output["additional_round_configured_optimization_budget_node_hours"] = 8
 output["limitations"] = [
     "Small sample sizes; no statistical significance claim.",
     "Mechanical repeats keep original optimizer seeds; this is not cross-seed search stability.",

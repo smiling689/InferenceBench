@@ -1,0 +1,11 @@
+{
+  "node": "gb200-2",
+  "run_id": "20261003-c-r3",
+  "agent_container_started_at_node_utc": "2026-10-03T16:14:07.292972853Z",
+  "mechanical_container_finished_at_node_utc": "2026-10-03T22:30:49.665351932Z",
+  "agent_to_mechanical_final_elapsed_s": 22602.372379,
+  "agent_to_mechanical_final_elapsed_hours": 6.2784367719444445,
+  "configured_optimization_budget_s": 14400,
+  "budget_exclusive_pipeline_overhead_s": 8202.372379,
+  "note": "Durations use one node's timestamps. Includes startup, previews and formal evaluations; excludes subsequent recovery archiving."
+}

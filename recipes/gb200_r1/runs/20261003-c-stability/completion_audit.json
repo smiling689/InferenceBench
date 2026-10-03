@@ -1,0 +1,22 @@
+{
+  "completion_evidence_passed": true,
+  "additional_runs": {
+    "sol": 2,
+    "random": 1,
+    "smac": 1,
+    "astra": 0
+  },
+  "additional_formal_requests": 3072,
+  "successful_additional_formal_requests": 3072,
+  "historical_and_additional_metric_files": 8,
+  "original_workflow_and_source_verified": true,
+  "dummy_full_r1_shape_verified": true,
+  "all_official_scores_recomputed": true,
+  "all_statistics_recomputed": true,
+  "recovery_verified_nodes": [
+    "gb200-1",
+    "gb200-2"
+  ],
+  "resource_requirements_verified": true,
+  "scope": "Experiment, score, statistics, source, recovery and resource evidence; final Git publication is verified separately."
+}

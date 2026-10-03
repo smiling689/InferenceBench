@@ -1,6 +1,6 @@
 {
-  "status": "sol_and_random_complete_smac_formal_evaluating",
-  "last_verified_at_devbox_utc": "2026-10-03T22:20:14+00:00",
+  "status": "completed",
+  "last_verified_at_devbox_utc": "2026-10-03T22:39:07+00:00",
   "previous_run": "20260930-c-r1",
   "scenario": "C",
   "model": "deepseek-ai/DeepSeek-R1",
@@ -109,7 +109,7 @@
       "base_image_id": "sha256:c547a7a1c3aa23ba9a3cd77f450059607a21157f5149cb206fe5317802a94750",
       "mechanical_method": "smac",
       "agent_status": "formal_evaluation_completed",
-      "mechanical_status": "formal_evaluating",
+      "mechanical_status": "formal_evaluation_completed",
       "historical_preflight_reused": true,
       "agent_solver_exit_code": 124,
       "agent_container_exit_code": 0,
@@ -128,8 +128,25 @@
       "mechanical_selected_trial_idx": 3,
       "mechanical_formal_configuration_verified": true,
       "mechanical_formal_server_port": 36531,
-      "mechanical_local_record_directory": "20261003-c-r3/smac"
+      "mechanical_local_record_directory": "20261003-c-r3/smac",
+      "mechanical_container_exit_code": 0,
+      "mechanical_final_primary_metric": 0.11613233372787003,
+      "mechanical_result_audit_passed": true,
+      "mechanical_recorded_search_elapsed_s": 7211.103637218475,
+      "mechanical_finished_at_node_utc": "2026-10-03T22:30:49.665351932Z",
+      "pipeline_elapsed_hours": 6.2784367719444445,
+      "recovery_archives_verified": true,
+      "agent_archive_image_id_preserved": true
     }
   ],
-  "owned_api_tunnels_status": "stopped after optimization budgets expired"
+  "owned_api_tunnels_status": "stopped after optimization budgets expired",
+  "runtime_source_final_verification": "runtime_source_final_verification.json",
+  "additional_round_formal_request_successes": 3072,
+  "additional_round_formal_request_count": 3072,
+  "additional_round_pipeline_node_hours": 12.1581986375,
+  "recovery_archives": "recovery_archives.json",
+  "resource_cleanup": "resource_cleanup.json",
+  "completion_audit": "completion_audit.json",
+  "owned_gpu_workloads_released": true,
+  "owned_status_ssh_control_masters": "stopped"
 }

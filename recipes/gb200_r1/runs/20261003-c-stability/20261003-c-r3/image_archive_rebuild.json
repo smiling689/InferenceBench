@@ -1,0 +1,17 @@
+{
+  "run_id": "20261003-c-r3",
+  "original_image_id": "sha256:7685829d1bc37cc7873b5665cdfd7ec0a9abe0138280562a5103169e21e99439",
+  "recovered_image_id": "sha256:7685829d1bc37cc7873b5665cdfd7ec0a9abe0138280562a5103169e21e99439",
+  "image_id_unchanged": true,
+  "base_image_id": "sha256:c547a7a1c3aa23ba9a3cd77f450059607a21157f5149cb206fe5317802a94750",
+  "base_archive": "/archives/inferencebench-gb200-20260930.tar",
+  "archive": "/archives/inferencebench-final-20261003-c-r3-gpt-6.1-sol.tar",
+  "bytes": 26594222080,
+  "sha256": "6bfd0be962d05acc9b4032ff5da12bc53582d570b559f54002776d2cee587068",
+  "rootfs_layers": 71,
+  "all_layer_diff_ids_verified": true,
+  "new_layer_diff_id": "sha256:9d76ff4366d3b7e81777570f1e3a55312d01850c0f1c5905be8068cccd65f56d",
+  "new_layer_tar_bytes": 25989120,
+  "method": "archived base layers plus exact tar-split reconstruction of committed delta",
+  "docker_storage_modified": false
+}

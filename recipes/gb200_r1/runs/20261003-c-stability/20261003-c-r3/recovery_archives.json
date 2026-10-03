@@ -1,0 +1,34 @@
+{
+  "node": "gb200-2",
+  "run_id": "20261003-c-r3",
+  "verified_at_node_utc": "2026-10-03T22:35:54.789049+00:00",
+  "runtime_commit": "67a9cf389bd7568afac740e0e7cb8b6edcddc59b",
+  "base_image": {
+    "path": "/srv/shrinkwrap-data/inferencebench/images/inferencebench-gb200-20260930.tar",
+    "bytes": 26568328704,
+    "sha256": "5584765a8f5788fb116d7c8b068fcff7f877be2089322b99e835c11816fb77c3",
+    "image_id": "sha256:c547a7a1c3aa23ba9a3cd77f450059607a21157f5149cb206fe5317802a94750",
+    "manifest_config_verified": true
+  },
+  "agent_image": {
+    "path": "/srv/shrinkwrap-data/inferencebench/images/inferencebench-final-20261003-c-r3-gpt-6.1-sol.tar",
+    "bytes": 26594222080,
+    "sha256": "6bfd0be962d05acc9b4032ff5da12bc53582d570b559f54002776d2cee587068",
+    "image_id": "sha256:7685829d1bc37cc7873b5665cdfd7ec0a9abe0138280562a5103169e21e99439",
+    "manifest_config_verified": true
+  },
+  "task_archive": {
+    "path": "/srv/shrinkwrap-data/inferencebench/images/inferencebench-tasks-20261003-c-r3-gb200-2.tar.gz",
+    "bytes": 21682058,
+    "sha256": "ca630555df6c1acaff12582f00929a854378c890ec54cef4868eff6c1b204897",
+    "methods": [
+      "gpt-6.1-sol-max",
+      "smac"
+    ],
+    "verified_regular_files": 807,
+    "all_archived_regular_files_match_source": true,
+    "codex_home_excluded": true
+  },
+  "mechanical_runtime": "Use archived base image and task-local runtime_cache; ephemeral compiler caches can regenerate.",
+  "restore_note": "Restore archive paths relative to the repository root alongside frozen source. Archives contain dummy model metadata and tokenizer, no model weights or datasets."
+}

@@ -1,6 +1,153 @@
 {
-  "status": "sol_and_random_complete_smac_formal_evaluating",
+  "status": "completed",
   "metric": "geomean_request_throughput_req_per_s",
+  "evaluation_seed": 1337,
+  "individual_runs": {
+    "sol": [
+      {
+        "method": "sol",
+        "run": "20260930-c-r1",
+        "dir": "recipes/gb200_r1/runs/20260930-c-r1/gpt-6.1-sol-max",
+        "score": 6.454397365693782,
+        "node": "gb200-1",
+        "evidence_file": "recipes/gb200_r1/runs/20260930-c-r1/gpt-6.1-sol-max/final_metrics.json",
+        "evidence_sha256": "93c2a76c9a25ed2204e3568dbdd33cb3b1e3ca1e338ee3872fc80ea746556795",
+        "evaluation_seed": 1337,
+        "request_count": 768,
+        "request_successes": 768,
+        "profile_throughputs": {
+          "burst": 6.546796062715215,
+          "poisson": 7.127966859863184,
+          "constant": 5.761991501838764
+        }
+      },
+      {
+        "method": "sol",
+        "run": "20261003-c-r2",
+        "dir": "recipes/gb200_r1/runs/20261003-c-stability/20261003-c-r2/gpt-6.1-sol-max",
+        "score": 2.130450178561227,
+        "node": "gb200-1",
+        "evidence_file": "recipes/gb200_r1/runs/20261003-c-stability/20261003-c-r2/gpt-6.1-sol-max/final_metrics.json",
+        "evidence_sha256": "1e166de497c1f2905a0236b371245c417c4c1b55f32f2b910def5b0ed7ddc088",
+        "evaluation_seed": 1337,
+        "request_count": 768,
+        "request_successes": 768,
+        "profile_throughputs": {
+          "burst": 3.325642333659989,
+          "poisson": 2.2080571531985735,
+          "constant": 1.316825709919743
+        }
+      },
+      {
+        "method": "sol",
+        "run": "20261003-c-r3",
+        "dir": "recipes/gb200_r1/runs/20261003-c-stability/20261003-c-r3/gpt-6.1-sol-max",
+        "score": 2.1725016503246652,
+        "node": "gb200-2",
+        "evidence_file": "recipes/gb200_r1/runs/20261003-c-stability/20261003-c-r3/gpt-6.1-sol-max/final_metrics.json",
+        "evidence_sha256": "47cfae0a9ae0a976f9f8f1802bb093b29e62c3f3d1262b463182b445d0cc8d0d",
+        "evaluation_seed": 1337,
+        "request_count": 768,
+        "request_successes": 768,
+        "profile_throughputs": {
+          "burst": 3.367159781877467,
+          "poisson": 2.2330219169410026,
+          "constant": 1.3637150517453067
+        }
+      }
+    ],
+    "random": [
+      {
+        "method": "random",
+        "run": "20260930-c-r1",
+        "dir": "recipes/gb200_r1/runs/20260930-c-r1/random",
+        "score": 0.10748309602977421,
+        "node": "gb200-1",
+        "evidence_file": "recipes/gb200_r1/runs/20260930-c-r1/random/final_metrics.json",
+        "evidence_sha256": "88376a59d69389bf0f406e3b80b377bcb029810e075363b17f429ea8df4ef96e",
+        "evaluation_seed": 1337,
+        "request_count": 768,
+        "request_successes": 768,
+        "profile_throughputs": {
+          "burst": 0.1490966560738204,
+          "poisson": 0.12687930404706238,
+          "constant": 0.0656389782442885
+        }
+      },
+      {
+        "method": "random",
+        "run": "20261003-c-r2",
+        "node": "gb200-1",
+        "score": 0.1540484278626729,
+        "evidence_file": "recipes/gb200_r1/runs/20261003-c-stability/20261003-c-r2/random/final_metrics.json",
+        "evidence_sha256": "6bd1e7db7b8aa398969da551e5881f23e54dbee1d15efdc35bb26974b4483cb9",
+        "evaluation_seed": 1337,
+        "request_count": 768,
+        "request_successes": 768,
+        "profile_throughputs": {
+          "burst": 0.21075602388258408,
+          "poisson": 0.18226184506665555,
+          "constant": 0.09516911977159945
+        },
+        "same_selected_configuration_as_first": true
+      }
+    ],
+    "smac": [
+      {
+        "method": "smac",
+        "run": "20260930-c-r1",
+        "dir": "recipes/gb200_r1/runs/20260930-c-r1/smac",
+        "score": 0.10724553347866082,
+        "node": "gb200-2",
+        "evidence_file": "recipes/gb200_r1/runs/20260930-c-r1/smac/final_metrics.json",
+        "evidence_sha256": "9932bb944bdffc598f27e103cc3ff3708b02b8eec044279da082ef9b26f7d0e2",
+        "evaluation_seed": 1337,
+        "request_count": 768,
+        "request_successes": 768,
+        "profile_throughputs": {
+          "burst": 0.14972191784748198,
+          "poisson": 0.12621326901655172,
+          "constant": 0.06527505474750749
+        }
+      },
+      {
+        "method": "smac",
+        "run": "20261003-c-r3",
+        "node": "gb200-2",
+        "score": 0.11613233372787003,
+        "evidence_file": "recipes/gb200_r1/runs/20261003-c-stability/20261003-c-r3/smac/final_metrics.json",
+        "evidence_sha256": "a025ed6b797c4cb228b5f27ecfa7bf4a0e8d047e58618fa6dc7d73868a5d229c",
+        "evaluation_seed": 1337,
+        "request_count": 768,
+        "request_successes": 768,
+        "profile_throughputs": {
+          "burst": 0.1328273298740205,
+          "poisson": 0.140083923668453,
+          "constant": 0.084175115378065
+        },
+        "same_selected_configuration_as_first": false
+      }
+    ],
+    "astra": [
+      {
+        "method": "astra",
+        "run": "20260930-c-r1",
+        "dir": "recipes/gb200_r1/runs/20260930-c-r1/gpt-6-astra-max",
+        "score": 4.40422193121074,
+        "node": "gb200-2",
+        "evidence_file": "recipes/gb200_r1/runs/20260930-c-r1/gpt-6-astra-max/final_metrics.json",
+        "evidence_sha256": "49d01557d7b02e41df7159709d05323fa24e3dd97db047bea0f69ebb7cc24d43",
+        "evaluation_seed": 1337,
+        "request_count": 768,
+        "request_successes": 768,
+        "profile_throughputs": {
+          "burst": 5.208178228970687,
+          "poisson": 4.627872922093616,
+          "constant": 3.5443803709740815
+        }
+      }
+    ]
+  },
   "sol": {
     "n": 3,
     "scores": [
@@ -8,16 +155,20 @@
       2.130450178561227,
       2.1725016503246652
     ],
+    "relative_change_vs_first_percent": [
+      0.0,
+      -66.99226809485064,
+      -66.34075147167293
+    ],
     "mean": 3.5857830648598914,
     "sample_sd": 2.4843818319213535,
-    "cv_percent": 69.28422012664133,
+    "cv_percent": 69.28422012664134,
     "min": 2.130450178561227,
     "max": 6.454397365693782,
     "max_over_min": 3.0295931961444316,
     "median": 2.1725016503246652,
     "complete_runs": 3,
     "failed_runs": 0,
-    "evaluation_seed": 1337,
     "request_successes_per_run": 768
   },
   "random": {
@@ -25,6 +176,10 @@
     "scores": [
       0.10748309602977421,
       0.1540484278626729
+    ],
+    "relative_change_vs_first_percent": [
+      0.0,
+      43.32340019308663
     ],
     "mean": 0.13076576194622355,
     "sample_sd": 0.03292666190724446,
@@ -37,29 +192,84 @@
     "failed_runs": 0,
     "request_successes_per_run": 768,
     "optimizer_seed": 21,
-    "same_selected_configuration": true,
-    "relative_change_vs_first_percent": [
-      0,
-      43.32340019308663
-    ]
+    "same_selected_configuration": true
   },
   "smac": {
-    "completed_runs": 1,
-    "pending_runs": 1,
-    "pending_stage": "held_out_final_evaluation",
+    "n": 2,
+    "scores": [
+      0.10724553347866082,
+      0.11613233372787003
+    ],
+    "relative_change_vs_first_percent": [
+      0.0,
+      8.286405933145424
+    ],
+    "mean": 0.11168893360326543,
+    "sample_sd": 0.006283916719266132,
+    "cv_percent": 5.626266198930214,
+    "min": 0.10724553347866082,
+    "max": 0.11613233372787003,
+    "max_over_min": 1.0828640593314542,
+    "median": 0.11168893360326543,
+    "complete_runs": 2,
+    "failed_runs": 0,
+    "request_successes_per_run": 768,
     "configspace_seed": 21,
-    "scenario_seed": 0
+    "scenario_seed": 0,
+    "same_selected_configuration": false
   },
   "astra": {
-    "completed_runs": 1,
+    "n": 1,
+    "scores": [
+      4.40422193121074
+    ],
+    "relative_change_vs_first_percent": [
+      0.0
+    ],
+    "mean": 4.40422193121074,
+    "sample_sd": null,
+    "cv_percent": null,
+    "min": 4.40422193121074,
+    "max": 4.40422193121074,
+    "max_over_min": 1.0,
+    "median": 4.40422193121074,
+    "complete_runs": 1,
+    "failed_runs": 0,
+    "request_successes_per_run": 768,
     "additional_runs": 0
   },
+  "additional_round_pipeline_timings": [
+    {
+      "node": "gb200-1",
+      "run_id": "20261003-c-r2",
+      "agent_container_started_at_node_utc": "2026-10-03T16:11:43.987363177Z",
+      "mechanical_container_finished_at_node_utc": "2026-10-03T22:04:31.130079912Z",
+      "agent_to_mechanical_final_elapsed_s": 21167.142716,
+      "agent_to_mechanical_final_elapsed_hours": 5.8797618655555555,
+      "configured_optimization_budget_s": 14400,
+      "budget_exclusive_pipeline_overhead_s": 6767.1427159999985,
+      "note": "Durations use one node's timestamps. Includes startup, previews and formal evaluations; excludes subsequent recovery archiving."
+    },
+    {
+      "node": "gb200-2",
+      "run_id": "20261003-c-r3",
+      "agent_container_started_at_node_utc": "2026-10-03T16:14:07.292972853Z",
+      "mechanical_container_finished_at_node_utc": "2026-10-03T22:30:49.665351932Z",
+      "agent_to_mechanical_final_elapsed_s": 22602.372379,
+      "agent_to_mechanical_final_elapsed_hours": 6.2784367719444445,
+      "configured_optimization_budget_s": 14400,
+      "budget_exclusive_pipeline_overhead_s": 8202.372379,
+      "note": "Durations use one node's timestamps. Includes startup, previews and formal evaluations; excludes subsequent recovery archiving."
+    }
+  ],
+  "additional_round_pipeline_node_hours": 12.1581986375,
+  "additional_round_configured_optimization_budget_node_hours": 8,
   "limitations": [
     "Small sample sizes; no statistical significance claim.",
-    "Mechanical repeats keep original optimizer seeds.",
+    "Mechanical repeats keep original optimizer seeds; this is not cross-seed search stability.",
     "Different nodes and service configurations contribute to variation.",
     "Dummy weights affect routing and speculative acceptance; no accuracy evaluation.",
     "Agent and mechanical methods have different permitted search spaces.",
-    "Random repeats select the identical full service configuration but differ by 43.3234%; measurement/execution variation is present."
+    "Random repeats select the identical full service configuration but have different measured throughput; execution/measurement variation is present."
   ]
 }
