@@ -1,0 +1,54 @@
+{
+  "audit_passed": true,
+  "method": "random",
+  "official_evaluation_seed": 1337,
+  "request_file_sha256": {
+    "requests_21.jsonl": "e3329da09722133ae0d3fd368b3438b2c8f230815ab32ee32cb77773e71f3ba5",
+    "requests_1337.jsonl": "08fb8644ae4fee2939187086103a9a310866be4b9bd5f50b9c2aef2a343d6cae"
+  },
+  "requests_per_profile": 256,
+  "profiles": 3,
+  "generation_records": 768,
+  "complete_success_records": 768,
+  "input_output_token_counts_exact": true,
+  "request_fields_unchanged": [
+    "sample_id",
+    "messages",
+    "max_new_tokens",
+    "temperature",
+    "ignore_eos",
+    "input_token_count"
+  ],
+  "model_shape": {
+    "num_hidden_layers": 61,
+    "hidden_size": 7168,
+    "n_routed_experts": 256,
+    "num_experts_per_tok": 8,
+    "num_attention_heads": 128
+  },
+  "model_config_sha256": "79ddea672a62e95d3f0be27be434375538e1988975971cffcf87c96c1de84a65",
+  "weights_format": "fp8 dummy",
+  "activation_dtype": "bfloat16",
+  "kv_dtype": "bf16",
+  "cuda_graph_backends": {
+    "decode": "disabled",
+    "prefill": "disabled"
+  },
+  "primary_metric": 0.15404842786267287,
+  "profile_throughputs": {
+    "burst": 0.21075602388258408,
+    "poisson": 0.18226184506665555,
+    "constant": 0.09516911977159945
+  },
+  "total_requested_output_tokens_per_profile": 235820,
+  "generation_log_sha256": "0f946ef205549ec796797b18b2ee0308ed1eb84c4129cc9b581ec47a8d53a0a0",
+  "requests_used_sha256": "31f8bc6d104187042daf3319d90eb592bbf9a2ad25e8202cc290bfc673abb782",
+  "hpo_runtime_sha256": "be9b857c8b1ef0b036e12af406439d250ca8b6d3da01dc329ae62eb1875c75e8",
+  "trial_count": 9,
+  "valid_quick_trials": 8,
+  "failed_quick_trials": 1,
+  "best_trial_idx": 6,
+  "budget_used_s": 7200.673078775406,
+  "hpo_eval_wall_s": 5326.372350931168,
+  "quality_evaluated": false
+}

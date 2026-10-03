@@ -39,6 +39,7 @@ for method, runs in records.items():
     output[method] = {
         "n": len(values),
         "scores": values,
+        "relative_change_vs_first_percent": [(value / values[0] - 1) * 100 for value in values],
         "mean": mean,
         "sample_sd": sd,
         "cv_percent": sd / mean * 100 if sd is not None else None,
@@ -51,6 +52,7 @@ for method, runs in records.items():
         "request_successes_per_run": 768,
     }
 output["random"]["optimizer_seed"] = 21
+output["random"]["same_selected_configuration"] = records["random"][1]["same_selected_configuration_as_first"]
 output["smac"].update(configspace_seed=21, scenario_seed=0)
 output["astra"]["additional_runs"] = 0
 output["limitations"] = [
@@ -59,5 +61,6 @@ output["limitations"] = [
     "Different nodes and service configurations contribute to variation.",
     "Dummy weights affect routing and speculative acceptance; no accuracy evaluation.",
     "Agent and mechanical methods have different permitted search spaces.",
+    "Random repeats select the identical full service configuration but have different measured throughput; execution/measurement variation is present.",
 ]
 print(json.dumps(output, indent=2))

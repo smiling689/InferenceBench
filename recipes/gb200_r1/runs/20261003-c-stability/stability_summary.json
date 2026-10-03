@@ -1,5 +1,5 @@
 {
-  "status": "agent_repetitions_complete_baselines_formal_evaluating",
+  "status": "sol_and_random_complete_smac_formal_evaluating",
   "metric": "geomean_request_throughput_req_per_s",
   "sol": {
     "n": 3,
@@ -21,10 +21,27 @@
     "request_successes_per_run": 768
   },
   "random": {
-    "completed_runs": 1,
-    "pending_runs": 1,
-    "pending_stage": "held_out_final_evaluation",
-    "optimizer_seed": 21
+    "n": 2,
+    "scores": [
+      0.10748309602977421,
+      0.1540484278626729
+    ],
+    "mean": 0.13076576194622355,
+    "sample_sd": 0.03292666190724446,
+    "cv_percent": 25.17987997560501,
+    "min": 0.10748309602977421,
+    "max": 0.1540484278626729,
+    "max_over_min": 1.4332340019308663,
+    "median": 0.13076576194622355,
+    "complete_runs": 2,
+    "failed_runs": 0,
+    "request_successes_per_run": 768,
+    "optimizer_seed": 21,
+    "same_selected_configuration": true,
+    "relative_change_vs_first_percent": [
+      0,
+      43.32340019308663
+    ]
   },
   "smac": {
     "completed_runs": 1,
@@ -42,6 +59,7 @@
     "Mechanical repeats keep original optimizer seeds.",
     "Different nodes and service configurations contribute to variation.",
     "Dummy weights affect routing and speculative acceptance; no accuracy evaluation.",
-    "Agent and mechanical methods have different permitted search spaces."
+    "Agent and mechanical methods have different permitted search spaces.",
+    "Random repeats select the identical full service configuration but differ by 43.3234%; measurement/execution variation is present."
   ]
 }

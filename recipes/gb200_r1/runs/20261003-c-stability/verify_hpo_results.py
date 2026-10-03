@@ -48,7 +48,13 @@ assert end["integrity_flags"] == [] and end["quality_evaluated"] is False
 final = record_path.with_name("seed_0_artifacts") / "final"
 metrics_path = final / "final_metrics.json"
 metrics = read_json(metrics_path)
-assert metrics == end["final_metrics"]
+# The original run_scenario_eval adds wall_s after reading the metrics file.
+# Permit that documented wrapper field while comparing every evaluator field.
+embedded_metrics = dict(end["final_metrics"])
+if "wall_s" not in metrics:
+    wall_s = embedded_metrics.pop("wall_s")
+    assert math.isfinite(wall_s) and wall_s > 0
+assert metrics == embedded_metrics
 assert metrics["scenario"] == "C" and metrics["model_id"] == "/models/deepseek-r1"
 assert metrics["performance_check"]["pass"] is True and not metrics.get("error")
 assert metrics["quality_evaluated"] is False
@@ -157,6 +163,7 @@ result = {
     "failed_quick_trials": len(trials) - len(valid),
     "best_trial_idx": best["trial_idx"],
     "budget_used_s": end["budget_used_s"],
+    "hpo_eval_wall_s": end["final_metrics"]["wall_s"],
     "quality_evaluated": False,
 }
 (final / "result_audit.json").write_text(json.dumps(result, indent=2) + "\n")

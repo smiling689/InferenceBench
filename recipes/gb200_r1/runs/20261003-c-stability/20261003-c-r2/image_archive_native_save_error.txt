@@ -1,0 +1,1 @@
+Error response from daemon: open /dev/shm/docker/overlay2/82e23c52539a7480cf9f35600a0c2cc241f545f17b5e4b69b4be622efa5114a1/diff/home/ubuntu/.bash_logout: no such file or directory
