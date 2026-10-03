@@ -1,0 +1,11 @@
+{
+  "method": "gpt-6.1-sol",
+  "reasoning_effort": "max",
+  "started_at": "2026-10-03T16:11:44.235688+00:00",
+  "budget_seconds": 7200,
+  "workflow": "upstream agents/codex/solve.sh",
+  "quality_evaluated": false,
+  "status": "optimization_finished",
+  "ended_at": "2026-10-03T18:21:19.303580+00:00",
+  "solver_exit_code": 124
+}

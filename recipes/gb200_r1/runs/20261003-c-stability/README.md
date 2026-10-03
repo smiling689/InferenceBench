@@ -1,46 +1,73 @@
 # 20261003-c-stability 重复实验
 
-状态：两次独立的 gpt-6.1-sol / max 正在优化，尚无新增正式成绩。机械搜索按原代码和原搜索种子，在对应节点的 Sol 正式评测结束后运行。本轮不以代码同步为前提；分离搜索种子的三个文件仍是 devbox 上未同步的可选草稿。
+状态（devbox 2026-10-03 18:36:41 UTC）：两次新增 Sol 优化和独立正式评测均完成，全部 1536 个新增正式请求成功。Random Search、SMAC 各一次重跑已在对应节点自动开始；其新增正式成绩仍待完成。此报告尚不是整轮最终结果。
 
-## 范围和固定条件
+## Sol 正式结果与稳定性
 
-用户要求新增两次 Sol，以及 Random Search 和 SMAC 各一次；不重测 Astra。每种方法保持 7200 秒优化预算、单节点四张 GB200、完整 DeepSeek-R1 的 FP8 dummy weights、BF16 激活/KV，以及原始 exec/resume 或 quick/full 工作流。
+只采用 seed=1337、全新容器中的 held-out 正式评测。三次独立会话的正式结果均保留，不用开发集成绩替代。
 
-场景 C 的三种流量、请求数和温度保持首轮配置。开发集 seed=21，正式 held-out 评测 seed=1337，各 profile 256 请求。每次 Sol 使用空白 task 目录、独立的 Codex home 和原始空白 launcher；不提供首轮解法、插件或最终镜像。
+| 独立运行 | 节点 | burst req/s | Poisson req/s | constant req/s | 几何平均 req/s | 成功请求 |
+| --- | --- | ---: | ---: | ---: | ---: | --- |
+| Sol 第 1 次，[首轮记录](../20260930-c-r1/gpt-6.1-sol-max/) | gb200-1 | 6.546796 | 7.127967 | 5.761992 | **6.454397** | 768/768 |
+| Sol 第 2 次，[本轮记录](20261003-c-r2/gpt-6.1-sol-max/) | gb200-1 | 3.325642 | 2.208057 | 1.316826 | **2.130450** | 768/768 |
+| Sol 第 3 次，[本轮记录](20261003-c-r3/gpt-6.1-sol-max/) | gb200-2 | 3.367160 | 2.233022 | 1.363715 | **2.172502** | 768/768 |
 
-| 节点 | Sol 优化 | 之后的机械搜索 | 远端 run ID |
-| --- | --- | --- | --- |
-| gb200-1 | Sol 第 2 次，已启动 | Random Search 第 2 次，原搜索 seed=21 | 20261003-c-r2 |
-| gb200-2 | Sol 第 3 次，已启动 | SMAC 第 2 次，原 ConfigSpace seed=21 / Scenario seed=0 | 20261003-c-r3 |
+| 统计量 | Sol，n=3 |
+| --- | ---: |
+| 算术均值，req/s | 3.585783 |
+| 样本标准差，req/s，分母 n−1 | 2.484382 |
+| 变异系数，标准差 / 均值 | 69.2842% |
+| 中位数，req/s | 2.172502 |
+| 最小值–最大值，req/s | 2.130450–6.454397 |
+| 最大值 / 最小值 | 3.0296 |
+| 成功 / 失败的正式运行 | 3 / 0 |
 
-机械重复继承首轮的随机序列和默认行为，不调整 90 点搜索空间、候选反馈请求数或失败计时规则。SMAC 2.3.1 的 Scenario 默认 seed=0 已在节点容器中通过实际构造函数签名确认。机械重复用于观察相同搜索种子下的运行、反馈和预算截断波动，不代表跨搜索种子的稳定性估计。Sol 的三次会话彼此独立。
+一次高分和两次约 2.15 req/s 的成绩显示，原 Agent 工作流在这组条件下的优化结果有明显波动。不能把首轮 6.45 req/s 当成已证实的稳定表现。三次都完成全部请求，因此这是优化结果波动，未观察到正式评测失败。
 
-## 启动证据
+首轮 Sol 使用 NEXTN 推测解码以及采样路径优化；新增两次均未启用推测解码。并行度、调度、图设置和服务采样默认值也有差异，不能把全部分差归因于某一个选项。样本较少，不据此作统计显著性结论；Astra 仍只有首轮一次 4.404222 req/s，不追加测试，也不能据此判断两个模型的稳定排序。
 
-截至 devbox 2026-10-03 16:16:37 UTC：
+## 新增 Sol 的配置与核验
 
-- 两节点 GPU 原先空闲，Fabric Completed / Success；当日检查未发现新的 Xid。
-- 两节点现有测试均为 18 passed；该结果验证的是未同步新参数前的原代码。
-- 两节点经 SSH 反向转发完成真实 Codex CLI Responses / shell-tool 检查：模型 gpt-6.1-sol，effort=max，退出码 0。
-- Sol 第 2 次容器 `ib-20261003-c-r2-gpt-6.1-sol` 正在运行，节点记录开始时间为 `2026-10-03T16:11:44.235688+00:00`。
-- Sol 第 3 次容器 `ib-20261003-c-r3-gpt-6.1-sol` 正在运行，节点记录开始时间为 `2026-10-03T16:14:07.550398+00:00`。
-- 两次 `run_status.json` 均记录 `budget_seconds=7200`、`status=optimizing`；solve.sh 记录 `RUN_INDEX=1`，不是恢复首轮会话。
+两个新增运行均为完整 DeepSeek-R1：61 层、hidden size 7168、256 routed experts、top-k 8、128 attention heads；模型配置 SHA-256 为 `79ddea672a62e95d3f0be27be434375538e1988975971cffcf87c96c1de84a65`。正式服务的实际参数保存于各目录的 `formal_server_info.json`，已核对 TP4/EP1/DP1、FP8 dummy 权重、BF16 激活/KV、KV 上限 147456、请求上限 64，以及普通 NCCL 通信约束。
 
-16:26 UTC 的只读容器检查逐文件对照 `67a9cf3` 的 Git blob：两节点的 96 个已部署源码、配置和测试文件全部一致，没有内容差异。该版本中的 `recipes/gb200_r1/PREFLIGHT_20260930.md` 未部署；它是准备阶段记录，不参与运行。后续批准的种子修改应另记源码版本和哈希，不能继续把机械搜索标为未改动的首轮版本。
+- 第 2 次：prefill chunk 8192；decode CUDA Graph buckets 为 1/2/4/8/16/24/32/48/64，prefill 图关闭。任务目录的 `inference_tuning/sitecustomize.py` 对 TP 本地 prefill 入队做批处理等待，最多 80 次调度、divisor=4；实际模型执行继续调用原 scheduler 方法。
+- 第 3 次：prefill chunk 4096；decode buckets 为 1–64，prefill 使用 `tc_piecewise`、buckets 1024/2048/4096，compiler 为 eager，scheduler receive interval=8。
+- 两次均使用 TRT-LLM MLA、FlashInfer TRT-LLM MoE，radix cache 关闭，stream interval=16，服务随机种子=42，`sampling-defaults=model`。首轮 Sol 使用 `sampling-defaults=openai`，这是 Agent 选择的服务参数差异。
+- 两次冻结后的容器差异检查未发现安装的 SGLang、Torch 或 Transformers 源码被修改；最终镜像配置中没有 API key。
 
-节点时间原样保留，不能直接比较跨节点的时间戳。复用首轮通过的完整基线记录，标为历史 preflight，不作为本次的新测量。
+各运行的 `result_audit.json` 记录独立核验结果：原 held-out 请求文件哈希一致，messages、temperature=0.3、ignore_eos=true、输入/输出长度等字段未变；三种流量各 256 个不同请求；全部 768 条生成记录成功、非空，server-reported 输入/输出 token 数逐条与请求相符。每个 profile 要求生成 235820 个输出 tokens。审计脚本保存为 `verify_sol_results.py`，在两个节点的 CPU Docker 容器中各执行一次，均通过。它核验日志完整性和实际服务配置，不构成生成质量或所有数值路径的正确性证明。
 
-首次启动队列发生 systemd 对 `${gpu_args[@]}` / `${common[@]}` 的参数展开，Docker 拒绝启动；此时任务和 Codex 目录仍为空，尚未开始优化计时。修复为 `systemd-run --expand-environment=no` 后启动。节点 2 在启动前又发生一次 SSH 中断，经确认没有实验容器或 `run_status.json` 后才重试。失败日志保留在远端方法目录的 `bootstrap_failure.log`。
+准确 launcher、局部插件、原始正式 JSON、审计证据、镜像 ID 和容器时间保存在上述运行目录。原始大规模生成日志仍保留在节点任务目录；不纳入 Git。
 
-devbox 的活动 Sol 队列服务为 `ib-repeat-20261003-c-r2-queue-v2.service` 和 `ib-repeat-20261003-c-r3-queue-v3.service`。API 转发服务为 `ib-repeat-20261003-gb200-1-api.service` 和 `ib-repeat-20261003-gb200-2-api.service`。只绑定节点 localhost；认证未写入源码、镜像配置或实验清单。
+## 机械重复正在运行
 
-最初的机械交接监听在节点 2 启动时遇到 SSH 中断；它未启动新的实验。交接控制改为节点上的独立 `nohup` Docker 管理进程，避免依赖长 SSH 连接。16:46:42 UTC 已确认 gb200-1 PID `1157699`、gb200-2 PID `874247` 存活，两次 Sol 容器也仍在运行。控制进程等待原 Sol 容器及正式评测容器实际结束，然后仅退出旧队列的同步等待段，使用原配方启动一个机械容器；优化会话和计时保持原样。控制 PID 和输出保存为远端 `baseline_controller.pid`、`baseline_handoff.log`。
+| 方法 | 节点 | 本次开始时间，节点 UTC | 优化预算 | 当前状态 |
+| --- | --- | --- | --- | --- |
+| Random Search 第 2 次 | gb200-1 | 2026-10-03 18:31:31.416200 | 7200 秒 | 优化中 |
+| SMAC 第 2 次 | gb200-2 | 2026-10-03 18:32:52.830818 | 7200 秒 | 优化中 |
+
+两个节点使用原版 HPO 源码，SHA-256 均为 `be9b857c8b1ef0b036e12af406439d250ca8b6d3da01dc329ae62eb1875c75e8`。Random optimizer seed=21；SMAC ConfigSpace seed=21，SMAC 2.3.1 Scenario 默认 seed=0。开发请求 seed=21，正式请求 seed=1337；90 点搜索空间、4 个可变参数、每个 profile 4 请求的快速反馈和失败计时行为保持原版。
+
+机械重复继承首轮搜索随机序列，观察相同优化器种子下的运行、反馈和预算截断波动，不代表跨搜索种子的稳定性。首轮机械正式分数为 Random 0.107483、SMAC 0.107246 req/s；新增结果尚未生成，不在这里提前计算它们的重复统计。
+
+分离搜索种子的三个可选草稿仅在 devbox，未同步、未用于本轮。原始节点队列在 Sol 正式评测后，由节点独立控制进程退出旧同步等待段，再启动一个机械容器。对应旧队列服务退出是正常交接，不能作为实验失败。两个节点的 API 转发均已在 Agent 优化结束后停止。
+
+## 固定条件与启动证据
+
+每种方法为单节点四张 GB200、7200 秒优化预算、FP8 dummy 权重与 BF16 激活/KV。不用下载权重或数据集，不评估生成质量。原始 exec/resume 或 quick/full 工作流保持不变；新增两次 Sol 均以空白任务目录、独立 Codex home 和空白 launcher 启动，`RUN_INDEX=1`，未提供首轮解法、插件或最终镜像。
+
+场景 C：输入和输出均为 820–1024 tokens，temperature=0.3，ignore_eos=true；burst 并发上限 64，Poisson 32 req/s / 并发 32，constant 16 req/s / 并发 16；各 profile 256 请求。目标为三个 profile 请求吞吐的几何平均。
+
+运行源码固定为 `67a9cf389bd7568afac740e0e7cb8b6edcddc59b`。启动前两节点 GPU 空闲，Fabric Completed / Success，当日未发现新 Xid；现有原代码测试均为 18 passed，真实 Codex Responses / shell-tool 探测均成功。16:26 UTC 对照 Git blob，两个节点的 96 个已部署源码、配置和测试文件完全一致；一个未部署的准备 Markdown 不参与运行。这里没有声称未同步的新参数草稿通过测试。
+
+首次队列启动因 systemd 展开 Bash 数组而失败，发生在优化开始前，任务及 Codex 目录仍为空。修复管理命令后启动；失败日志保留为 `bootstrap_failure.log`。此后未重启、补时或替换优化会话。中途 SSH 观察连接超时不改变实验，节点独立控制进程管理交接。
+
+Sol 第 2 次首次 exec 以 0 结束，再用剩余 48 秒 resume，最终返回 124；第 3 次 exec 用满预算，返回 124。两个预览容器和两个独立正式容器均以 0 结束。节点时间原样保留；跨节点时钟存在偏差，耗时由同一节点的时间相减，详见各 `run_record.json`。两次 Agent 容器总耗时包含预算外预览，不能当成额外优化时间。
 
 ## 待完成
 
-1. 完成两次 Sol 优化、原工作流预览和全新容器的 seed=1337 正式评测。
-2. 完成 Random Search、SMAC 各一次重新搜索及正式评测。
-3. 归档结果、配置、失败尝试、源码哈希、实际耗时和可恢复的镜像/任务包。
-4. 与[首轮正式成绩](../20260930-c-r1/README.md)合并，报告所有个体分数、均值、样本标准差、变异系数和范围；Sol 共 3 次，机械方法各 2 次。样本较少，机械搜索种子固定，不据此断言统计显著性，也不外推 dummy weights 的推测解码收益到真实权重。
+1. 完成两次机械搜索及其全量正式评测，核验全部请求和所选配置。
+2. 归档最终镜像、任务包和输入元数据到节点持久磁盘，记录完整性哈希。
+3. 更新全部个体成绩、机械方法 n=2 的均值/样本标准差/CV/范围、实际节点耗时，释放本轮资源。
 
-8 节点小时是新增优化预算。服务启动、预览和最终评测额外计时。
+8 节点小时仅是新增四份优化预算。服务启动、预览和正式评测额外计时。随机权重会影响路由和 MTP 接受率，不能外推到真实 R1 权重或生成质量。Agent 允许修改实现和更多服务参数，机械搜索只有四个可变维度并固定关闭图和推测解码，方法间差距包含搜索范围差异。

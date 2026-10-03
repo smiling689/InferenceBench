@@ -1,0 +1,45 @@
+{
+  "status": "agent_repetitions_complete_baselines_in_progress",
+  "metric": "geomean_request_throughput_req_per_s",
+  "sol": {
+    "n": 3,
+    "scores": [
+      6.454397365693782,
+      2.130450178561227,
+      2.1725016503246652
+    ],
+    "mean": 3.5857830648598914,
+    "sample_sd": 2.4843818319213535,
+    "cv_percent": 69.28422012664133,
+    "min": 2.130450178561227,
+    "max": 6.454397365693782,
+    "max_over_min": 3.0295931961444316,
+    "median": 2.1725016503246652,
+    "complete_runs": 3,
+    "failed_runs": 0,
+    "evaluation_seed": 1337,
+    "request_successes_per_run": 768
+  },
+  "random": {
+    "completed_runs": 1,
+    "pending_runs": 1,
+    "optimizer_seed": 21
+  },
+  "smac": {
+    "completed_runs": 1,
+    "pending_runs": 1,
+    "configspace_seed": 21,
+    "scenario_seed": 0
+  },
+  "astra": {
+    "completed_runs": 1,
+    "additional_runs": 0
+  },
+  "limitations": [
+    "Small sample sizes; no statistical significance claim.",
+    "Mechanical repeats keep original optimizer seeds.",
+    "Different nodes and service configurations contribute to variation.",
+    "Dummy weights affect routing and speculative acceptance; no accuracy evaluation.",
+    "Agent and mechanical methods have different permitted search spaces."
+  ]
+}
