@@ -1,0 +1,112 @@
+{
+  "scenario": "C",
+  "name": "High load",
+  "mission": "Handle maximum concurrent users without errors. Optimize total throughput under burst, poisson, and constant load.",
+  "dataset": null,
+  "dataset_split": null,
+  "model_id": "deepseek-ai/DeepSeek-R1",
+  "profiles": {
+    "burst": {
+      "request_count": 256,
+      "success_count": 256,
+      "failure_count": 0,
+      "empty_output_count": 0,
+      "failure_rate": 0.0,
+      "ttft": {
+        "p50": 0.44694938900647685,
+        "p90": 3.0738677990157157,
+        "p99": 4.045473805704387
+      },
+      "itl": {
+        "p50": 0.016541637014597654,
+        "p90": 0.017087252519559115,
+        "p99": 0.17848452001926488
+      },
+      "tpot": {
+        "p50": 0.021437437402459465,
+        "p90": 0.022821637452875368,
+        "p99": 0.02376141232092682
+      },
+      "generation_throughput_tokens_per_s": 47.781223032492974,
+      "request_throughput_req_per_s": 3.0478012549718927,
+      "json_valid_rate": null,
+      "choice_accuracy": null
+    },
+    "poisson": {
+      "request_count": 256,
+      "success_count": 256,
+      "failure_count": 0,
+      "empty_output_count": 0,
+      "failure_rate": 0.0,
+      "ttft": {
+        "p50": 0.30752231052611023,
+        "p90": 0.5491354084806517,
+        "p99": 0.9364799787232186
+      },
+      "itl": {
+        "p50": 0.012915962957777083,
+        "p90": 0.013092927983962,
+        "p99": 0.17119461537222377
+      },
+      "tpot": {
+        "p50": 0.015802415174486356,
+        "p90": 0.0168845592459095,
+        "p99": 0.01728376901374738
+      },
+      "generation_throughput_tokens_per_s": 63.750955858204634,
+      "request_throughput_req_per_s": 2.093307843729129,
+      "json_valid_rate": null,
+      "choice_accuracy": null
+    },
+    "constant": {
+      "request_count": 256,
+      "success_count": 256,
+      "failure_count": 0,
+      "empty_output_count": 0,
+      "failure_rate": 0.0,
+      "ttft": {
+        "p50": 0.2741543084848672,
+        "p90": 0.34025655005825683,
+        "p99": 0.47814474182086975
+      },
+      "itl": {
+        "p50": 0.011169862933456898,
+        "p90": 0.011382158030755818,
+        "p99": 0.1698108080844395
+      },
+      "tpot": {
+        "p50": 0.01339306000925514,
+        "p90": 0.013884350018819814,
+        "p99": 0.014493495240157413
+      },
+      "generation_throughput_tokens_per_s": 75.24701643259459,
+      "request_throughput_req_per_s": 1.2515036118836587,
+      "json_valid_rate": null,
+      "choice_accuracy": null
+    }
+  },
+  "vram_peak_mb": 177986.0,
+  "speed_eval": {
+    "requests_source": "/bench-inputs/requests_1337.jsonl",
+    "requests_used_file": "/home/agent/task/requests_used_speed.jsonl",
+    "generation_log_file": "/home/agent/task/speed_generations.jsonl"
+  },
+  "quality_evaluated": false,
+  "quality_check": {
+    "evaluated": false,
+    "pass": null,
+    "note": "dummy weights: performance only"
+  },
+  "performance_check": {
+    "pass": true,
+    "invalid_profiles": [],
+    "requires_complete_outputs": true
+  },
+  "eval_pipeline": {
+    "version": 1,
+    "steps": [
+      "speed_eval",
+      "performance_check"
+    ]
+  }
+}

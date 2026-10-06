@@ -33,6 +33,7 @@ def main():
     args = parser.parse_args()
     manifest = load(args.inputs / "run_manifest.json")
     entries = []
+    session_hashes = set()
     for queue in manifest["queues"]:
         for position, run in enumerate(queue["runs"], 1):
             method = "gpt-6.1-sol-max" + ("-skills" if run["treatment"] == "skills" else "")
@@ -57,6 +58,14 @@ def main():
                 assert audit["generation_records"] == 768 and audit["optimization_budget_seconds"] == 7200
                 assert audit["skills_treatment"] == (run["treatment"] == "skills")
                 assert audit["effective_configuration_source"] == "live formal server endpoint"
+                evidence = audit["skill_evidence"]
+                assert evidence["model_contexts"] and all(
+                    context["model"] == "gpt-6.1-sol" and context["effort"] == "max" and context["count"] > 0
+                    for context in evidence["model_contexts"])
+                assert evidence["codex_sessions"], f"No actual session evidence: {run['run_id']}"
+                for session in evidence["codex_sessions"]:
+                    assert session["sha256"] not in session_hashes, f"Reused session: {run['run_id']}"
+                    session_hashes.add(session["sha256"])
                 entry.update(score=audit["primary_metric"], profile_throughputs=audit["profile_throughputs"],
                              launcher_sha256=audit["launcher_sha256"],
                              audit_sha256=hashlib.sha256(audit_file.read_bytes()).hexdigest(),

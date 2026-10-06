@@ -6,10 +6,26 @@ gpt-6.1-sol/max run, with four GB200 GPUs, full FP8 dummy DeepSeek-R1,
 scenario C and a 7200-second optimization budget. Analysis and profiling
 consume that budget in the unchanged skills treatment.
 
-Four experiments have completed formal evaluation and each passed all 768
-held-out generation records and exact token counts. Ordinary r4/r5 score
-2.103146/2.230331 req/s; skills r3/r4 score 2.912448/1.813369 req/s. These are
-intermediate observations; four more planned experiments remain running.
+Six experiments have completed formal evaluation and each passed all 768
+held-out generation records and exact token counts. Ordinary r4/r5/r6 score
+2.103146/2.230331/1.965427 req/s; skills r3/r4/r6 score
+2.912448/1.813369/1.998714 req/s. These are intermediate observations;
+ordinary r7 and skills r5 are the last two planned experiments, now running.
+
+Skills r6 selected a supported scheduler receive interval of 16 after
+profiling and rejecting EP4/attention-DP4 candidates. Its 13 in-budget
+evaluation starts have 12 analysis notes and 51 actual toolkit calls.
+The final full confirmation lacks a separate analysis.md. Skills r3 likewise
+lacks two final-confirmation notes (one evaluation crossed the deadline),
+whereas skills r4 has all 12 in-budget notes. These gaps are retained;
+installation, call counts and traces are not proof of complete loop compliance.
+
+Installed-source checks distinguish runtime sampling seeds from dummy
+initialization. The loader calls initialize_dummy_weights(model), which uses
+the fixed per-parameter seed 1234; both base images and the six completed
+final images have identical loader/initializer hashes. ServerArgs.random_seed
+varies across selected launchers and can affect sampling/acceptance, rather
+than the dummy initializer. See dummy_initialization_provenance.json.
 
 The second pair's original post-budget preview timed out on readiness,
 returning exit code 1. Fresh-container formal evaluation succeeded for both;
