@@ -1,0 +1,17 @@
+{
+  "audited_component": "/sgl-workspace/sglang/python/sglang/srt/speculative/eagle_utils.py",
+  "docker_diff_reported_metadata_change": true,
+  "base_source_sha256": "ee10d53d6bb583fbed6400ae36697fc6b80a58a11ec7db7a3306f36d035ea4ff",
+  "selected_container_source_sha256": "ee10d53d6bb583fbed6400ae36697fc6b80a58a11ec7db7a3306f36d035ea4ff",
+  "selected_source_byte_identical_to_base": true,
+  "source_comparison_command": "diff -u package_diff/eagle_utils.base.py package_diff/eagle_utils.agent.py",
+  "source_comparison_exit_code": 0,
+  "selected_launcher_explicit_simulate_acceptance_length": -1,
+  "selected_launcher_uses_native_rejection_sampling": true,
+  "native_formal_log_examples": [
+    {"timestamp_utc": "2026-10-06T20:51:25+00:00", "running_requests": 15, "accept_length": 6.75, "accept_rate": 0.82},
+    {"timestamp_utc": "2026-10-06T20:51:26+00:00", "running_requests": 6, "accept_length": 6.80, "accept_rate": 0.83},
+    {"timestamp_utc": "2026-10-06T20:51:27+00:00", "running_requests": 1, "accept_length": 6.66, "accept_rate": 0.81}
+  ],
+  "interpretation": "Native speculative performance on dummy target/draft weights. These logged examples are not an aggregate acceptance statistic or an accuracy result."
+}
