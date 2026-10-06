@@ -126,7 +126,6 @@ def main():
         assert 820 <= right["input_token_count"] <= 1024
         assert 820 <= right["max_new_tokens"] <= 1024
     assert metrics["speed_eval"]["requests_source"] == str(expected_file)
-    assert metrics["model_id"] == "deepseek-ai/DeepSeek-R1"
     profiles = metrics["profiles"]
     assert set(profiles) == {"burst", "poisson", "constant"}
     assert metrics["performance_check"]["pass"] is True and not metrics.get("error")
@@ -153,6 +152,9 @@ def main():
     assert shape == {"num_hidden_layers": 61, "hidden_size": 7168, "n_routed_experts": 256,
                      "num_experts_per_tok": 8, "num_attention_heads": 128}
     server, configuration_source = formal_args(task)
+    assert Path(server["model_path"]) == Path("/models/deepseek-r1")
+    assert Path(server.get("tokenizer_path") or server["model_path"]) == Path("/models/deepseek-r1")
+    assert metrics["model_id"] in {"deepseek-ai/DeepSeek-R1", server["served_model_name"]}
     assert server["load_format"] == "dummy" and server["quantization"] == "fp8"
     assert server["dtype"] == "bfloat16" and server["kv_cache_dtype"] in ("bf16", "bfloat16")
     assert server["tp_size"] == 4
@@ -173,6 +175,8 @@ def main():
               "request_source_sha256": expected_hash, "requests_per_profile": 256,
               "profiles": 3, "generation_records": 768, "input_output_token_counts_exact": True,
               "request_fields_unchanged": list(fields), "model_shape": shape,
+              "metric_model_id": metrics["model_id"], "served_model_name": server["served_model_name"],
+              "server_matches_fixed_model_directory": True,
               "weights_format": "fp8 dummy", "activation_dtype": "bfloat16", "kv_dtype": server["kv_cache_dtype"],
               "quality_evaluated": False, "effective_server_args": server,
               "effective_configuration_source": configuration_source,
