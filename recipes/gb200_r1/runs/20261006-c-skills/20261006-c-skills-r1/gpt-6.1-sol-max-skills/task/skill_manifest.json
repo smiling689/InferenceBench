@@ -1,0 +1,44 @@
+{
+  "skills_repo": "https://github.com/BBuf/AI-Infra-Auto-Driven-SKILLS",
+  "skills_commit": "6dc9c66a008daded66f214022919ff88b2186252",
+  "registered_skills": {
+    "llm-serving-auto-benchmark": {
+      "path": "/opt/ai-infra-skills/skills/llm-serving-auto-benchmark",
+      "skill_sha256": "7ab826ced579c1c8937d32d4f64c095e7af5bd3cba4d2ae5cee2298eeedbffc5"
+    },
+    "llm-serving-capacity-planner": {
+      "path": "/opt/ai-infra-skills/skills/llm-serving-capacity-planner",
+      "skill_sha256": "a18feefc65aed9cd1f43469d56a4ed2a5b3e86a3da34c4de61d3d635124a9bd4"
+    },
+    "llm-torch-profiler-analysis": {
+      "path": "/opt/ai-infra-skills/skills/llm-torch-profiler-analysis",
+      "skill_sha256": "f37c29770671b5ab6302ecde57140f1ab0bbb544c08883023e8200efbdf59d51"
+    },
+    "llm-pipeline-analysis": {
+      "path": "/opt/ai-infra-skills/skills/llm-pipeline-analysis",
+      "skill_sha256": "94ac068c3ddf7cf2ce5d2cc21e81e5bf4f8b8d066650ab0dcb9a54b0334efbec"
+    },
+    "torch-profiler-layer-track": {
+      "path": "/opt/ai-infra-skills/skills/torch-profiler-layer-track",
+      "skill_sha256": "8cba16208a8a4db1e3c62e66a1587af68f8023053a1559df50d468575703c423"
+    },
+    "model-compute-simulation": {
+      "path": "/opt/ai-infra-skills/skills/model-compute-simulation",
+      "skill_sha256": "669641369a41dbeddf628e35f5038b345e07c133d581c637b63b910bec81a2e3"
+    },
+    "sglang-prod-incident-triage": {
+      "path": "/opt/ai-infra-skills/skills/sglang-prod-incident-triage",
+      "skill_sha256": "2ac4d3832b78d7b241e676f70c889370aaf75b5531c73cfb2ee3d57608325dd9"
+    },
+    "model-pr-history-knowledge": {
+      "path": "/opt/ai-infra-skills/model-pr-optimization-history",
+      "skill_sha256": "1d628aabec5c6445c5ad982302373294648ce3f016c02d008f7e9a17aa9c6680"
+    }
+  },
+  "baseline_runtime_commit": "67a9cf389bd7568afac740e0e7cb8b6edcddc59b",
+  "optimization_budget_seconds": 7200,
+  "reasoning_effort": "max",
+  "run_directory": "/home/agent/task/agent/run_20261006_081308",
+  "independent_start": true,
+  "quality_evaluated": false
+}

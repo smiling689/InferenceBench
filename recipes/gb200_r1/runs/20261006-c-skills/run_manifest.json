@@ -1,5 +1,5 @@
 {
-  "status": "running",
+  "status": "completed",
   "treatment_runtime_commit": "b2c569ffeadce33ab5187b59989097e421ed7390",
   "synchronization_approved": true,
   "startup_checks": {
@@ -56,7 +56,10 @@
       "container": "ib-20261006-c-skills-r1-sol-skills",
       "started_at_node_utc": "2026-10-06T08:13:08.410866+00:00",
       "planned_optimization_end_node_utc": "2026-10-06T10:13:08+00:00",
-      "status": "optimizing"
+      "status": "completed",
+      "formal_finished_at_node_utc": "2026-10-06T10:32:50.731799+00:00",
+      "primary_metric": 1.7691230576576227,
+      "result_audit_passed": true
     },
     {
       "run_id": "20261006-c-skills-r2",
@@ -68,7 +71,10 @@
       "container": "ib-20261006-c-skills-r2-sol-skills",
       "started_at_node_utc": "2026-10-06T08:11:35.071448+00:00",
       "planned_optimization_end_node_utc": "2026-10-06T10:11:35+00:00",
-      "status": "optimizing"
+      "status": "completed",
+      "formal_finished_at_node_utc": "2026-10-06T10:30:37.246361+00:00",
+      "primary_metric": 1.7466346121229808,
+      "result_audit_passed": true
     }
   ],
   "comparison_reference": "recipes/gb200_r1/runs/20261003-c-stability/stability_summary.json",

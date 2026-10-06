@@ -6,6 +6,7 @@ import ast
 from collections import Counter
 from datetime import datetime, timedelta
 import hashlib
+import gzip
 import json
 import math
 from pathlib import Path
@@ -55,9 +56,22 @@ def inspect_skills(task, codex, deadline):
                               "tool": payload.get("name"), "toolkit_paths": paths})
     traces = []
     for path in task.rglob("*"):
-        if path.is_file() and (path.name.endswith(".pt.trace.json.gz") or path.name.endswith(".pt.trace.json")):
-            traces.append({"path": str(path.relative_to(task)), "bytes": path.stat().st_size,
-                           "sha256": digest(path)})
+        if path.is_file() and (path.name.endswith(".trace.json.gz") or path.name.endswith(".trace.json")):
+            evidence = {"path": str(path.relative_to(task)), "bytes": path.stat().st_size,
+                        "sha256": digest(path)}
+            opener = gzip.open if path.name.endswith(".gz") else open
+            try:
+                with opener(path, "rt") as handle:
+                    trace = json.load(handle)
+                events = trace.get("traceEvents", [])
+                evidence["gpu_kernel_events"] = sum(
+                    "kernel" in str(event.get("cat", "")).lower() and event.get("dur", 0) > 0
+                    for event in events)
+                evidence["nonzero_gpu_events"] = evidence["gpu_kernel_events"] > 0
+                del trace, events
+            except (OSError, ValueError) as error:
+                evidence["trace_error"] = str(error)
+            traces.append(evidence)
     in_budget = [trial for trial in trials if trial["during_optimization"]]
     return {"optimization_evaluations": len(in_budget),
             "optimization_evaluations_with_analysis": sum(t["analysis_present"] for t in in_budget),
