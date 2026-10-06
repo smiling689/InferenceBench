@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "frozen_files_matched": 96,
+  "schedule_runs": 8,
+  "base_has_no_registered_skills": true,
+  "base_task_and_codex_empty": true,
+  "request_hashes": {
+    "requests_21.jsonl": "e3329da09722133ae0d3fd368b3438b2c8f230815ab32ee32cb77773e71f3ba5",
+    "requests_1337.jsonl": "08fb8644ae4fee2939187086103a9a310866be4b9bd5f50b9c2aef2a343d6cae"
+  },
+  "api_model": "gpt-6.1-sol",
+  "api_reasoning_effort": "max",
+  "api_status": "completed"
+}
