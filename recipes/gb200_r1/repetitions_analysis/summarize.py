@@ -92,6 +92,12 @@ def main():
                               "Historical samples are shown separately and are not balanced by node or date.",
                               "Skill artifact counts require manual interpretation; they do not prove complete compliance.",
                               "Full dummy weights measure performance, not model quality."]}
+    seeds = {name: [entry["effective_server_args"].get("random_seed") for entry in entries
+                    if entry["treatment"] == name and entry["score"] is not None] for name in groups}
+    result["selected_dummy_initialization_seeds"] = seeds
+    if len({seed for values in seeds.values() for seed in values}) > 1:
+        result["limitations"].append(
+            "Selected dummy-weight initialization seeds differ between runs; this comparison includes that configuration choice and cannot isolate skills alone.")
     args.output.mkdir(parents=True, exist_ok=True)
     (args.output / "comparison_summary.json").write_text(json.dumps(result, indent=2) + "\n")
     fields = ["run_id", "treatment", "node", "queue_position", "score", "burst", "poisson", "constant",
