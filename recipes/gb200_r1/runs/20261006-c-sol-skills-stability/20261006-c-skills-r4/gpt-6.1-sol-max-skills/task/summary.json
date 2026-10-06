@@ -1,0 +1,90 @@
+{
+  "finished_at": "2026-10-06T18:25:01.618134+00:00",
+  "status": "completed",
+  "primary_metric": 1.8133688935636654,
+  "primary_metric_source": "geomean_request_throughput_req_per_s",
+  "quality_evaluated": false,
+  "performance_passed": true,
+  "metrics_path": "/home/agent/task/final_metrics.json",
+  "error": null,
+  "profiles": {
+    "burst": {
+      "request_count": 256,
+      "success_count": 256,
+      "failure_count": 0,
+      "empty_output_count": 0,
+      "failure_rate": 0.0,
+      "ttft": {
+        "p50": 0.2020304499892518,
+        "p90": 3.0747078875428997,
+        "p99": 4.092338307964383
+      },
+      "itl": {
+        "p50": 0.016605830984190106,
+        "p90": 0.018688087258487966,
+        "p99": 0.18160722573287785
+      },
+      "tpot": {
+        "p50": 0.024907444937830085,
+        "p90": 0.027593732371106253,
+        "p99": 0.029433798986177567
+      },
+      "generation_throughput_tokens_per_s": 41.257304171374926,
+      "request_throughput_req_per_s": 2.6759502061958846,
+      "json_valid_rate": null,
+      "choice_accuracy": null
+    },
+    "poisson": {
+      "request_count": 256,
+      "success_count": 256,
+      "failure_count": 0,
+      "empty_output_count": 0,
+      "failure_rate": 0.0,
+      "ttft": {
+        "p50": 0.187279234000016,
+        "p90": 0.9864207230275497,
+        "p99": 1.4387347600131761
+      },
+      "itl": {
+        "p50": 0.01299529301468283,
+        "p90": 0.013249053619801998,
+        "p99": 0.1722933091945015
+      },
+      "tpot": {
+        "p50": 0.018343371742617125,
+        "p90": 0.019535157941318118,
+        "p99": 0.02050799445370922
+      },
+      "generation_throughput_tokens_per_s": 55.645697759286946,
+      "request_throughput_req_per_s": 1.846156857013908,
+      "json_valid_rate": null,
+      "choice_accuracy": null
+    },
+    "constant": {
+      "request_count": 256,
+      "success_count": 256,
+      "failure_count": 0,
+      "empty_output_count": 0,
+      "failure_rate": 0.0,
+      "ttft": {
+        "p50": 0.18342468899209052,
+        "p90": 0.20587665849598125,
+        "p99": 0.47154348912299593
+      },
+      "itl": {
+        "p50": 0.011177256004884839,
+        "p90": 0.011382125830277801,
+        "p99": 0.17024455069564284
+      },
+      "tpot": {
+        "p50": 0.013967439779815516,
+        "p90": 0.014400905971485422,
+        "p99": 0.015157338054058821
+      },
+      "generation_throughput_tokens_per_s": 72.00187411293729,
+      "request_throughput_req_per_s": 1.207012754267464,
+      "json_valid_rate": null,
+      "choice_accuracy": null
+    }
+  }
+}
