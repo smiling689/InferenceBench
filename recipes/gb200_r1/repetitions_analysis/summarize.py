@@ -94,10 +94,19 @@ def main():
                               "Full dummy weights measure performance, not model quality."]}
     seeds = {name: [entry["effective_server_args"].get("random_seed") for entry in entries
                     if entry["treatment"] == name and entry["score"] is not None] for name in groups}
-    result["selected_dummy_initialization_seeds"] = seeds
+    result["selected_runtime_sampling_seeds"] = seeds
+    initialization = load(args.inputs / "dummy_initialization_provenance.json")
+    assert initialization["per_parameter_seed"] == 1234
+    assert initialization["all_final_loaders_match_base"] is True
+    assert {row["run_id"] for row in initialization["final_images"]} == {entry["run_id"] for entry in entries}
+    assert all(row["source_sha256"] == initialization["base_images"][0]["source_sha256"]
+               for row in initialization["base_images"] + initialization["final_images"])
+    result["dummy_initialization_provenance"] = initialization
     if len({seed for values in seeds.values() for seed in values}) > 1:
         result["limitations"].append(
-            "Selected dummy-weight initialization seeds differ between runs; this comparison includes that configuration choice and cannot isolate skills alone.")
+            "Runtime sampling seeds differ between runs and can affect generated tokens and native speculative acceptance; they are independent of the fixed per-parameter dummy initialization seed 1234.")
+    result["limitations"].append(
+        "Native speculative acceptance on synthetic target/draft weights does not predict acceptance or throughput on trained DeepSeek-R1 weights.")
     args.output.mkdir(parents=True, exist_ok=True)
     (args.output / "comparison_summary.json").write_text(json.dumps(result, indent=2) + "\n")
     fields = ["run_id", "treatment", "node", "queue_position", "score", "burst", "poisson", "constant",
