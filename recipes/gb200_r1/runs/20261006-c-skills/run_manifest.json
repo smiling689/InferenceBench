@@ -1,0 +1,76 @@
+{
+  "status": "running",
+  "treatment_runtime_commit": "b2c569ffeadce33ab5187b59989097e421ed7390",
+  "synchronization_approved": true,
+  "startup_checks": {
+    "frozen_runtime_files_matched_per_node": 96,
+    "original_tests_passed_per_node": 18,
+    "trial_archive_and_failure_checks_passed": true,
+    "codex_skill_discovery_passed_on_both_nodes": true,
+    "api_access_verified_on_both_nodes": true,
+    "api_transport": "devbox-managed persistent SSH reverse forwards; credentials over stdin",
+    "forward_service_units": [
+      "ib-skills-gb200-1-api-20261006.service",
+      "ib-skills-gb200-2-api-20261006.service"
+    ]
+  },
+  "model": "deepseek-ai/DeepSeek-R1",
+  "agent": "gpt-6.1-sol",
+  "reasoning_effort": "max",
+  "scenario": "C",
+  "optimization_budget_seconds_per_run": 7200,
+  "parallel_independent_runs": 2,
+  "planned_optimization_node_hours": 4,
+  "final_evaluation_counts_against_optimization_budget": false,
+  "quality_evaluated": false,
+  "weights": "fp8 dummy",
+  "activation_dtype": "bfloat16",
+  "kv_dtype": "bfloat16",
+  "development_seed": 21,
+  "evaluation_seed": 1337,
+  "request_files_sha256": {
+    "requests_21.jsonl": "e3329da09722133ae0d3fd368b3438b2c8f230815ab32ee32cb77773e71f3ba5",
+    "requests_1337.jsonl": "08fb8644ae4fee2939187086103a9a310866be4b9bd5f50b9c2aef2a343d6cae"
+  },
+  "baseline_runtime_commit": "67a9cf389bd7568afac740e0e7cb8b6edcddc59b",
+  "skills_repo": "https://github.com/BBuf/AI-Infra-Auto-Driven-SKILLS",
+  "skills_commit": "6dc9c66a008daded66f214022919ff88b2186252",
+  "registered_skills": [
+    "llm-serving-auto-benchmark",
+    "llm-serving-capacity-planner",
+    "llm-torch-profiler-analysis",
+    "llm-pipeline-analysis",
+    "torch-profiler-layer-track",
+    "model-compute-simulation",
+    "sglang-prod-incident-triage",
+    "model-pr-history-knowledge"
+  ],
+  "runs": [
+    {
+      "run_id": "20261006-c-skills-r1",
+      "node": "gb200-1",
+      "gpu_ids": [0, 1, 2, 3],
+      "independent_repetition": 1,
+      "base_image_id": "sha256:32fb43a2ea5fa6e7bebe24f30fa7eb7995076ffea5f249f0c667be1e0bfbc267",
+      "controller_pid": 1536089,
+      "container": "ib-20261006-c-skills-r1-sol-skills",
+      "started_at_node_utc": "2026-10-06T08:13:08.410866+00:00",
+      "planned_optimization_end_node_utc": "2026-10-06T10:13:08+00:00",
+      "status": "optimizing"
+    },
+    {
+      "run_id": "20261006-c-skills-r2",
+      "node": "gb200-2",
+      "gpu_ids": [0, 1, 2, 3],
+      "independent_repetition": 2,
+      "base_image_id": "sha256:c547a7a1c3aa23ba9a3cd77f450059607a21157f5149cb206fe5317802a94750",
+      "controller_pid": 1256389,
+      "container": "ib-20261006-c-skills-r2-sol-skills",
+      "started_at_node_utc": "2026-10-06T08:11:35.071448+00:00",
+      "planned_optimization_end_node_utc": "2026-10-06T10:11:35+00:00",
+      "status": "optimizing"
+    }
+  ],
+  "comparison_reference": "recipes/gb200_r1/runs/20261003-c-stability/stability_summary.json",
+  "comparison_policy": "Report both individual scores and descriptive summaries. The treatment adds skills and a required analysis loop; model, optimization budget, benchmark scenario and formal scoring stay fixed."
+}
