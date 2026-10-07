@@ -1,0 +1,19 @@
+{
+  "method": "native same-model DeepSeek MTP via EAGLE",
+  "installed_package_source_changes": [],
+  "speculative_num_steps": 7,
+  "speculative_num_draft_tokens": 8,
+  "speculative_use_rejection_sampling": true,
+  "speculative_accept_threshold_single": 1,
+  "speculative_accept_threshold_acc": 1,
+  "simulation_accept_length": -1,
+  "simulation_validation": "Checked envs.SGLANG_SIMULATE_ACC_LEN.get() in CPU Docker using final snapshot; launcher does not override it.",
+  "sampling_defaults": "openai",
+  "unspecified_top_p_default": 1,
+  "runtime_sampling_seed": 42,
+  "dummy_per_parameter_initialization_seed": 1234,
+  "formal_log_acceptance_examples": "Examples include 7.97/1.00 and 8.00/1.00; later small/padded shapes include 1.59/0.08. These are individual log samples, not an aggregate.",
+  "formal_score_valid_under_original_explicit_request_contract": true,
+  "sampling_distribution_matches_other_seven_runs": false,
+  "interpretation": "All target layers and exact native rejection computation are retained. Synthetic target/draft acceptance and changed omitted top_p defaults limit comparison and trained-weight generalization."
+}

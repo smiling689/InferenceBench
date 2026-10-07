@@ -32,6 +32,7 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     manifest = load(args.inputs / "run_manifest.json")
+    assert manifest["status"] == "completed", "Batch manifest is not final"
     entries = []
     session_hashes = set()
     for queue in manifest["queues"]:
@@ -49,6 +50,7 @@ def main():
                      "pipeline_started_at": (directory / "pipeline_started_at.txt").read_text().strip(),
                      "pipeline_finished_at": (directory / "pipeline_finished_at.txt").read_text().strip(),
                      "container_exit_code": int((directory / "container_exit_code").read_text()),
+                     "capture_exit_code": int((directory / "capture_exit_code").read_text()),
                      "final_exit_code": int((directory / "final_exit_code").read_text()),
                      "run_status": state, "solver_budget_consumed": True, "score": None}
             if entry["final_exit_code"] == 0:
@@ -58,6 +60,10 @@ def main():
                 assert audit["generation_records"] == 768 and audit["optimization_budget_seconds"] == 7200
                 assert audit["skills_treatment"] == (run["treatment"] == "skills")
                 assert audit["effective_configuration_source"] == "live formal server endpoint"
+                assert stage == "finished" and entry["capture_exit_code"] == 0
+                summary = load(directory / "task/summary.json")
+                assert run["formal_finished_at_utc"] == summary["finished_at"]
+                assert abs(run["primary_metric"] - audit["primary_metric"]) < 1e-12
                 evidence = audit["skill_evidence"]
                 assert evidence["model_contexts"] and all(
                     context["model"] == "gpt-6.1-sol" and context["effort"] == "max" and context["count"] > 0
@@ -116,12 +122,40 @@ def main():
             "Runtime sampling seeds differ between runs and can affect generated tokens and native speculative acceptance; they are independent of the fixed per-parameter dummy initialization seed 1234.")
     result["limitations"].append(
         "Native speculative acceptance on synthetic target/draft weights does not predict acceptance or throughput on trained DeepSeek-R1 weights.")
+    policies = {name: [entry["effective_server_args"].get("sampling_defaults") for entry in entries
+                      if entry["treatment"] == name and entry["score"] is not None] for name in groups}
+    result["selected_sampling_default_policies"] = policies
+    sampling = load(args.inputs / "sampling_contract_audit.json")
+    assert sampling["request_payload_sets_top_p"] is False
+    assert sampling["model_generation_top_p"] == .95 and sampling["openai_default_top_p"] == 1.0
+    result["sampling_contract_audit"] = sampling
+    if len({policy for values in policies.values() for policy in values}) > 1:
+        result["limitations"].append(
+            "The original request payload omits top_p. Ordinary r7 selects OpenAI defaults (top_p=1.0); other runs select model defaults (top_p=0.95). The primary comparison retains every original-benchmark score, but it does not hold the effective sampling distribution fixed or isolate skills causally.")
+    result["model_sampling_defaults_subset"] = {
+        "interpretation": "Post-hoc descriptive subset, unequal group sizes and node balance; not the primary comparison or a controlled estimate.",
+        "groups": {name: stats([entry["score"] for entry in entries if entry["treatment"] == name
+                                and entry["score"] is not None and entry["effective_server_args"].get("sampling_defaults") == "model"])
+                   for name in groups}}
+    starts = [datetime.fromisoformat(entry["pipeline_started_at"]) for entry in entries]
+    finishes = [datetime.fromisoformat(entry["pipeline_finished_at"]) for entry in entries]
+    result["timing"] = {"pipeline_started_at_utc": min(starts).isoformat(),
+                        "pipeline_finished_at_utc": max(finishes).isoformat(),
+                        "optimization_node_hours": 16,
+                        "pipeline_wall_hours": (max(finishes) - min(starts)).total_seconds() / 3600}
+    workflow = load(args.inputs / "workflow_audit.json")
+    for review in workflow["skills_runs"]:
+        evidence = next(entry["skill_evidence"] for entry in entries if entry["run_id"] == review["run_id"])
+        assert review["in_budget_evaluation_starts"] == evidence["optimization_evaluations"]
+        assert review["analysis_files"] == evidence["optimization_evaluations_with_analysis"]
+        assert review["toolkit_function_calls"] == len(evidence["actual_toolkit_function_calls"])
+    result["workflow_audit"] = workflow
     args.output.mkdir(parents=True, exist_ok=True)
     (args.output / "comparison_summary.json").write_text(json.dumps(result, indent=2) + "\n")
     fields = ["run_id", "treatment", "node", "queue_position", "score", "burst", "poisson", "constant",
               "final_exit_code", "pipeline_started_at", "pipeline_finished_at"]
     with (args.output / "individual_results.csv").open("w", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fields)
+        writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         for entry in sorted(entries, key=lambda item: (item["treatment"], item["run_id"])):
             row = {key: entry.get(key) for key in fields}
@@ -160,6 +194,8 @@ def main():
     lines.extend(["", "## Scope and limits", "", *[f"- {item}" for item in result["limitations"]], "",
                   "The original scenario C, FP8 dummy full DeepSeek-R1, BF16 activations/KV, four GB200 GPUs and 7200-second optimization budgets are retained.",
                   "Each node ran two ordinary and two skills runs in opposite alternating orders. Previews and fresh-container formal evaluation add elapsed time.",
+                  f"All eight optimization budgets consume 16 node-hours; the complete two-node pipeline elapsed {result['timing']['pipeline_wall_hours']:.2f} hours.",
+                  "Skills were actually used in all four treatment runs. Three final-confirmation analysis files are missing across r3/r6; see workflow_audit.json for the recording gaps and source/profile review.",
                   "See comparison_summary.json for per-node statistics, effective configurations, timing and actual skill evidence; individual_results.csv preserves every new score.", ""])
     (args.output / "README.md").write_text("\n".join(lines))
     print(json.dumps({"new_run_statistics": groups, "new_skills_mean_change_pct": mean_change,

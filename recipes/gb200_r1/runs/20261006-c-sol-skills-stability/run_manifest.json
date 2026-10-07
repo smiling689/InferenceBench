@@ -1,5 +1,9 @@
 {
-  "status": "running",
+  "status": "completed",
+  "all_queues_finished_at_utc": "2026-10-07T01:26:01+00:00",
+  "formal_generation_records_verified": 6144,
+  "api_forward_services_stopped": true,
+  "all_eight_gpus_released": true,
   "batch_driver_commit": "c60236d",
   "baseline_runtime_commit": "67a9cf389bd7568afac740e0e7cb8b6edcddc59b",
   "skills_treatment_commit": "b2c569ffeadce33ab5187b59989097e421ed7390",
@@ -31,7 +35,7 @@
         {"run_id": "20261006-c-plain-r4", "treatment": "plain", "status": "completed", "primary_metric": 2.103145606299068, "result_audit_passed": true, "formal_finished_at_utc": "2026-10-06T18:21:56.477765+00:00"},
         {"run_id": "20261006-c-skills-r3", "treatment": "skills", "status": "completed", "primary_metric": 2.9124475602140945, "result_audit_passed": true, "formal_finished_at_utc": "2026-10-06T20:51:28.246411+00:00", "post_budget_preview_exit_code": 1},
         {"run_id": "20261006-c-plain-r6", "treatment": "plain", "status": "completed", "primary_metric": 1.9654268006691267, "result_audit_passed": true, "formal_finished_at_utc": "2026-10-06T23:08:29.814641+00:00"},
-        {"run_id": "20261006-c-skills-r5", "treatment": "skills"}
+        {"run_id": "20261006-c-skills-r5", "treatment": "skills", "status": "completed", "primary_metric": 1.974476478424424, "result_audit_passed": true, "formal_finished_at_utc": "2026-10-07T01:25:43.710141+00:00"}
       ]
     },
     {
@@ -43,7 +47,7 @@
         {"run_id": "20261006-c-skills-r4", "treatment": "skills", "status": "completed", "primary_metric": 1.8133688935636654, "result_audit_passed": true, "formal_finished_at_utc": "2026-10-06T18:25:01.618134+00:00"},
         {"run_id": "20261006-c-plain-r5", "treatment": "plain", "status": "completed", "primary_metric": 2.2303311705802242, "result_audit_passed": true, "formal_finished_at_utc": "2026-10-06T20:57:20.612372+00:00", "post_budget_preview_exit_code": 1},
         {"run_id": "20261006-c-skills-r6", "treatment": "skills", "status": "completed", "primary_metric": 1.9987138284443413, "result_audit_passed": true, "formal_finished_at_utc": "2026-10-06T23:15:44.410444+00:00"},
-        {"run_id": "20261006-c-plain-r7", "treatment": "plain"}
+        {"run_id": "20261006-c-plain-r7", "treatment": "plain", "status": "completed", "primary_metric": 4.690439018637918, "result_audit_passed": true, "formal_finished_at_utc": "2026-10-07T01:24:46.458479+00:00", "sampling_defaults": "openai", "unspecified_top_p_default": 1.0}
       ]
     }
   ],

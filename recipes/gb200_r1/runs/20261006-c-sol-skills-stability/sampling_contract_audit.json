@@ -1,0 +1,21 @@
+{
+  "request_payload_sets_top_p": false,
+  "payload_literal_keys": [
+    "model",
+    "messages",
+    "stream",
+    "max_tokens",
+    "temperature"
+  ],
+  "conditional_payload_fields": [
+    "ignore_eos",
+    "stream_options"
+  ],
+  "runner_sha256": "15ab6dfb83e8735655bf9eeb517d29b02bd607e1515c75a5861c7206561a3bd6",
+  "model_generation_top_p": 0.95,
+  "generation_config_sha256": "3f21d5d199c7ea6b0f807e3d9865a8a9957b76a604c946bce6e73fd0629f8ca3",
+  "openai_default_top_p": 1,
+  "protocol_sha256": "32b1603bfe7eee7b1803fae372d8f17c7519236b81b449c14f1762d75bad3e6f",
+  "validation": "CPU Docker AST/source audit of unchanged evaluator and mounted generation_config; live formal ServerArgs records policy. Installed CLI documents OpenAI top_p=1.0 versus model generation defaults.",
+  "interpretation": "The original benchmark fixes explicit request fields but leaves top_p to the engine defaults. Ordinary r7 chooses openai; the other seven choose model. Preserve all eight scores in the primary comparison and disclose this uncontrolled sampling-policy choice. Post-hoc model-default subset is descriptive and unbalanced."
+}

@@ -1,9 +1,9 @@
 {
-  "status": "running",
+  "status": "completed",
   "per_parameter_seed": 1234,
   "loader_call": "initialize_dummy_weights(model)",
-  "all_final_loaders_match_base": false,
-  "verified_final_images": 6,
+  "all_final_loaders_match_base": true,
+  "verified_final_images": 8,
   "expected_final_images": 8,
   "base_images": [
     {
@@ -73,6 +73,24 @@
       "node": "gb200-2",
       "image": "inferencebench-final:20261006-c-skills-r6-sol-skills",
       "run_id": "20261006-c-skills-r6",
+      "source_sha256": {
+        "weight_utils.py": "db4e9b797fbbd3af933323a28415620e7b8425ec9911daba1be734ee3900f526",
+        "loader.py": "c7fd2af11364c3cde84ef359d4b4966b32a5c956d5a3515bae83e253f2e36578"
+      }
+    },
+    {
+      "node": "gb200-1",
+      "image": "inferencebench-final:20261006-c-skills-r5-sol-skills",
+      "run_id": "20261006-c-skills-r5",
+      "source_sha256": {
+        "weight_utils.py": "db4e9b797fbbd3af933323a28415620e7b8425ec9911daba1be734ee3900f526",
+        "loader.py": "c7fd2af11364c3cde84ef359d4b4966b32a5c956d5a3515bae83e253f2e36578"
+      }
+    },
+    {
+      "node": "gb200-2",
+      "image": "inferencebench-final:20261006-c-plain-r7-sol-plain",
+      "run_id": "20261006-c-plain-r7",
       "source_sha256": {
         "weight_utils.py": "db4e9b797fbbd3af933323a28415620e7b8425ec9911daba1be734ee3900f526",
         "loader.py": "c7fd2af11364c3cde84ef359d4b4966b32a5c956d5a3515bae83e253f2e36578"

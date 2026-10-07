@@ -1,0 +1,49 @@
+{
+  "status": "completed",
+  "scope": "Manual interpretation of preserved trial analyses, selections, actual calls, traces and launcher restoration; counts alone are not full temporal compliance proof.",
+  "ordinary_toolkit_function_calls": 0,
+  "skills_runs": [
+    {
+      "run_id": "20261006-c-skills-r3",
+      "in_budget_evaluation_starts": 16,
+      "analysis_files": 14,
+      "toolkit_function_calls": 41,
+      "missing_analysis_trials": [
+        "trial_0015",
+        "trial_0016"
+      ],
+      "interpretation": "Candidate-change analyses and fresh profiles are preserved. Final restored C06 quick/full confirmations lack separate analysis files; the full confirmation crossed the original deadline. Native exact rejection remains installed, simulation disabled and source patch restored byte-for-byte."
+    },
+    {
+      "run_id": "20261006-c-skills-r4",
+      "in_budget_evaluation_starts": 12,
+      "analysis_files": 12,
+      "toolkit_function_calls": 36,
+      "missing_analysis_trials": [],
+      "interpretation": "Notes distinguish quick checks from full timing, triage invalid startup candidates, profile successful configurations and restore the measured dense-backend winner."
+    },
+    {
+      "run_id": "20261006-c-skills-r5",
+      "in_budget_evaluation_starts": 15,
+      "analysis_files": 15,
+      "toolkit_function_calls": 56,
+      "missing_analysis_trials": [],
+      "interpretation": "Profiling/history guide dense-backend and prefill batching changes. Divergent rank scheduling is triaged and repaired with a task-local hook. Tree regression is rejected and C05 is restored; required hook files and four-rank regression are preserved."
+    },
+    {
+      "run_id": "20261006-c-skills-r6",
+      "in_budget_evaluation_starts": 13,
+      "analysis_files": 12,
+      "toolkit_function_calls": 51,
+      "missing_analysis_trials": [
+        "trial_0013"
+      ],
+      "interpretation": "Profiles and full timing reject EP4/DP4 and select receive interval16. The final full confirmation lacks a separate analysis file; no later configuration replaces the selected C06."
+    }
+  ],
+  "limitations": [
+    "Artifact traces include captures around final confirmation and are not all proven to finish inside the optimization budget.",
+    "Ordinary runs have no skill-wrapper trial directories; zero wrapper evaluations does not mean zero benchmarks or profiling.",
+    "The treatment was applied unchanged, but missing final notes prevent a claim that every evaluation completed the entire required recording loop."
+  ]
+}

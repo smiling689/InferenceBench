@@ -1,0 +1,2268 @@
+{
+  "audit_passed": true,
+  "primary_metric": 1.974476478424424,
+  "official_evaluation_seed": 1337,
+  "request_source_sha256": "08fb8644ae4fee2939187086103a9a310866be4b9bd5f50b9c2aef2a343d6cae",
+  "requests_per_profile": 256,
+  "profiles": 3,
+  "generation_records": 768,
+  "input_output_token_counts_exact": true,
+  "request_fields_unchanged": [
+    "sample_id",
+    "messages",
+    "max_new_tokens",
+    "temperature",
+    "ignore_eos",
+    "input_token_count"
+  ],
+  "model_shape": {
+    "num_hidden_layers": 61,
+    "hidden_size": 7168,
+    "n_routed_experts": 256,
+    "num_experts_per_tok": 8,
+    "num_attention_heads": 128
+  },
+  "metric_model_id": "deepseek-ai/DeepSeek-R1",
+  "served_model_name": "deepseek-ai/DeepSeek-R1",
+  "server_matches_fixed_model_directory": true,
+  "weights_format": "fp8 dummy",
+  "activation_dtype": "bfloat16",
+  "kv_dtype": "bf16",
+  "quality_evaluated": false,
+  "effective_server_args": {
+    "model_path": "/models/deepseek-r1",
+    "tokenizer_path": "/models/deepseek-r1",
+    "tokenizer_mode": "auto",
+    "tokenizer_backend": "huggingface",
+    "tokenizer_worker_num": 1,
+    "detokenizer_worker_num": 1,
+    "skip_tokenizer_init": false,
+    "load_format": "dummy",
+    "model_loader_extra_config": "{}",
+    "trust_remote_code": false,
+    "context_length": 4096,
+    "is_embedding": false,
+    "enable_multimodal": null,
+    "revision": null,
+    "model_impl": "auto",
+    "model_config_parser": "auto",
+    "json_model_override_args": "{}",
+    "dtype": "bfloat16",
+    "quantization": "fp8",
+    "quantization_param_path": null,
+    "kv_cache_dtype": "bf16",
+    "enable_fp32_lm_head": false,
+    "modelopt_quant": null,
+    "modelopt_checkpoint_restore_path": null,
+    "modelopt_checkpoint_save_path": null,
+    "modelopt_export_path": null,
+    "quantize_and_serve": false,
+    "rl_quant_profile": null,
+    "enable_tf32_matmul": false,
+    "mem_fraction_static": 0.95,
+    "max_running_requests": 128,
+    "max_queued_requests": null,
+    "max_total_tokens": null,
+    "chunked_prefill_size": 4096,
+    "enable_dynamic_chunking": false,
+    "max_prefill_tokens": 16384,
+    "prefill_max_requests": null,
+    "schedule_policy": "fcfs",
+    "enable_priority_scheduling": false,
+    "disable_priority_preemption": false,
+    "default_priority_value": null,
+    "abort_on_priority_when_disabled": false,
+    "schedule_low_priority_values_first": false,
+    "priority_scheduling_preemption_threshold": 10,
+    "schedule_conservativeness": 1.0,
+    "page_size": 64,
+    "swa_full_tokens_ratio": 0.8,
+    "disable_hybrid_swa_memory": false,
+    "radix_eviction_policy": "lru",
+    "prefill_only_disable_kv_cache": false,
+    "disable_radix_cache": true,
+    "enable_page_major_kv_layout": false,
+    "enable_unified_memory": false,
+    "disable_chunked_prefix_cache": false,
+    "disable_overlap_schedule": false,
+    "num_continuous_decode_steps": 1,
+    "scheduler_recv_interval": 1,
+    "enable_mixed_chunk": false,
+    "nccl_port": null,
+    "dist_timeout": null,
+    "dist_init_addr": null,
+    "nnodes": 1,
+    "node_rank": 0,
+    "tp_size": 4,
+    "dcp_size": 1,
+    "pp_size": 1,
+    "pp_max_micro_batch_size": null,
+    "pp_async_batch_depth": 0,
+    "dp_size": 1,
+    "load_balance_method": "round_robin",
+    "attn_cp_size": 1,
+    "moe_dp_size": 1,
+    "enable_prefill_cp": false,
+    "cp_strategy": null,
+    "enable_dsa_prefill_context_parallel": false,
+    "dsa_prefill_cp_mode": "round-robin-split",
+    "enable_prefill_context_parallel": false,
+    "prefill_cp_mode": "in-seq-split",
+    "enable_dp_attention": false,
+    "enable_dp_attention_local_control_broadcast": false,
+    "enable_dp_lm_head": false,
+    "enable_attn_tp_input_scattered": false,
+    "disable_attn_tp_gather": false,
+    "enable_p2p_check": false,
+    "device": "cuda",
+    "base_gpu_id": 0,
+    "gpu_id_step": 1,
+    "random_seed": 327017732,
+    "watchdog_timeout": 300,
+    "soft_watchdog_timeout": null,
+    "sleep_on_idle": false,
+    "use_ray": false,
+    "custom_sigquit_handler": null,
+    "numa_node": null,
+    "gc_threshold": null,
+    "host": "127.0.0.1",
+    "port": 30080,
+    "fastapi_root_path": "",
+    "grpc_mode": false,
+    "skip_server_warmup": false,
+    "warmups": null,
+    "enable_http2": false,
+    "ssl_keyfile": null,
+    "ssl_certfile": null,
+    "ssl_ca_certs": null,
+    "ssl_keyfile_password": null,
+    "enable_ssl_refresh": false,
+    "api_key": null,
+    "admin_api_key": null,
+    "served_model_name": "deepseek-ai/DeepSeek-R1",
+    "weight_version": "default",
+    "chat_template": null,
+    "hf_chat_template_name": null,
+    "completion_template": null,
+    "file_storage_path": "sglang_storage",
+    "enable_cache_report": false,
+    "reasoning_parser": null,
+    "strip_thinking_cache": false,
+    "enable_strict_thinking": false,
+    "tool_call_parser": null,
+    "tool_server": null,
+    "sampling_defaults": "model",
+    "asr_max_buffer_seconds": 60,
+    "asr_max_concurrent_sessions": 32,
+    "preferred_sampling_params": null,
+    "allow_auto_truncate": false,
+    "stream_interval": 1,
+    "batch_notify_size": 16,
+    "stream_response_default_include_usage": false,
+    "incremental_streaming_output": false,
+    "enable_streaming_session": false,
+    "enable_session_radix_cache": false,
+    "log_level": "info",
+    "log_level_http": null,
+    "log_requests": false,
+    "log_requests_level": 2,
+    "log_requests_format": "text",
+    "log_requests_target": null,
+    "uvicorn_access_log_exclude_prefixes": [],
+    "crash_dump_folder": null,
+    "show_time_cost": false,
+    "enable_metrics": false,
+    "grpc_http_sidecar_port": null,
+    "enable_mfu_metrics": false,
+    "enable_metrics_for_all_schedulers": false,
+    "load_snapshot_publish_interval": 15,
+    "tokenizer_metrics_custom_labels_header": "x-custom-labels",
+    "tokenizer_metrics_allowed_custom_labels": null,
+    "extra_metric_labels": null,
+    "bucket_time_to_first_token": null,
+    "bucket_inter_token_latency": null,
+    "bucket_e2e_request_latency": null,
+    "prompt_tokens_buckets": null,
+    "generation_tokens_buckets": null,
+    "gc_warning_threshold_secs": 0.0,
+    "decode_log_interval": 40,
+    "enable_request_time_stats_logging": false,
+    "kv_events_config": null,
+    "enable_forward_pass_metrics": false,
+    "forward_pass_metrics_worker_id": "",
+    "forward_pass_metrics_ipc_name": null,
+    "enable_trace": false,
+    "trace_modules": "request",
+    "otlp_traces_endpoint": "localhost:4317",
+    "export_metrics_to_file": false,
+    "export_metrics_to_file_dir": null,
+    "stat_loggers": null,
+    "constrained_json_whitespace_pattern": null,
+    "constrained_json_disable_any_whitespace": false,
+    "attention_backend": "trtllm_mla",
+    "decode_attention_backend": null,
+    "prefill_attention_backend": null,
+    "sampling_backend": "flashinfer",
+    "grammar_backend": "xgrammar",
+    "radix_cache_backend": null,
+    "mm_attention_backend": null,
+    "fp8_gemm_runner_backend": "flashinfer_trtllm",
+    "fp4_gemm_runner_backend": "auto",
+    "bf16_gemm_backend": "auto",
+    "dsa_prefill_backend": null,
+    "dsa_decode_backend": null,
+    "dsa_paged_mqa_logits_backend": "auto",
+    "dsa_topk_backend": "sgl-kernel",
+    "disable_flashinfer_autotune": false,
+    "mamba_backend": "triton",
+    "cuda_graph_config": {
+      "decode": {
+        "backend": "full",
+        "max_bs": 64,
+        "bs": [
+          1,
+          2,
+          4,
+          8,
+          16,
+          32,
+          48,
+          64
+        ],
+        "tc_compiler": "eager",
+        "full_prefill_max_req": null
+      },
+      "prefill": {
+        "backend": "disabled",
+        "max_bs": 2048,
+        "bs": [
+          4,
+          8,
+          12,
+          16,
+          20,
+          24,
+          28,
+          32,
+          48,
+          64,
+          80,
+          96,
+          112,
+          128,
+          144,
+          160,
+          176,
+          192,
+          208,
+          224,
+          240,
+          256,
+          288,
+          320,
+          352,
+          384,
+          416,
+          448,
+          480,
+          512,
+          576,
+          640,
+          704,
+          768,
+          832,
+          896,
+          960,
+          1024,
+          1280,
+          1536,
+          1792,
+          2048
+        ],
+        "tc_compiler": "eager",
+        "full_prefill_max_req": null
+      }
+    },
+    "cuda_graph_backend_decode": "full",
+    "cuda_graph_backend_prefill": "disabled",
+    "cuda_graph_max_bs_decode": null,
+    "cuda_graph_max_bs_prefill": null,
+    "cuda_graph_bs_decode": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      48,
+      64
+    ],
+    "cuda_graph_bs_prefill": null,
+    "cuda_graph_tc_compiler": null,
+    "disable_prefill_cuda_graph": false,
+    "disable_decode_cuda_graph": false,
+    "disable_cuda_graph": false,
+    "disable_cuda_graph_padding": false,
+    "enable_profile_cuda_graph": false,
+    "enable_cudagraph_gc": false,
+    "debug_cuda_graph": false,
+    "enable_layerwise_nvtx_marker": false,
+    "enable_nccl_nvls": false,
+    "enable_symm_mem": false,
+    "triton_attention_reduce_in_fp32": false,
+    "triton_attention_num_kv_splits": 8,
+    "triton_attention_split_tile_size": null,
+    "flashinfer_mla_disable_ragged": false,
+    "enable_fused_qk_norm_rope": false,
+    "enable_precise_embedding_interpolation": false,
+    "enable_fused_moe_sum_all_reduce": false,
+    "enable_deepseek_v4_fp4_indexer": false,
+    "disable_custom_all_reduce": true,
+    "enable_mscclpp": false,
+    "enable_torch_symm_mem": false,
+    "pre_warm_nccl": false,
+    "enable_quant_communications": false,
+    "enable_flashinfer_allreduce_fusion": false,
+    "enforce_disable_flashinfer_allreduce_fusion": true,
+    "flashinfer_allreduce_fusion_backend": null,
+    "enable_aiter_allreduce_fusion": false,
+    "enable_torch_compile": false,
+    "enable_torch_compile_debug_mode": false,
+    "torch_compile_max_bs": 32,
+    "torchao_config": "",
+    "speculative_algorithm": null,
+    "speculative_draft_model_path": null,
+    "speculative_draft_model_revision": null,
+    "speculative_draft_load_format": null,
+    "speculative_num_steps": null,
+    "speculative_eagle_topk": null,
+    "speculative_num_draft_tokens": null,
+    "speculative_dflash_block_size": null,
+    "speculative_accept_threshold_single": 1.0,
+    "speculative_accept_threshold_acc": 1.0,
+    "speculative_use_rejection_sampling": false,
+    "speculative_token_map": null,
+    "speculative_attention_mode": "prefill",
+    "speculative_draft_attention_backend": null,
+    "speculative_draft_window_size": null,
+    "speculative_moe_runner_backend": "flashinfer_trtllm",
+    "speculative_moe_a2a_backend": null,
+    "speculative_draft_model_quantization": "fp8",
+    "speculative_skip_dp_mlp_sync": false,
+    "enable_multi_layer_eagle": false,
+    "speculative_adaptive": false,
+    "speculative_adaptive_config": null,
+    "decoupled_spec_bind_endpoint": null,
+    "decoupled_spec_connect_endpoints": null,
+    "decoupled_spec_rank": null,
+    "decoupled_spec_role": "null",
+    "spec_trace_dir": null,
+    "speculative_ngram_min_bfs_breadth": 1,
+    "speculative_ngram_max_bfs_breadth": 10,
+    "speculative_ngram_match_type": "BFS",
+    "speculative_ngram_max_trie_depth": 18,
+    "speculative_ngram_capacity": 10000000,
+    "speculative_ngram_external_corpus_path": null,
+    "speculative_ngram_external_sam_budget": 0,
+    "speculative_ngram_external_corpus_max_tokens": 10000000,
+    "ep_size": 1,
+    "moe_a2a_backend": "none",
+    "moe_runner_backend": "flashinfer_trtllm",
+    "flashinfer_mxfp4_moe_precision": "default",
+    "deepep_mode": "auto",
+    "deepep_dispatcher_output_dtype": "auto",
+    "ep_num_redundant_experts": 0,
+    "ep_dispatch_algorithm": null,
+    "init_expert_location": "trivial",
+    "enable_eplb": false,
+    "eplb_algorithm": "auto",
+    "eplb_rebalance_num_iterations": 1000,
+    "eplb_rebalance_layers_per_chunk": null,
+    "eplb_min_rebalancing_utilization_threshold": 1.0,
+    "expert_distribution_recorder_mode": null,
+    "expert_distribution_recorder_buffer_size": 1000,
+    "enable_expert_distribution_metrics": false,
+    "deepep_config": null,
+    "moe_dense_tp_size": null,
+    "elastic_ep_backend": null,
+    "enable_elastic_expert_backup": false,
+    "mooncake_ib_device": null,
+    "enable_deepep_waterfill": false,
+    "elastic_ep_rejoin": false,
+    "disable_flashinfer_cutlass_moe_fp4_allgather": false,
+    "disable_shared_experts_fusion": true,
+    "enforce_shared_experts_fusion": false,
+    "max_mamba_cache_size": null,
+    "mamba_ssm_dtype": null,
+    "enable_mamba_cache_stochastic_rounding": false,
+    "mamba_cache_philox_rounds": 0,
+    "mamba_full_memory_ratio": 0.9,
+    "mamba_radix_cache_strategy": "auto",
+    "uses_mamba_radix_cache": false,
+    "mamba_track_interval": 256,
+    "enable_int8_mamba_checkpoint": false,
+    "int8_mamba_ckpt_size": null,
+    "linear_attn_backend": "triton",
+    "linear_attn_decode_backend": null,
+    "linear_attn_prefill_backend": null,
+    "enable_linear_replayssm": false,
+    "linear_replayssm_cache_len": 16,
+    "enable_hierarchical_cache": false,
+    "hicache_ratio": 2.0,
+    "hicache_size": 0,
+    "hicache_write_policy": "write_through",
+    "hicache_io_backend": "kernel",
+    "hicache_mem_layout": "page_first",
+    "hicache_storage_backend": null,
+    "hicache_storage_prefetch_policy": "timeout",
+    "hicache_storage_backend_extra_config": null,
+    "enable_hisparse": false,
+    "hisparse_config": null,
+    "enable_broadcast_mm_inputs_process": false,
+    "enable_prefix_mm_cache": false,
+    "mm_enable_dp_encoder": false,
+    "mm_process_config": {},
+    "limit_mm_data_per_request": null,
+    "enable_mm_global_cache": false,
+    "disable_fast_image_processor": false,
+    "keep_mm_feature_on_device": false,
+    "enable_lora": null,
+    "enable_lora_overlap_loading": null,
+    "max_lora_rank": null,
+    "lora_target_modules": null,
+    "lora_paths": null,
+    "max_loaded_loras": null,
+    "max_loras_per_batch": 8,
+    "lora_eviction_policy": "lru",
+    "lora_backend": "csgmv",
+    "max_lora_chunk_size": 16,
+    "experts_shared_outer_loras": null,
+    "lora_use_virtual_experts": false,
+    "lora_strict_loading": false,
+    "lora_drain_wait_threshold": 0.0,
+    "enable_two_batch_overlap": false,
+    "enable_single_batch_overlap": false,
+    "tbo_token_distribution_threshold": 0.48,
+    "cpu_offload_gb": 0,
+    "offload_group_size": -1,
+    "offload_num_in_group": 1,
+    "offload_prefetch_step": 1,
+    "offload_mode": "cpu",
+    "enable_lmcache": false,
+    "lmcache_config_file": null,
+    "kt_weight_path": null,
+    "kt_method": "AMXINT4",
+    "kt_cpuinfer": null,
+    "kt_threadpool_count": 2,
+    "kt_num_gpu_experts": null,
+    "kt_max_deferred_experts_per_token": null,
+    "dllm_algorithm": null,
+    "dllm_algorithm_config": null,
+    "disaggregation_mode": "null",
+    "disaggregation_transfer_backend": "mooncake",
+    "disaggregation_bootstrap_port": 8998,
+    "disaggregation_ib_device": null,
+    "disaggregation_decode_enable_radix_cache": false,
+    "disaggregation_decode_enable_offload_kvcache": false,
+    "num_reserved_decode_tokens": 512,
+    "disaggregation_decode_extra_slots": null,
+    "disaggregation_decode_polling_interval": 1,
+    "optimistic_prefill_retries": 0,
+    "encoder_only": false,
+    "language_only": false,
+    "encoder_transfer_backend": "zmq_to_scheduler",
+    "encoder_urls": [],
+    "encoder_bootstrap_port": 8997,
+    "encoder_register_urls": [],
+    "enable_adaptive_dispatch_to_encoder": false,
+    "enable_pdmux": false,
+    "pdmux_config_path": null,
+    "sm_group_num": 8,
+    "custom_weight_loader": [],
+    "weight_loader_disable_mmap": false,
+    "weight_loader_prefetch_checkpoints": false,
+    "weight_loader_prefetch_num_threads": 4,
+    "weight_loader_drop_cache_after_load": false,
+    "remote_instance_weight_loader_seed_instance_ip": null,
+    "remote_instance_weight_loader_seed_instance_service_port": null,
+    "remote_instance_weight_loader_send_weights_group_ports": null,
+    "remote_instance_weight_loader_backend": "nccl",
+    "remote_instance_weight_loader_start_seed_via_transfer_engine": false,
+    "engine_info_bootstrap_port": 6789,
+    "modelexpress_config": null,
+    "download_dir": null,
+    "model_checksum": null,
+    "delete_ckpt_after_loading": false,
+    "decrypted_config_file": null,
+    "decrypted_draft_config_file": null,
+    "checkpoint_engine_wait_weights_before_ready": false,
+    "enable_prefill_delayer": true,
+    "prefill_delayer_max_delay_passes": 30,
+    "prefill_delayer_token_usage_low_watermark": null,
+    "prefill_delayer_forward_passes_buckets": null,
+    "prefill_delayer_wait_seconds_buckets": null,
+    "prefill_delayer_queue_min_ratio": 0.15,
+    "prefill_delayer_max_delay_ms": 350.0,
+    "min_free_slots_delay": null,
+    "enable_deterministic_inference": false,
+    "rl_on_policy_target": null,
+    "kv_canary": "none",
+    "kv_canary_real_data": "none",
+    "kv_canary_sweep_interval": 0,
+    "enable_dynamic_batch_tokenizer": false,
+    "dynamic_batch_tokenizer_batch_size": 32,
+    "dynamic_batch_tokenizer_batch_timeout": 0.002,
+    "enable_tokenizer_batch_encode": false,
+    "disable_tokenizer_batch_decode": false,
+    "debug_tensor_dump_output_folder": null,
+    "debug_tensor_dump_layers": null,
+    "debug_tensor_dump_input_file": null,
+    "enable_memory_saver": false,
+    "enable_weights_cpu_backup": false,
+    "enable_draft_weights_cpu_backup": false,
+    "enable_custom_logit_processor": false,
+    "enable_return_hidden_states": false,
+    "enable_return_routed_experts": false,
+    "enable_return_indexer_topk": false,
+    "disable_outlines_disk_cache": false,
+    "enable_mis": false,
+    "forward_hooks": null,
+    "msprobe_dump_config": null,
+    "status": "ready",
+    "max_total_num_tokens": 197440,
+    "max_req_input_len": 4090,
+    "internal_states": [
+      {
+        "model_path": "/models/deepseek-r1",
+        "tokenizer_path": "/models/deepseek-r1",
+        "tokenizer_mode": "auto",
+        "tokenizer_backend": "huggingface",
+        "tokenizer_worker_num": 1,
+        "detokenizer_worker_num": 1,
+        "skip_tokenizer_init": false,
+        "load_format": "dummy",
+        "model_loader_extra_config": "{}",
+        "trust_remote_code": false,
+        "context_length": 4096,
+        "is_embedding": false,
+        "enable_multimodal": null,
+        "revision": null,
+        "model_impl": "auto",
+        "model_config_parser": "auto",
+        "json_model_override_args": "{}",
+        "dtype": "bfloat16",
+        "quantization": "fp8",
+        "quantization_param_path": null,
+        "kv_cache_dtype": "bf16",
+        "enable_fp32_lm_head": false,
+        "modelopt_quant": null,
+        "modelopt_checkpoint_restore_path": null,
+        "modelopt_checkpoint_save_path": null,
+        "modelopt_export_path": null,
+        "quantize_and_serve": false,
+        "rl_quant_profile": null,
+        "enable_tf32_matmul": false,
+        "mem_fraction_static": 0.95,
+        "max_running_requests": 128,
+        "max_queued_requests": null,
+        "max_total_tokens": null,
+        "chunked_prefill_size": 4096,
+        "enable_dynamic_chunking": false,
+        "max_prefill_tokens": 16384,
+        "prefill_max_requests": null,
+        "schedule_policy": "fcfs",
+        "enable_priority_scheduling": false,
+        "disable_priority_preemption": false,
+        "default_priority_value": null,
+        "abort_on_priority_when_disabled": false,
+        "schedule_low_priority_values_first": false,
+        "priority_scheduling_preemption_threshold": 10,
+        "schedule_conservativeness": 1.0,
+        "page_size": 64,
+        "swa_full_tokens_ratio": 0.8,
+        "disable_hybrid_swa_memory": false,
+        "radix_eviction_policy": "lru",
+        "prefill_only_disable_kv_cache": false,
+        "disable_radix_cache": true,
+        "enable_page_major_kv_layout": false,
+        "enable_unified_memory": false,
+        "disable_chunked_prefix_cache": false,
+        "disable_overlap_schedule": false,
+        "num_continuous_decode_steps": 1,
+        "scheduler_recv_interval": 1,
+        "enable_mixed_chunk": false,
+        "nccl_port": null,
+        "dist_timeout": null,
+        "dist_init_addr": null,
+        "nnodes": 1,
+        "node_rank": 0,
+        "tp_size": 4,
+        "dcp_size": 1,
+        "pp_size": 1,
+        "pp_max_micro_batch_size": 128,
+        "pp_async_batch_depth": 0,
+        "dp_size": 1,
+        "load_balance_method": "round_robin",
+        "attn_cp_size": 1,
+        "moe_dp_size": 1,
+        "enable_prefill_cp": false,
+        "cp_strategy": null,
+        "enable_dsa_prefill_context_parallel": false,
+        "dsa_prefill_cp_mode": "round-robin-split",
+        "enable_prefill_context_parallel": false,
+        "prefill_cp_mode": "in-seq-split",
+        "enable_dp_attention": false,
+        "enable_dp_attention_local_control_broadcast": false,
+        "enable_dp_lm_head": false,
+        "enable_attn_tp_input_scattered": false,
+        "disable_attn_tp_gather": false,
+        "enable_p2p_check": false,
+        "device": "cuda",
+        "base_gpu_id": 0,
+        "gpu_id_step": 1,
+        "random_seed": 327017732,
+        "watchdog_timeout": 300,
+        "soft_watchdog_timeout": null,
+        "sleep_on_idle": false,
+        "use_ray": false,
+        "custom_sigquit_handler": null,
+        "numa_node": null,
+        "gc_threshold": null,
+        "host": "127.0.0.1",
+        "port": 30080,
+        "fastapi_root_path": "",
+        "grpc_mode": false,
+        "skip_server_warmup": false,
+        "warmups": null,
+        "enable_http2": false,
+        "ssl_keyfile": null,
+        "ssl_certfile": null,
+        "ssl_ca_certs": null,
+        "ssl_keyfile_password": null,
+        "enable_ssl_refresh": false,
+        "api_key": null,
+        "admin_api_key": null,
+        "served_model_name": "deepseek-ai/DeepSeek-R1",
+        "weight_version": "default",
+        "chat_template": null,
+        "hf_chat_template_name": null,
+        "completion_template": null,
+        "file_storage_path": "sglang_storage",
+        "enable_cache_report": false,
+        "reasoning_parser": null,
+        "strip_thinking_cache": false,
+        "enable_strict_thinking": false,
+        "tool_call_parser": null,
+        "tool_server": null,
+        "sampling_defaults": "model",
+        "asr_max_buffer_seconds": 60,
+        "asr_max_concurrent_sessions": 32,
+        "preferred_sampling_params": null,
+        "allow_auto_truncate": false,
+        "stream_interval": 1,
+        "batch_notify_size": 16,
+        "stream_response_default_include_usage": false,
+        "incremental_streaming_output": false,
+        "enable_streaming_session": false,
+        "enable_session_radix_cache": false,
+        "log_level": "info",
+        "log_level_http": null,
+        "log_requests": false,
+        "log_requests_level": 2,
+        "log_requests_format": "text",
+        "log_requests_target": null,
+        "uvicorn_access_log_exclude_prefixes": [],
+        "crash_dump_folder": null,
+        "show_time_cost": false,
+        "enable_metrics": false,
+        "grpc_http_sidecar_port": null,
+        "enable_mfu_metrics": false,
+        "enable_metrics_for_all_schedulers": false,
+        "load_snapshot_publish_interval": 15,
+        "tokenizer_metrics_custom_labels_header": "x-custom-labels",
+        "tokenizer_metrics_allowed_custom_labels": null,
+        "extra_metric_labels": null,
+        "bucket_time_to_first_token": null,
+        "bucket_inter_token_latency": null,
+        "bucket_e2e_request_latency": null,
+        "prompt_tokens_buckets": null,
+        "generation_tokens_buckets": null,
+        "gc_warning_threshold_secs": 0.0,
+        "decode_log_interval": 40,
+        "enable_request_time_stats_logging": false,
+        "kv_events_config": null,
+        "enable_forward_pass_metrics": false,
+        "forward_pass_metrics_worker_id": "",
+        "forward_pass_metrics_ipc_name": null,
+        "enable_trace": false,
+        "trace_modules": "request",
+        "otlp_traces_endpoint": "localhost:4317",
+        "export_metrics_to_file": false,
+        "export_metrics_to_file_dir": null,
+        "stat_loggers": null,
+        "constrained_json_whitespace_pattern": null,
+        "constrained_json_disable_any_whitespace": false,
+        "attention_backend": "trtllm_mla",
+        "decode_attention_backend": null,
+        "prefill_attention_backend": null,
+        "sampling_backend": "flashinfer",
+        "grammar_backend": "xgrammar",
+        "radix_cache_backend": null,
+        "mm_attention_backend": null,
+        "fp8_gemm_runner_backend": "flashinfer_trtllm",
+        "fp4_gemm_runner_backend": "auto",
+        "bf16_gemm_backend": "auto",
+        "dsa_prefill_backend": null,
+        "dsa_decode_backend": null,
+        "dsa_paged_mqa_logits_backend": "auto",
+        "dsa_topk_backend": "sgl-kernel",
+        "disable_flashinfer_autotune": false,
+        "mamba_backend": "triton",
+        "cuda_graph_config": {
+          "decode": {
+            "backend": "full",
+            "max_bs": 64,
+            "bs": [
+              1,
+              2,
+              4,
+              8,
+              16,
+              32,
+              48,
+              64
+            ],
+            "tc_compiler": "eager",
+            "full_prefill_max_req": null
+          },
+          "prefill": {
+            "backend": "disabled",
+            "max_bs": 2048,
+            "bs": [
+              4,
+              8,
+              12,
+              16,
+              20,
+              24,
+              28,
+              32,
+              48,
+              64,
+              80,
+              96,
+              112,
+              128,
+              144,
+              160,
+              176,
+              192,
+              208,
+              224,
+              240,
+              256,
+              288,
+              320,
+              352,
+              384,
+              416,
+              448,
+              480,
+              512,
+              576,
+              640,
+              704,
+              768,
+              832,
+              896,
+              960,
+              1024,
+              1280,
+              1536,
+              1792,
+              2048
+            ],
+            "tc_compiler": "eager",
+            "full_prefill_max_req": null
+          }
+        },
+        "cuda_graph_backend_decode": "full",
+        "cuda_graph_backend_prefill": "disabled",
+        "cuda_graph_max_bs_decode": null,
+        "cuda_graph_max_bs_prefill": null,
+        "cuda_graph_bs_decode": [
+          1,
+          2,
+          4,
+          8,
+          16,
+          32,
+          48,
+          64
+        ],
+        "cuda_graph_bs_prefill": null,
+        "cuda_graph_tc_compiler": null,
+        "disable_prefill_cuda_graph": false,
+        "disable_decode_cuda_graph": false,
+        "disable_cuda_graph": false,
+        "disable_cuda_graph_padding": false,
+        "enable_profile_cuda_graph": false,
+        "enable_cudagraph_gc": false,
+        "debug_cuda_graph": false,
+        "enable_layerwise_nvtx_marker": false,
+        "enable_nccl_nvls": false,
+        "enable_symm_mem": false,
+        "triton_attention_reduce_in_fp32": false,
+        "triton_attention_num_kv_splits": 8,
+        "triton_attention_split_tile_size": null,
+        "flashinfer_mla_disable_ragged": false,
+        "enable_fused_qk_norm_rope": false,
+        "enable_precise_embedding_interpolation": false,
+        "enable_fused_moe_sum_all_reduce": false,
+        "enable_deepseek_v4_fp4_indexer": false,
+        "disable_custom_all_reduce": true,
+        "enable_mscclpp": false,
+        "enable_torch_symm_mem": false,
+        "pre_warm_nccl": false,
+        "enable_quant_communications": false,
+        "enable_flashinfer_allreduce_fusion": false,
+        "enforce_disable_flashinfer_allreduce_fusion": true,
+        "flashinfer_allreduce_fusion_backend": null,
+        "enable_aiter_allreduce_fusion": false,
+        "enable_torch_compile": false,
+        "enable_torch_compile_debug_mode": false,
+        "torch_compile_max_bs": 32,
+        "torchao_config": "",
+        "speculative_algorithm": null,
+        "speculative_draft_model_path": null,
+        "speculative_draft_model_revision": null,
+        "speculative_draft_load_format": null,
+        "speculative_num_steps": null,
+        "speculative_eagle_topk": null,
+        "speculative_num_draft_tokens": null,
+        "speculative_dflash_block_size": null,
+        "speculative_accept_threshold_single": 1.0,
+        "speculative_accept_threshold_acc": 1.0,
+        "speculative_use_rejection_sampling": false,
+        "speculative_token_map": null,
+        "speculative_attention_mode": "prefill",
+        "speculative_draft_attention_backend": null,
+        "speculative_draft_window_size": null,
+        "speculative_moe_runner_backend": "flashinfer_trtllm",
+        "speculative_moe_a2a_backend": null,
+        "speculative_draft_model_quantization": "fp8",
+        "speculative_skip_dp_mlp_sync": false,
+        "enable_multi_layer_eagle": false,
+        "speculative_adaptive": false,
+        "speculative_adaptive_config": null,
+        "decoupled_spec_bind_endpoint": null,
+        "decoupled_spec_connect_endpoints": null,
+        "decoupled_spec_rank": null,
+        "decoupled_spec_role": "null",
+        "spec_trace_dir": null,
+        "speculative_ngram_min_bfs_breadth": 1,
+        "speculative_ngram_max_bfs_breadth": 10,
+        "speculative_ngram_match_type": "BFS",
+        "speculative_ngram_max_trie_depth": 18,
+        "speculative_ngram_capacity": 10000000,
+        "speculative_ngram_external_corpus_path": null,
+        "speculative_ngram_external_sam_budget": 0,
+        "speculative_ngram_external_corpus_max_tokens": 10000000,
+        "ep_size": 1,
+        "moe_a2a_backend": "none",
+        "moe_runner_backend": "flashinfer_trtllm",
+        "flashinfer_mxfp4_moe_precision": "default",
+        "deepep_mode": "auto",
+        "deepep_dispatcher_output_dtype": "auto",
+        "ep_num_redundant_experts": 0,
+        "ep_dispatch_algorithm": null,
+        "init_expert_location": "trivial",
+        "enable_eplb": false,
+        "eplb_algorithm": "auto",
+        "eplb_rebalance_num_iterations": 1000,
+        "eplb_rebalance_layers_per_chunk": null,
+        "eplb_min_rebalancing_utilization_threshold": 1.0,
+        "expert_distribution_recorder_mode": null,
+        "expert_distribution_recorder_buffer_size": 1000,
+        "enable_expert_distribution_metrics": false,
+        "deepep_config": null,
+        "moe_dense_tp_size": null,
+        "elastic_ep_backend": null,
+        "enable_elastic_expert_backup": false,
+        "mooncake_ib_device": null,
+        "enable_deepep_waterfill": false,
+        "elastic_ep_rejoin": false,
+        "disable_flashinfer_cutlass_moe_fp4_allgather": false,
+        "disable_shared_experts_fusion": true,
+        "enforce_shared_experts_fusion": false,
+        "max_mamba_cache_size": null,
+        "mamba_ssm_dtype": null,
+        "enable_mamba_cache_stochastic_rounding": false,
+        "mamba_cache_philox_rounds": 0,
+        "mamba_full_memory_ratio": 0.9,
+        "mamba_radix_cache_strategy": "auto",
+        "uses_mamba_radix_cache": false,
+        "mamba_track_interval": 256,
+        "enable_int8_mamba_checkpoint": false,
+        "int8_mamba_ckpt_size": null,
+        "linear_attn_backend": "triton",
+        "linear_attn_decode_backend": null,
+        "linear_attn_prefill_backend": null,
+        "enable_linear_replayssm": false,
+        "linear_replayssm_cache_len": 16,
+        "enable_hierarchical_cache": false,
+        "hicache_ratio": 2.0,
+        "hicache_size": 0,
+        "hicache_write_policy": "write_through",
+        "hicache_io_backend": "kernel",
+        "hicache_mem_layout": "page_first",
+        "hicache_storage_backend": null,
+        "hicache_storage_prefetch_policy": "timeout",
+        "hicache_storage_backend_extra_config": null,
+        "enable_hisparse": false,
+        "hisparse_config": null,
+        "enable_broadcast_mm_inputs_process": false,
+        "enable_prefix_mm_cache": false,
+        "mm_enable_dp_encoder": false,
+        "mm_process_config": {},
+        "limit_mm_data_per_request": null,
+        "enable_mm_global_cache": false,
+        "disable_fast_image_processor": false,
+        "keep_mm_feature_on_device": false,
+        "enable_lora": null,
+        "enable_lora_overlap_loading": null,
+        "max_lora_rank": null,
+        "lora_target_modules": null,
+        "lora_paths": null,
+        "max_loaded_loras": null,
+        "max_loras_per_batch": 8,
+        "lora_eviction_policy": "lru",
+        "lora_backend": "csgmv",
+        "max_lora_chunk_size": 16,
+        "experts_shared_outer_loras": null,
+        "lora_use_virtual_experts": false,
+        "lora_strict_loading": false,
+        "lora_drain_wait_threshold": 0.0,
+        "enable_two_batch_overlap": false,
+        "enable_single_batch_overlap": false,
+        "tbo_token_distribution_threshold": 0.48,
+        "cpu_offload_gb": 0,
+        "offload_group_size": -1,
+        "offload_num_in_group": 1,
+        "offload_prefetch_step": 1,
+        "offload_mode": "cpu",
+        "enable_lmcache": false,
+        "lmcache_config_file": null,
+        "kt_weight_path": null,
+        "kt_method": "AMXINT4",
+        "kt_cpuinfer": null,
+        "kt_threadpool_count": 2,
+        "kt_num_gpu_experts": null,
+        "kt_max_deferred_experts_per_token": null,
+        "dllm_algorithm": null,
+        "dllm_algorithm_config": null,
+        "disaggregation_mode": "null",
+        "disaggregation_transfer_backend": "mooncake",
+        "disaggregation_bootstrap_port": 8998,
+        "disaggregation_ib_device": null,
+        "disaggregation_decode_enable_radix_cache": false,
+        "disaggregation_decode_enable_offload_kvcache": false,
+        "num_reserved_decode_tokens": 512,
+        "disaggregation_decode_extra_slots": null,
+        "disaggregation_decode_polling_interval": 1,
+        "optimistic_prefill_retries": 0,
+        "encoder_only": false,
+        "language_only": false,
+        "encoder_transfer_backend": "zmq_to_scheduler",
+        "encoder_urls": [],
+        "encoder_bootstrap_port": 8997,
+        "encoder_register_urls": [],
+        "enable_adaptive_dispatch_to_encoder": false,
+        "enable_pdmux": false,
+        "pdmux_config_path": null,
+        "sm_group_num": 8,
+        "custom_weight_loader": [],
+        "weight_loader_disable_mmap": false,
+        "weight_loader_prefetch_checkpoints": false,
+        "weight_loader_prefetch_num_threads": 4,
+        "weight_loader_drop_cache_after_load": false,
+        "remote_instance_weight_loader_seed_instance_ip": null,
+        "remote_instance_weight_loader_seed_instance_service_port": null,
+        "remote_instance_weight_loader_send_weights_group_ports": null,
+        "remote_instance_weight_loader_backend": "nccl",
+        "remote_instance_weight_loader_start_seed_via_transfer_engine": false,
+        "engine_info_bootstrap_port": 6789,
+        "modelexpress_config": null,
+        "download_dir": null,
+        "model_checksum": null,
+        "delete_ckpt_after_loading": false,
+        "decrypted_config_file": null,
+        "decrypted_draft_config_file": null,
+        "checkpoint_engine_wait_weights_before_ready": false,
+        "enable_prefill_delayer": true,
+        "prefill_delayer_max_delay_passes": 30,
+        "prefill_delayer_token_usage_low_watermark": null,
+        "prefill_delayer_forward_passes_buckets": null,
+        "prefill_delayer_wait_seconds_buckets": null,
+        "prefill_delayer_queue_min_ratio": 0.15,
+        "prefill_delayer_max_delay_ms": 350.0,
+        "min_free_slots_delay": null,
+        "enable_deterministic_inference": false,
+        "rl_on_policy_target": null,
+        "kv_canary": "none",
+        "kv_canary_real_data": "none",
+        "kv_canary_sweep_interval": 0,
+        "enable_dynamic_batch_tokenizer": false,
+        "dynamic_batch_tokenizer_batch_size": 32,
+        "dynamic_batch_tokenizer_batch_timeout": 0.002,
+        "enable_tokenizer_batch_encode": false,
+        "disable_tokenizer_batch_decode": false,
+        "debug_tensor_dump_output_folder": null,
+        "debug_tensor_dump_layers": null,
+        "debug_tensor_dump_input_file": null,
+        "enable_memory_saver": false,
+        "enable_weights_cpu_backup": false,
+        "enable_draft_weights_cpu_backup": false,
+        "enable_custom_logit_processor": false,
+        "enable_return_hidden_states": false,
+        "enable_return_routed_experts": false,
+        "enable_return_indexer_topk": false,
+        "disable_outlines_disk_cache": false,
+        "enable_mis": false,
+        "forward_hooks": null,
+        "msprobe_dump_config": null,
+        "_resolved_overrides": [
+          [
+            "_flashinfer_allreduce_fusion_auto_enable",
+            {
+              "flashinfer_allreduce_fusion_backend": "auto"
+            }
+          ],
+          [
+            "_enforce_disable_allreduce_fusion",
+            {
+              "flashinfer_allreduce_fusion_backend": null
+            }
+          ],
+          [
+            "_sampling_backend_default",
+            {
+              "sampling_backend": "flashinfer"
+            }
+          ],
+          [
+            "_mla_backend_page_constraints",
+            {
+              "page_size": 64
+            }
+          ],
+          [
+            "_data_parallelism_defaults",
+            {
+              "enable_dp_attention": false,
+              "enable_dp_lm_head": false
+            }
+          ],
+          [
+            "_moe_runner_fusion_disable",
+            {
+              "disable_shared_experts_fusion": true
+            }
+          ],
+          [
+            "_speculative_moe_runner_default",
+            {
+              "speculative_moe_runner_backend": "flashinfer_trtllm"
+            }
+          ]
+        ],
+        "enable_grpc": false,
+        "grpc_port": 40080,
+        "_quantization_explicitly_unset": false,
+        "_cuda_graph_config_locked": [
+          [
+            "prefill",
+            "backend"
+          ],
+          [
+            "decode",
+            "bs"
+          ],
+          [
+            "decode",
+            "backend"
+          ]
+        ],
+        "_declarations_materialized": true,
+        "_mx_config_cache": {},
+        "max_speculative_num_draft_tokens": null,
+        "last_gen_throughput": 0.0,
+        "memory_usage": {
+          "weight": 159.76,
+          "kvcache": 12.93,
+          "token_capacity": 197440,
+          "graph": 0.42
+        },
+        "effective_max_running_requests_per_dp": 128
+      }
+    ],
+    "version": "0.5.15.post1",
+    "kv_events": null
+  },
+  "effective_configuration_source": "live formal server endpoint",
+  "model_config_sha256": "79ddea672a62e95d3f0be27be434375538e1988975971cffcf87c96c1de84a65",
+  "generation_log_sha256": "7dafe6c18982c4cfa6be1d9bff0884e4ec6c0b5e24686efdde2d87e23a8e7df7",
+  "requests_used_sha256": "31f8bc6d104187042daf3319d90eb592bbf9a2ad25e8202cc290bfc673abb782",
+  "launcher_sha256": "aabf81dba3092f646ab89b05e45df392c008cfdd782e582ec772413a39b1040b",
+  "profile_throughputs": {
+    "burst": 2.986369505745686,
+    "poisson": 2.0964516408101894,
+    "constant": 1.229497081252001
+  },
+  "optimization_budget_seconds": 7200,
+  "solver_exit_code": 124,
+  "solver_budget_consumed": true,
+  "last_remaining_seconds": 0,
+  "skills_treatment": true,
+  "skill_evidence": {
+    "optimization_evaluations": 15,
+    "optimization_evaluations_with_analysis": 15,
+    "post_budget_evaluations": 1,
+    "trials": [
+      {
+        "trial": "agent/run_20261006_230846/trials/trial_0001/trial.json",
+        "started_at": "2026-10-06T23:17:05.985758+00:00",
+        "during_optimization": true,
+        "status": "completed",
+        "passed": false,
+        "analysis_present": true,
+        "analysis_bytes": 1520
+      },
+      {
+        "trial": "agent/run_20261006_230846/trials/trial_0002/trial.json",
+        "started_at": "2026-10-06T23:20:16.721664+00:00",
+        "during_optimization": true,
+        "status": "completed",
+        "passed": true,
+        "analysis_present": true,
+        "analysis_bytes": 1912
+      },
+      {
+        "trial": "agent/run_20261006_230846/trials/trial_0003/trial.json",
+        "started_at": "2026-10-06T23:21:25.823281+00:00",
+        "during_optimization": true,
+        "status": "completed",
+        "passed": true,
+        "analysis_present": true,
+        "analysis_bytes": 4879
+      },
+      {
+        "trial": "agent/run_20261006_230846/trials/trial_0004/trial.json",
+        "started_at": "2026-10-06T23:36:46.102179+00:00",
+        "during_optimization": true,
+        "status": "completed",
+        "passed": true,
+        "analysis_present": true,
+        "analysis_bytes": 1513
+      },
+      {
+        "trial": "agent/run_20261006_230846/trials/trial_0005/trial.json",
+        "started_at": "2026-10-06T23:38:15.384588+00:00",
+        "during_optimization": true,
+        "status": "completed",
+        "passed": true,
+        "analysis_present": true,
+        "analysis_bytes": 4201
+      },
+      {
+        "trial": "agent/run_20261006_230846/trials/trial_0006/trial.json",
+        "started_at": "2026-10-06T23:52:16.681612+00:00",
+        "during_optimization": true,
+        "status": "completed",
+        "passed": true,
+        "analysis_present": true,
+        "analysis_bytes": 1847
+      },
+      {
+        "trial": "agent/run_20261006_230846/trials/trial_0007/trial.json",
+        "started_at": "2026-10-06T23:55:17.092155+00:00",
+        "during_optimization": true,
+        "status": "completed",
+        "passed": true,
+        "analysis_present": true,
+        "analysis_bytes": 3662
+      },
+      {
+        "trial": "agent/run_20261006_230846/trials/trial_0008/trial.json",
+        "started_at": "2026-10-07T00:09:13.785273+00:00",
+        "during_optimization": true,
+        "status": "completed",
+        "passed": true,
+        "analysis_present": true,
+        "analysis_bytes": 1362
+      },
+      {
+        "trial": "agent/run_20261006_230846/trials/trial_0009/trial.json",
+        "started_at": "2026-10-07T00:10:47.241837+00:00",
+        "during_optimization": true,
+        "status": "completed",
+        "passed": false,
+        "analysis_present": true,
+        "analysis_bytes": 3706
+      },
+      {
+        "trial": "agent/run_20261006_230846/trials/trial_0010/trial.json",
+        "started_at": "2026-10-07T00:28:42.303739+00:00",
+        "during_optimization": true,
+        "status": "completed",
+        "passed": true,
+        "analysis_present": true,
+        "analysis_bytes": 1417
+      },
+      {
+        "trial": "agent/run_20261006_230846/trials/trial_0011/trial.json",
+        "started_at": "2026-10-07T00:30:12.302005+00:00",
+        "during_optimization": true,
+        "status": "completed",
+        "passed": true,
+        "analysis_present": true,
+        "analysis_bytes": 3927
+      },
+      {
+        "trial": "agent/run_20261006_230846/trials/trial_0012/trial.json",
+        "started_at": "2026-10-07T00:43:42.889268+00:00",
+        "during_optimization": true,
+        "status": "completed",
+        "passed": true,
+        "analysis_present": true,
+        "analysis_bytes": 1463
+      },
+      {
+        "trial": "agent/run_20261006_230846/trials/trial_0013/trial.json",
+        "started_at": "2026-10-07T00:45:52.885314+00:00",
+        "during_optimization": true,
+        "status": "completed",
+        "passed": true,
+        "analysis_present": true,
+        "analysis_bytes": 2672
+      },
+      {
+        "trial": "agent/run_20261006_230846/trials/trial_0014/trial.json",
+        "started_at": "2026-10-07T00:59:02.395101+00:00",
+        "during_optimization": true,
+        "status": "completed",
+        "passed": true,
+        "analysis_present": true,
+        "analysis_bytes": 985
+      },
+      {
+        "trial": "agent/run_20261006_230846/trials/trial_0015/trial.json",
+        "started_at": "2026-10-07T00:59:49.686503+00:00",
+        "during_optimization": true,
+        "status": "completed",
+        "passed": true,
+        "analysis_present": true,
+        "analysis_bytes": 2674
+      },
+      {
+        "trial": "agent/run_20261006_230846/trials/trial_0016/trial.json",
+        "started_at": "2026-10-07T01:08:47.482424+00:00",
+        "during_optimization": false,
+        "status": "completed",
+        "passed": true,
+        "analysis_present": false,
+        "analysis_bytes": 0
+      }
+    ],
+    "actual_toolkit_function_calls": [
+      {
+        "timestamp": "2026-10-06T23:09:10.675Z",
+        "call_id": "call_l6cM690FUwEMWUlROcR1eJm1",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/model-pr-optimization-history/SKILL.md",
+          "/opt/ai-infra-skills/skills/llm-serving-auto-benchmark/SKILL.md",
+          "/opt/ai-infra-skills/skills/llm-serving-capacity-planner/SKILL.md",
+          "/opt/ai-infra-skills/skills/llm-torch-profiler-analysis/SKILL.md"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:09:22.960Z",
+        "call_id": "call_Bg15x0DrfHXfBd4xFXSIcsmG",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/docs/upstream-source-contracts.md",
+          "/opt/ai-infra-skills/model-pr-optimization-history/scripts/query.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:09:33.551Z",
+        "call_id": "call_4qqsaidfVaGzuptAZBgzK5KK",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/docs/upstream-source-contracts.md",
+          "/opt/ai-infra-skills/model-pr-optimization-history/sglang/deepseek-v3-r1/README.en.md"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:09:47.974Z",
+        "call_id": "call_f9HXz0dET29sfFjql8Lt0Bli",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/model-pr-optimization-history/sglang/deepseek-v3-r1/README.en.md"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:10:02.706Z",
+        "call_id": "call_5Ll5E3VBKAn4PC71WiixV4Bz",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/model-pr-optimization-history/sglang/deepseek-v3-r1/README.en.md"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:10:28.407Z",
+        "call_id": "call_hafqBX6Qdkr3iDZD4YxWoHnv",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/model-pr-optimization-history/sglang/deepseek-v3-r1/README.en.md"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:10:43.345Z",
+        "call_id": "call_RqxSSblU774QkUH7FNg8fkSV",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/model-pr-optimization-history/sglang/deepseek-v3-r1/README.en.md"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:11:45.285Z",
+        "call_id": "call_UOdDESkPmsbqTIhiwJPPxTA8",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/docs/upstream-source-contracts.md",
+          "/opt/ai-infra-skills/model-pr-optimization-history/SKILL.md"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:12:04.774Z",
+        "call_id": "call_14Py0ajZiuAYNcEas0x1CIe8",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/llm-torch-profiler-analysis/references/",
+          "/opt/ai-infra-skills/skills/llm-torch-profiler-analysis/scripts/analyze_llm_torch_profile.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:12:20.109Z",
+        "call_id": "call_1M6tyDIJAPfZ0IKyz3hABsFv",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/llm-torch-profiler-analysis/references/",
+          "/opt/ai-infra-skills/skills/llm-torch-profiler-analysis/scripts/analyze_llm_torch_profile.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:12:36.280Z",
+        "call_id": "call_zNYxLgnfX4Hu6X82XuaJSCeN",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/llm-torch-profiler-analysis/scripts/analyze_llm_torch_profile.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:13:11.845Z",
+        "call_id": "call_1LrhoS3asloSMt2cb1VBYWPZ",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/llm-torch-profiler-analysis/scripts/analyze_llm_torch_profile.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:14:36.506Z",
+        "call_id": "call_6MKowb9SyCvkqDYYATNE9EI5",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/llm-torch-profiler-analysis/references/fuse-overlap-catalog.md",
+          "/opt/ai-infra-skills/skills/llm-torch-profiler-analysis/references/overlap-catalog.md"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:15:01.674Z",
+        "call_id": "call_4uzMhgSAUUSIFOwiV1OYiDlu",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/llm-torch-profiler-analysis/scripts"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:15:34.275Z",
+        "call_id": "call_3oXVqxFvj4PohHPg9Gy3Yt1o",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/llm-torch-profiler-analysis/references/overlap-catalog.md"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:19:20.442Z",
+        "call_id": "call_TjbF3SCU0sUbWYTMFXXXqDSs",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/model-pr-optimization-history/SKILL.md",
+          "/opt/ai-infra-skills/skills/"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:20:31.468Z",
+        "call_id": "call_5Nt3YlcHSNu1D1rc43HM70MJ",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/llm-serving-capacity-planner/scripts/capacity_analyzer.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:20:56.073Z",
+        "call_id": "call_CPHogLTi5METaDT9bA7Egeqs",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/llm-serving-auto-benchmark/references/result-schema.md",
+          "/opt/ai-infra-skills/skills/llm-torch-profiler-analysis/references/heuristics.md"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:22:43.666Z",
+        "call_id": "call_hHDe822vN2zY4XuikEYRpZlr",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/llm-serving-auto-benchmark/SKILL.md"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:23:24.557Z",
+        "call_id": "call_uAg7FocwBpwkqvqS3sgqf0YG",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/model-compute-simulation/scripts/model_compute_simulator.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:25:27.755Z",
+        "call_id": "call_V5JfelOJkDkySbYmtGbVrneU",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/llm-torch-profiler-analysis/scripts/analyze_llm_torch_profile.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:26:19.769Z",
+        "call_id": "call_mhz05fIJiqWluXvsh3Z70Nms",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/model-pr-optimization-history/sglang/deepseek-v3-r1/README.en.md"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:27:12.372Z",
+        "call_id": "call_pedmyy8YLo4pnN2asVHV171y",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/model-compute-simulation/scripts/model_compute_simulator.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:27:35.371Z",
+        "call_id": "call_fRJAM1FVKmhSlCIZMyVDN68V",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/llm-pipeline-analysis/scripts/layer_timeline_analyzer.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:31:26.010Z",
+        "call_id": "call_eNxCVo6gEjS42H8poOqYZzM9",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/llm-pipeline-analysis/SKILL.md"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:31:51.723Z",
+        "call_id": "call_9lJLP8TLBsujwjQ7LmSqrUaW",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/llm-pipeline-analysis/scripts/layer_kernel_breakdown.py",
+          "/opt/ai-infra-skills/skills/llm-pipeline-analysis/scripts/layer_timeline_analyzer.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:33:18.234Z",
+        "call_id": "call_XIzY44qVyV0u0c4iZ2bXQ0Ku",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/llm-torch-profiler-analysis/scripts/analyze_llm_torch_profile.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:35:08.385Z",
+        "call_id": "call_cta0Qf8Ebp3RoOZI07QbzS4m",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/llm-serving-auto-benchmark/scripts/compare_benchmark_results.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:38:01.098Z",
+        "call_id": "call_qwjdLtZ5hxevodpF7MeviXqm",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/model-pr-optimization-history/sglang/deepseek-v3-r1/README.en.md"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:38:58.947Z",
+        "call_id": "call_lR8pjfRF32WsCaSGh99eI6Cd",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/llm-torch-profiler-analysis/scripts/analyze_llm_torch_profile.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:41:57.339Z",
+        "call_id": "call_BRKGo374cbh5czWSX5lqA0cA",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/model-pr-optimization-history/sglang/deepseek-v3-r1/README.en.md"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:49:20.778Z",
+        "call_id": "call_J4R5zuNRizhfKXuDPKgVeeyd",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/llm-serving-auto-benchmark/scripts/compare_benchmark_results.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:49:47.984Z",
+        "call_id": "call_kwJy5kEMdCNRlN3eHygEQpHk",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/llm-torch-profiler-analysis/scripts/profile_common.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:54:50.856Z",
+        "call_id": "call_wXh4noFXEGQmOKspMABrYjLi",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:55:00.971Z",
+        "call_id": "call_EvNQMK84FzirlA4zB4xQHBxW",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/llm-serving-auto-benchmark/SKILL.md",
+          "/opt/ai-infra-skills/skills/llm-torch-profiler-analysis/SKILL.md"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:55:38.304Z",
+        "call_id": "call_aptc1x37LIBb4zSdr20inZAf",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/llm-serving-capacity-planner/SKILL.md",
+          "/opt/ai-infra-skills/skills/model-pr-history-knowledge/SKILL.md"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:56:15.012Z",
+        "call_id": "call_SMj4045lo9w0hy0v8WAFHoyy",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/model-pr-history-knowledge/SKILL.md"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:56:26.615Z",
+        "call_id": "call_2Oroptzt58T77rLtK1ddbUy0",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/model-pr-optimization-history/SKILL.md"
+        ]
+      },
+      {
+        "timestamp": "2026-10-06T23:57:19.840Z",
+        "call_id": "call_72wVwUBhKzIXajUbZhVVS6SD",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/model-pr-optimization-history",
+          "/opt/ai-infra-skills/skills/llm-torch-profiler-analysis/references/overlap-catalog.md"
+        ]
+      },
+      {
+        "timestamp": "2026-10-07T00:01:08.292Z",
+        "call_id": "call_pebDkACKfp1GnygCPcYlNNmy",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/model-pr-optimization-history"
+        ]
+      },
+      {
+        "timestamp": "2026-10-07T00:03:55.136Z",
+        "call_id": "call_tnuBknGINLz9JOOmLYOzVdU9",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/llm-serving-auto-benchmark/scripts/compare_benchmark_results.py",
+          "/opt/ai-infra-skills/skills/llm-torch-profiler-analysis/scripts/analyze_llm_torch_profile.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-07T00:06:01.332Z",
+        "call_id": "call_V8hb42R3UTu0q67CDy6XMYVM",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/model-compute-simulation/SKILL.md"
+        ]
+      },
+      {
+        "timestamp": "2026-10-07T00:07:20.418Z",
+        "call_id": "call_wnUEZFPFwNcOOHJU3mTshvh3",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/model-compute-simulation/scripts/model_compute_simulator.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-07T00:07:31.829Z",
+        "call_id": "call_9BFRpNVYLJjAXyvFOFnmzsxN",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/model-compute-simulation/scripts/model_compute_simulator.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-07T00:07:58.056Z",
+        "call_id": "call_gegSfLYdBY1mAfBfEI6zrD1f",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/model-compute-simulation/scripts/model_compute_simulator.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-07T00:08:20.459Z",
+        "call_id": "call_tenp31OV6mNVOULdFmdfpMIi",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/model-compute-simulation/scripts/model_compute_simulator.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-07T00:11:11.128Z",
+        "call_id": "call_RmSgpIbsSFBtLVAvedT2DrJz",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/model-compute-simulation/scripts/model_compute_simulator.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-07T00:15:35.987Z",
+        "call_id": "call_hOJvYLvmFx2sjV3xnnk6U6Yd",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/llm-serving-auto-benchmark/scripts/compare_benchmark_results.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-07T00:21:14.651Z",
+        "call_id": "call_7j4L2UZoT1Or1vvW1sU64D49",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/sglang-prod-incident-triage/SKILL.md"
+        ]
+      },
+      {
+        "timestamp": "2026-10-07T00:21:45.740Z",
+        "call_id": "call_D94IaUG0RRMz9K1c7FnusBkS",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/sglang-prod-incident-triage/scripts/incident_artifact_tool.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-07T00:23:14.581Z",
+        "call_id": "call_MF5rG0YYV4MUI0LLkNGP4lGL",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/sglang-prod-incident-triage/scripts/incident_artifact_tool.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-07T00:24:44.848Z",
+        "call_id": "call_gVVMVuZylC5vIcibtpwaIWCg",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/sglang-prod-incident-triage/scripts/incident_artifact_tool.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-07T00:38:01.643Z",
+        "call_id": "call_b6FIE1awiQ8gXsVhNzWjIHWq",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/llm-torch-profiler-analysis/scripts/analyze_llm_torch_profile.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-07T00:53:40.873Z",
+        "call_id": "call_8QSbsTMxIRayFIu58CvR8RyL",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/llm-torch-profiler-analysis/scripts/analyze_llm_torch_profile.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-07T01:01:42.196Z",
+        "call_id": "call_I6SLXFZDh9o0ye5KgUH1pX3c",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/llm-serving-auto-benchmark/scripts/compare_benchmark_results.py"
+        ]
+      },
+      {
+        "timestamp": "2026-10-07T01:04:31.026Z",
+        "call_id": "call_ZXLadBWWXsdg1sXSXeX7KisN",
+        "tool": "exec_command",
+        "toolkit_paths": [
+          "/opt/ai-infra-skills/skills/llm-serving-auto-benchmark/scripts/compare_benchmark_results.py",
+          "/opt/ai-infra-skills/skills/llm-torch-profiler-analysis/scripts/analyze_llm_torch_profile.py"
+        ]
+      }
+    ],
+    "codex_sessions": [
+      {
+        "file": "sessions/2026/10/06/rollout-2026-10-06T23-08-47-01a1137a-083c-7b81-8519-1b318cdb5b1b.jsonl",
+        "sha256": "ced4b1fe768cc704058222477c37c8ed8a4eeb7b5ca1507aea27a374d7a66f3a"
+      }
+    ],
+    "model_contexts": [
+      {
+        "model": "gpt-6.1-sol",
+        "effort": "max",
+        "count": 2
+      }
+    ],
+    "trace_artifacts": [
+      {
+        "path": "agent/run_20261006_230846/configs/c06_nccl_tree/profile_b16/decode-TP-3.trace.json.gz",
+        "bytes": 252761,
+        "sha256": "d09b7f5bda94f6f42d08645436467b704d798a1787caac31a3884a58350e83b1",
+        "gpu_kernel_events": 4270,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c06_nccl_tree/profile_b16/decode-TP-2.trace.json.gz",
+        "bytes": 253086,
+        "sha256": "b679d2a8d4777a9531b1e094cbc94f1fee29f6bf2ea09572e4852e9070c29826",
+        "gpu_kernel_events": 4270,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c06_nccl_tree/profile_b16/decode-TP-0.trace.json.gz",
+        "bytes": 259755,
+        "sha256": "8905de4bfbbdd7f7e6a251cb99425444b07ce11d0372a3ad9175373c2ba38968",
+        "gpu_kernel_events": 4270,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c06_nccl_tree/profile_b16/decode-TP-1.trace.json.gz",
+        "bytes": 252957,
+        "sha256": "e94a2c165c540b5885557ba1f9ef21a00d89472662d87e23ec5ae46bcfbe5e29",
+        "gpu_kernel_events": 4270,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c06_nccl_tree/profile_b64/both-TP-0-DECODE.trace.json.gz",
+        "bytes": 470181,
+        "sha256": "e382465198ba95fe0534541ccab13246a0fea2bd641bff391d01376793a33b11",
+        "gpu_kernel_events": 6409,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c06_nccl_tree/profile_b64/both-TP-3-EXTEND.trace.json.gz",
+        "bytes": 11643749,
+        "sha256": "cd8e6effd3ba40766cbf91ca176bdaf67957fb7c2f4ea3021bfedaa64a220505",
+        "gpu_kernel_events": 6594,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c06_nccl_tree/profile_b64/both-TP-3-DECODE.trace.json.gz",
+        "bytes": 445787,
+        "sha256": "e91c3d84251da6ba7882f0d6b754d7ab18f0f4ee3eb0fe514d024f52297fb3ae",
+        "gpu_kernel_events": 6409,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c06_nccl_tree/profile_b64/both-TP-1-EXTEND.trace.json.gz",
+        "bytes": 11643482,
+        "sha256": "cfc061ae52e9b07e626de7c46cbd5d2a3e9a90857201b310d409182635bd5ebf",
+        "gpu_kernel_events": 6594,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c06_nccl_tree/profile_b64/both-TP-2-DECODE.trace.json.gz",
+        "bytes": 445207,
+        "sha256": "82b99c3ee53e156c92765ae4d6e6f67181673d85c59aceb83ae173536ab893c0",
+        "gpu_kernel_events": 6409,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c06_nccl_tree/profile_b64/both-TP-2-EXTEND.trace.json.gz",
+        "bytes": 11654317,
+        "sha256": "582b9260eeea5aa8ed3c243ee358d3ab0c10702120f799d8f6269f384404ceea",
+        "gpu_kernel_events": 6594,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c06_nccl_tree/profile_b64/both-TP-0-EXTEND.trace.json.gz",
+        "bytes": 11693116,
+        "sha256": "9c52937e46ad211f68af3e301fd8ffb0bdd856f572d8511b01f3884e67a0a019",
+        "gpu_kernel_events": 6594,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c06_nccl_tree/profile_b64/both-TP-1-DECODE.trace.json.gz",
+        "bytes": 441475,
+        "sha256": "8fc57626a10629cf2a7b02fceba936c0c1e50a0423cea84dc614af2611655020",
+        "gpu_kernel_events": 6409,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c05_final_validation/profile_b16/decode-TP-3.trace.json.gz",
+        "bytes": 252440,
+        "sha256": "427d086641b7668bf69bfb4e2b6159acb002e45f972250ace2bb1d6606b5528e",
+        "gpu_kernel_events": 4270,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c05_final_validation/profile_b16/decode-TP-2.trace.json.gz",
+        "bytes": 252832,
+        "sha256": "bc29ad69850a08eb00c74308dc20f9cc7363e58a08eea0365edcf3d6ef1fcf0e",
+        "gpu_kernel_events": 4270,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c05_final_validation/profile_b16/decode-TP-0.trace.json.gz",
+        "bytes": 256325,
+        "sha256": "33e1e35692827e1012cc487bf592dbdad69a67bfd7eb3e75168b361ba1be14f4",
+        "gpu_kernel_events": 4270,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c05_final_validation/profile_b16/decode-TP-1.trace.json.gz",
+        "bytes": 252973,
+        "sha256": "b0d7a10da3d223b9aa5633c3224fe6e93e7ab232b9687b7b81b0133ae1b8bb52",
+        "gpu_kernel_events": 4270,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c05_final_validation/profile_b64/both-TP-0-DECODE.trace.json.gz",
+        "bytes": 457612,
+        "sha256": "64f71f9cadc7bbe85374b5b7b332c9a340acdac1bebcd368a11a66c3976386e5",
+        "gpu_kernel_events": 6409,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c05_final_validation/profile_b64/both-TP-3-EXTEND.trace.json.gz",
+        "bytes": 11642571,
+        "sha256": "521c76ab5d14a8bb8201226b7376b70d85f58b82110b4e56e71e159e984a2b9d",
+        "gpu_kernel_events": 6594,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c05_final_validation/profile_b64/both-TP-3-DECODE.trace.json.gz",
+        "bytes": 441478,
+        "sha256": "9a7e1788b90b0549d7f86b395e8a847e29d1e07825f0b285a4c4dfeb7c4396d6",
+        "gpu_kernel_events": 6409,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c05_final_validation/profile_b64/both-TP-1-EXTEND.trace.json.gz",
+        "bytes": 11645112,
+        "sha256": "ed0b402640ffc8a2a7af79e0984d64144ed89753c462c065b8605adc7f98c8ed",
+        "gpu_kernel_events": 6594,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c05_final_validation/profile_b64/both-TP-2-DECODE.trace.json.gz",
+        "bytes": 443596,
+        "sha256": "3265ff59b11e0e28bf8de5f50182561423b95d61b1527a29871b2c7899dccb35",
+        "gpu_kernel_events": 6409,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c05_final_validation/profile_b64/both-TP-2-EXTEND.trace.json.gz",
+        "bytes": 11643743,
+        "sha256": "a0942fe816af8f483a68d20b3f169dc220364aed7f6757121c3f5499e7cbd2e4",
+        "gpu_kernel_events": 6594,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c05_final_validation/profile_b64/both-TP-0-EXTEND.trace.json.gz",
+        "bytes": 11691942,
+        "sha256": "36d4a993e04385883e733c27f7558d8b2742e23a96e62d5c48e7b4712e6b574f",
+        "gpu_kernel_events": 6594,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c05_final_validation/profile_b64/both-TP-1-DECODE.trace.json.gz",
+        "bytes": 459559,
+        "sha256": "89579713b1fb1dcc299f164c30fe79636826bc4ceb9aa6f736e76c0a0cc0800b",
+        "gpu_kernel_events": 6409,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c03_prefill_batching/profile_b16/decode-TP-3.trace.json.gz",
+        "bytes": 252541,
+        "sha256": "c7ccf5a829e9097bb3ab6cd442924d08b0fe0b24cf65f8bd7484f989498be6fe",
+        "gpu_kernel_events": 4270,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c03_prefill_batching/profile_b16/decode-TP-2.trace.json.gz",
+        "bytes": 252654,
+        "sha256": "2f23b9d711e7fe7ad65ceefe7d3af8296a0b326b4cce70885abd6c4631dd4066",
+        "gpu_kernel_events": 4270,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c03_prefill_batching/profile_b16/decode-TP-0.trace.json.gz",
+        "bytes": 256194,
+        "sha256": "cf60b4558970cc4f8fcb5e1dc93ecba5bbf6d67d5f9a7153a41df639f5ea822d",
+        "gpu_kernel_events": 4270,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c03_prefill_batching/profile_b16/decode-TP-1.trace.json.gz",
+        "bytes": 252594,
+        "sha256": "ae18682fe0f13a5d7f0a514d4652573148161d278a1fbdb74a0a3012a5fc817f",
+        "gpu_kernel_events": 4270,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c03_prefill_batching/profile_b64/both-TP-0-DECODE.trace.json.gz",
+        "bytes": 433518,
+        "sha256": "644512fddefb3b56d85c89d7bef2d44ffe0711c4c15e28c0c393d10e56dba432",
+        "gpu_kernel_events": 6395,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c03_prefill_batching/profile_b64/both-TP-3-EXTEND.trace.json.gz",
+        "bytes": 11631515,
+        "sha256": "c510d2b8124c135f50fe871c8d7f5b3102289695a0cac2f3ca4479f7f1f8f772",
+        "gpu_kernel_events": 6594,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c03_prefill_batching/profile_b64/both-TP-3-DECODE.trace.json.gz",
+        "bytes": 423961,
+        "sha256": "a1a45a2617fd91874d0c8ae0a8babbfdd00fbb20f193509faed208ca1215dca9",
+        "gpu_kernel_events": 6395,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c03_prefill_batching/profile_b64/both-TP-1-EXTEND.trace.json.gz",
+        "bytes": 11634028,
+        "sha256": "3beef60a6afadb02eee8daa96e69f2a827793aa9eeb446ac02330a4af6d0911b",
+        "gpu_kernel_events": 6594,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c03_prefill_batching/profile_b64/both-TP-2-DECODE.trace.json.gz",
+        "bytes": 424185,
+        "sha256": "80b2fe81654a266d4405348f5a8f61136d5507bd2ec44ca89bb2f9d4b860e763",
+        "gpu_kernel_events": 6395,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c03_prefill_batching/profile_b64/both-TP-2-EXTEND.trace.json.gz",
+        "bytes": 11654556,
+        "sha256": "5109a9be32f32198c03d1aab54b5391d4afcc16a555904bee21267852d7143e9",
+        "gpu_kernel_events": 6594,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c03_prefill_batching/profile_b64/both-TP-0-EXTEND.trace.json.gz",
+        "bytes": 11689220,
+        "sha256": "7173cb5b5cc983f63600f6cf9057ca332c19204e39cc1db772a80c3150878944",
+        "gpu_kernel_events": 6594,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c03_prefill_batching/profile_b64/both-TP-1-DECODE.trace.json.gz",
+        "bytes": 420920,
+        "sha256": "33ec70aa770c194e89553ae9c436914b2d31b0d63c4f9a0a4f2a55ea37a8dd40",
+        "gpu_kernel_events": 6395,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c05_coherent_prefill/profile_b16/decode-TP-3.trace.json.gz",
+        "bytes": 252610,
+        "sha256": "d0a2e0e3081d48a9b136f732b1f8ebf9d0cef10781d8e445ad3735ef7feb2ca0",
+        "gpu_kernel_events": 4270,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c05_coherent_prefill/profile_b16/decode-TP-2.trace.json.gz",
+        "bytes": 252983,
+        "sha256": "203f1b5e4eb4d90009b40313bdf450e8015959f64c29cb520fac080a662e8b12",
+        "gpu_kernel_events": 4270,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c05_coherent_prefill/profile_b16/decode-TP-0.trace.json.gz",
+        "bytes": 256460,
+        "sha256": "abd88a6b7f5672a0892e2312f0598b8673659520b7a9406539f59e7034799f03",
+        "gpu_kernel_events": 4270,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c05_coherent_prefill/profile_b16/decode-TP-1.trace.json.gz",
+        "bytes": 252661,
+        "sha256": "29b2b0dad52af5537077fce13be6d04329eea119aaf3ed1e965f6a31318e9f15",
+        "gpu_kernel_events": 4270,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c05_coherent_prefill/profile_b64/both-TP-0-DECODE.trace.json.gz",
+        "bytes": 457068,
+        "sha256": "d9f89e772b3bf8ead768041697109e129a0e3374f08b4034b4b3d6e8a1f9c32a",
+        "gpu_kernel_events": 6409,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c05_coherent_prefill/profile_b64/both-TP-3-EXTEND.trace.json.gz",
+        "bytes": 11648756,
+        "sha256": "dbe69095e6140f8b989962eb6c54a6efe2492aa9fb25e94a3a7fb6a6e70561cc",
+        "gpu_kernel_events": 6594,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c05_coherent_prefill/profile_b64/both-TP-3-DECODE.trace.json.gz",
+        "bytes": 441020,
+        "sha256": "de72601d77c6dc1af3f609fcb94064606b0f5ec5b7b335bcec8a747c93818ae3",
+        "gpu_kernel_events": 6409,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c05_coherent_prefill/profile_b64/both-TP-1-EXTEND.trace.json.gz",
+        "bytes": 11627729,
+        "sha256": "814c667c3cf0467c44745fd0fbe7065c5c313a1d1896303f977ce8fdaa5847d5",
+        "gpu_kernel_events": 6594,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c05_coherent_prefill/profile_b64/both-TP-2-DECODE.trace.json.gz",
+        "bytes": 443680,
+        "sha256": "33ad88b8d4b61f87f88aad17e7a34fc1f53cf87d44b014d7b9e7a9abfa7a110f",
+        "gpu_kernel_events": 6409,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c05_coherent_prefill/profile_b64/both-TP-2-EXTEND.trace.json.gz",
+        "bytes": 11658918,
+        "sha256": "057a4fe8f92779ca4de90a00814caad45cb7f9aa9591966e58e2098b7b32392d",
+        "gpu_kernel_events": 6594,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c05_coherent_prefill/profile_b64/both-TP-0-EXTEND.trace.json.gz",
+        "bytes": 11702725,
+        "sha256": "3b69c2bba24b1777a41f9e97c8af023cd70ec7a2189d739d1dc92e717aecd123",
+        "gpu_kernel_events": 6594,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c05_coherent_prefill/profile_b64/both-TP-1-DECODE.trace.json.gz",
+        "bytes": 446123,
+        "sha256": "a5b854bde255ea1ae8913f7c1cefec0d3df19095149d7e4f46ede861af5d4161",
+        "gpu_kernel_events": 6409,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c01_baseline/profile_b16/decode-TP-3.trace.json.gz",
+        "bytes": 245950,
+        "sha256": "822a3cc11a5b4724bba39ede3f6629409301443748f14c057042868d30e829f9",
+        "gpu_kernel_events": 4270,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c01_baseline/profile_b16/decode-TP-2.trace.json.gz",
+        "bytes": 245502,
+        "sha256": "e1fffd256d374fc88b363246667ae5edefcca347cd2a77cb85674e5e7eca1582",
+        "gpu_kernel_events": 4270,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c01_baseline/profile_b16/decode-TP-0.trace.json.gz",
+        "bytes": 249221,
+        "sha256": "ea0c91d96302e4cace8f638ba14f0a852edd72c54480baaa52deb5a5df530205",
+        "gpu_kernel_events": 4270,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c01_baseline/profile_b16/decode-TP-1.trace.json.gz",
+        "bytes": 245496,
+        "sha256": "f7f85f72bc0a04659635ff06dea6f1f827440f49af05a9f4982c321ee4a89f6f",
+        "gpu_kernel_events": 4270,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c01_baseline/profile_b64/both-TP-0-DECODE.trace.json.gz",
+        "bytes": 428995,
+        "sha256": "0d483068033535b40b2a3e1376d802e7eba81c56239ecab43b171912c104ead5",
+        "gpu_kernel_events": 6396,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c01_baseline/profile_b64/both-TP-3-EXTEND.trace.json.gz",
+        "bytes": 11005365,
+        "sha256": "5fd33767390c6d2357067445b788dce9243e6efd2e81116f2d587d12b7cdf849",
+        "gpu_kernel_events": 6594,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c01_baseline/profile_b64/both-TP-3-DECODE.trace.json.gz",
+        "bytes": 421855,
+        "sha256": "59749a6f183f4d251119aa00e900b18d9fdeca8f51ae5203f12b83cefef0fec3",
+        "gpu_kernel_events": 6396,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c01_baseline/profile_b64/both-TP-1-EXTEND.trace.json.gz",
+        "bytes": 10997885,
+        "sha256": "fbbaca00c71dfa100ef0a6cbb0519297a8be3fa49d0ce8080b53d26fda884a6c",
+        "gpu_kernel_events": 6594,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c01_baseline/profile_b64/both-TP-2-DECODE.trace.json.gz",
+        "bytes": 422370,
+        "sha256": "4b23f3394ecd1972d429793bc215cc569499f88ced941ebca9d767c7acbd1097",
+        "gpu_kernel_events": 6396,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c01_baseline/profile_b64/both-TP-2-EXTEND.trace.json.gz",
+        "bytes": 11005510,
+        "sha256": "58e162e03f35abe218aa8725a4fd4b6d1a33e886dd5991bc90548e6bcc10a06f",
+        "gpu_kernel_events": 6594,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c01_baseline/profile_b64/both-TP-0-EXTEND.trace.json.gz",
+        "bytes": 11083494,
+        "sha256": "3d79574d4d039030acdf2d5530cd9fd26f62a85cde11d386e0c773d6dd6ef8be",
+        "gpu_kernel_events": 6594,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c01_baseline/profile_b64/both-TP-1-DECODE.trace.json.gz",
+        "bytes": 417386,
+        "sha256": "984bea09b2ab11cd679cba22e68dc089d078527a32eebe8bf4d7eee06fb920a0",
+        "gpu_kernel_events": 6396,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c02_trt_gemm/profile_b16/decode-TP-3.trace.json.gz",
+        "bytes": 243667,
+        "sha256": "83d154aa93d0674730281471720fa34c85c616b3d378953295023b245a0e9e49",
+        "gpu_kernel_events": 4270,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c02_trt_gemm/profile_b16/decode-TP-2.trace.json.gz",
+        "bytes": 243496,
+        "sha256": "14d51cb1e0401d905378f2fb0ef813caf1c7637e1f7d82a43ca984c9a552bad6",
+        "gpu_kernel_events": 4270,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c02_trt_gemm/profile_b16/decode-TP-0.trace.json.gz",
+        "bytes": 246896,
+        "sha256": "5c7908a1d8546abc3b5e9046bf7c6b1e9f6d17dd66b129f5f90c62ab8d47c88e",
+        "gpu_kernel_events": 4270,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c02_trt_gemm/profile_b16/decode-TP-1.trace.json.gz",
+        "bytes": 243583,
+        "sha256": "eeac2ff61acc8556e75d5533815c0eca15a5adcba15cdd014b6dfcf992801ffb",
+        "gpu_kernel_events": 4270,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c02_trt_gemm/profile_b64/both-TP-0-DECODE.trace.json.gz",
+        "bytes": 428663,
+        "sha256": "f14b0506f954a8c1aee487c72e6a101e50099e785294ad83b14ed44b63ce3525",
+        "gpu_kernel_events": 6396,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c02_trt_gemm/profile_b64/both-TP-3-EXTEND.trace.json.gz",
+        "bytes": 11614776,
+        "sha256": "dc100357f9a8cbc66c5b81f625d7fab8e236d8ed7f378f46ae4a5622079cd69c",
+        "gpu_kernel_events": 6594,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c02_trt_gemm/profile_b64/both-TP-3-DECODE.trace.json.gz",
+        "bytes": 418849,
+        "sha256": "38923661c1cbe0cd6127fded4948b29ac13eedd0cfff1f60405cc1711d04910d",
+        "gpu_kernel_events": 6396,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c02_trt_gemm/profile_b64/both-TP-1-EXTEND.trace.json.gz",
+        "bytes": 11606281,
+        "sha256": "940df6730a39778603a04650039962ec18cd5e4588b7eeca6b22ad0345a4707f",
+        "gpu_kernel_events": 6594,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c02_trt_gemm/profile_b64/both-TP-2-DECODE.trace.json.gz",
+        "bytes": 417320,
+        "sha256": "084e823e8a954ec4ae02cfec8b3da9c49a872ca10282bf643553219dd4e46e1f",
+        "gpu_kernel_events": 6396,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c02_trt_gemm/profile_b64/both-TP-2-EXTEND.trace.json.gz",
+        "bytes": 11606617,
+        "sha256": "d06234515edc2d68eeeb0b38a201cdc14201c2d771aa19090f87cf8501ba057a",
+        "gpu_kernel_events": 6594,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c02_trt_gemm/profile_b64/both-TP-0-EXTEND.trace.json.gz",
+        "bytes": 11675927,
+        "sha256": "a4d8d35f4519a2a2de477fa814a291531c080ba979e80e21ff107a3179405043",
+        "gpu_kernel_events": 6594,
+        "nonzero_gpu_events": true
+      },
+      {
+        "path": "agent/run_20261006_230846/configs/c02_trt_gemm/profile_b64/both-TP-1-DECODE.trace.json.gz",
+        "bytes": 416378,
+        "sha256": "4905693287836c1706dd726f655fce2632240f558eb49535d858de5f50860964",
+        "gpu_kernel_events": 6396,
+        "nonzero_gpu_events": true
+      }
+    ],
+    "final_selection_files": [
+      "agent/run_20261006_230846/final_selection.md"
+    ],
+    "interpretation": "Presence and tool-call evidence only; manually audit per-configuration analysis and representative profiling."
+  }
+}

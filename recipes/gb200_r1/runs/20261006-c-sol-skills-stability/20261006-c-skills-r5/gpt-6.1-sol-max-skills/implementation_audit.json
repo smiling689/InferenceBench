@@ -1,0 +1,50 @@
+{
+  "method": "task-local PrefillDelayer timeout synchronization; installed model computation unchanged",
+  "files": [
+    {
+      "path": "task/runtime_patches/r1_prefill_clock.py",
+      "sha256": "3ce5fbe55bebc92499c1d9f4ddcabe2ec870fab594e3a9e77dc3415209c852bf"
+    },
+    {
+      "path": "task/runtime_patches/sitecustomize.py",
+      "sha256": "0aaeeb0ad2604a641a4ba848584f11f37988727ac0ff1f1cede0b3226b13b359"
+    }
+  ],
+  "matches_selected_best_snapshot": true,
+  "patch_active_in_formal_log": true,
+  "installed_package_source_changes": [],
+  "validation": {
+    "environment": "fresh CPU Docker, four Gloo ranks, preserved agent regression script",
+    "exit_code": 0,
+    "original_decisions": [
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        1,
+        1
+      ]
+    ],
+    "patched_decisions": [
+      [
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "timeout_threshold_restoration_asserted": true
+  },
+  "interpretation": "Broadcasts the leader timeout decision over the existing CPU group and calls the original scheduling method. It repairs divergent rank phase choices without modifying model layers, sampling or token accounting. Formal held-out evaluation passes all 768 records."
+}
